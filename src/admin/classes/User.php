@@ -10,6 +10,7 @@
 	public function login($username, $password){
 		$user=strip_tags(trim( $_POST['username']));
 		$pass=strip_tags(trim( $_POST['password']));
+		$pass = md5($password.SALT); // Coment this line in develop
 		$sth = $this->pdo->prepare("SELECT * FROM user WHERE username = :username AND password=:password ");
  		$sth->execute(array(
 			':username' => $user,
