@@ -1,8 +1,8 @@
 <?php require_once('../init.php');
-Session::init();
-if (!isset($_SESSION['logged'])){
-Session::destroy();
-header('location: ../index.php');
+	Session::init();
+	if (!isset($_SESSION['logged'])){
+	Session::destroy();
+	header('location: ../index.php');
 }
 $page="admin";
 $status="";
@@ -19,7 +19,7 @@ foreach ($jelo_arr as $row ) {
 	$row_cijena= $row['cijena'];
 
 }
-include("../inc/header.php");?>
+include("../inc/header_private.php");?>
 <?php
 	// SPREMI
 	 if  (isset($_POST['spremi'])) 	
@@ -73,12 +73,7 @@ include("../inc/header.php");?>
 				 ?>
 			</h2>
 		</div>
-
-
-
 		<br/> 
-
-
 	</div>
 
 <div class="grid_3">

@@ -10,7 +10,7 @@ header('location: ../index.php');
 $page="admin";
 $status="";
 $meni_ime = $_REQUEST["fname"];
-include("../inc/header.php"); 
+include("../inc/header_private.php"); 
 
 
  	if (isset($_POST['submit']))
@@ -55,7 +55,7 @@ include("../inc/header.php");
 						}
 
 						else {
-							session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT						
+							session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT
 							Session::destroy();
 							header('location: ../index.php');
 							exit;

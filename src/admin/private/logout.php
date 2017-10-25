@@ -1,5 +1,5 @@
 <?php require_once('../init.php');
-$user=new User();
+	$user=new User();
 	$user->logout();
-header('location: ../index.php');
+	header('location: ../index.php');
  ?>
