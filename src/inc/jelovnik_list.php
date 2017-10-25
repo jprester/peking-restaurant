@@ -1,13 +1,13 @@
 <?php include('admin/init.php');
-$visit1="";
-$visit2="";
-$visit3="";
-$visit4="";
-$dvisit1="";
-$dvisit2="";
-$dvisit3="";
-$meni = new Meni();
-$meni_array = $meni->getMeni();
+	$visit1="";
+	$visit2="";
+	$visit3="";
+	$visit4="";
+	$dvisit1="";
+	$dvisit2="";
+	$dvisit3="";
+	$meni = new Meni();
+	$meni_array = $meni->getMeni();
 foreach ($meni_array as $row)  {
 	echo("<li><a href=meni_izbor.php?fname=".trim($row['mid'])." >" . $row['meni_ime'] . $row['en_ime']."</a></li>");
 } ?>

@@ -8,10 +8,10 @@ class Db{
 
 	public function __construct(){
 		try {
-			$host=DB_HOST;
+			$host= DB_HOST;
 			$dbname=DB_NAME;
 			$user=DB_USER;
-			$pass=DB_PASS;
+			$pass= DB_USER;
 			$this->pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		}
