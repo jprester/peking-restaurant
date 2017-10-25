@@ -1,0 +1,11 @@
+*.zip
+.DS_Store
+_DS_Store
+*.css.map
+*.sublime-*
+.DS_Store
+.vscode/
+.sass-cache/
+src/error_log
+src/css
+src/peking.hr

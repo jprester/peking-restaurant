@@ -1,0 +1,242 @@
+body{}
+blockquote{background:#eee; padding:15px; border:1px solid #D62E59; }
+
+.text-l { text-align: left; display:inline-block; }
+.text-c { text-align: center; }
+.text-r { text-align: right; display:inline-block;} 
+.right{float:left;}
+.right{float:right;}
+.inline{display:inline;}
+.inline-b{dispay:inline-block;}
+
+.container_12 .grid_1-4{	display: inline; 	float: left; 	 width:23.9%; margin-left: 1%; 	margin-right: 1%; }
+.container_12 .grid_1-3{	display: inline; 	float: left; 	 width:32.3%; margin-left: 1%; 	margin-right: 1%; }
+.container_12 .grid_2-3{	display: inline; 	float: left; 	 width:65.3%; margin-left: 1%; 	margin-right: 1%; }
+.container_12 .grid_1-2{	display: inline; 	float: left; 	 width:48.7%; margin-left: 1%; 	margin-right: 1%; }
+
+.grid_1-4.alpha, .grid_1-3.alpha, .grid_2-3.alpha, .grid_1-2.alpha {margin-left:0;}
+.grid_1-4.omega, .grid_1-3.omega, .grid_2-3.omega, .grid_1-2.omega {margin-right:0;}
+.grid_1.right, .grid_2.right, .grid_3.right, .grid_4.right, .grid_5.right, .grid_6.right, .grid_7.right, .grid_8.right  {float:right;}
+
+.full-right{position:relative; right:0;}
+
+.clear{clear: both;content: '.'; 	display: block; visibility: hidden; height: 0; width: 0;}
+
+.mobil{display:none;}
+.monitor{}
+/* STRUCTURE */
+
+.clearer { clear:both; }
+body { background: #fefefe url(../img/net_pattern.jpg);  margin:0px;padding:0px; font-family:Arial, Verdana, "Times new roman"; font-size:13px; }
+body#pocetna a#homenav,
+body#onam a#onamnav,
+body#meni a#menunav,
+body#kon a#konnav
+{color:#A5745F; font:16px "Gill Sans MT", Arial, sans-serif; color:#A5745F; display:block; padding-left:10px; padding-right:10px; padding-bottom:6px;padding-top:8px; width:108px; height:35px;border-left:1px solid #572C2C; border-bottom:0px none #301717; /*background: url(../img/nav_bg.png) repeat-x top;*/ text-decoration:none;}
+
+#main {}
+
+.mob-head{display:none; width:100%; text-align:center; background:#422D2D;}
+
+#head_bg { background:#392222 url(../img/main_bg.png) repeat-x top; height:205px; }
+#header    {height:155px;margin:0px auto 0px auto;}
+#logo {position:absolute; top:0; opacity:0.85;}
+/*#logo a{margin-top: 0px; display: block;padding: 0px;  background-image: url(../img/sprites2.png); background-position: -115px -134px;height: 153px;}*/
+
+#navigation {display:inline; text-align:center;}
+#navigation ul {list-style:none;margin:0px; padding:0px; display:inline-block; text-align:center;}
+#navigation ul li {float:left;}
+#navigation ul li a {  display:block; padding:11px 25px; border-left:1px solid #3B2222;border-right:1px solid #3B2222; border-bottom:0px none #301717; /*background:#3E2929; background: url(../img/nav_bg.png) repeat-x top;*/ }
+#navigation ul li a:hover { color:#ccc;}
+#navigation ul li a .pressed{  }
+
+
+.mmenu{display:none;}
+.mmenu{ position:relative; top:0px;padding:4px 54px;  background:#3B2222; border:1px solid #9F6F5B;}
+.mmenu:hover{ }
+
+.mnav{display:none;}
+.mnav{width:100%; z-index:150;position:absolute; margin:0; padding:0; left:0;text-align:center;  }
+.mnav ul{display:none;  border:1px solid #9F6F5B; }
+.mnav ul li{}
+.mnav ul li a{margin:0; padding:10px 78px; display:block; background:#3B2222; }
+.mnav ul li a:hover{ background:#5B2222; }
+
+#title{  text-align:center; margin-top:45px; }
+#title h1{  }
+
+
+.slider-container{height:360px; background:#fefefe; border:1px solid #444; padding:3px;  position:relative; bottom:50px;}
+
+.fb-icon{ background-image: url(../img/sprites2.png); background-position: -18px -141px; display:inline; }
+
+
+#social_icon{  }
+#social_icon a{ }
+#social_icon a:hover{background-image: url(../img/sprites.png); background-position: -137px -125px;  }
+
+
+#down_bg {background: url(../img/net_pattern3.jpg) ; }
+#down{ }
+#dcontent1{  height:320px; text-align:left;}
+#dcontent1 p{  height:150px; text-align:left; }
+#dcontent1 img{margin-top:10px;}
+#dcontent2{  height:320px; text-align:left;}
+#dcontent2 p{  height:150px; text-align:left; }
+.dtitle{ height:37px;background: url(../img/dtitle_bg2.png) repeat-x;  color:#9F6F5B;   }
+
+
+.btn1 {text-align:center;}
+.btn2 {text-align:center;}
+.btn1 a{text-align:center;  height:24px;  background-image: url(../img/sprites.png); background-position: -10px -25px; display:block;}
+.btn1 a:hover{background-position: -135px -25px;}
+.btn2 a{text-align:center; height:24px;  background-image: url(../img/sprites.png); background-position: -10px -72px; display:block;}
+.btn2 a:hover{background-position: -135px -72px;}
+.displace {     position: absolute;     left: -5000px;  }
+
+#foot_bg {  background: #220000 url(../img/foot_bg2.gif) repeat-x top; }
+#footer {color:#FFF; height:80px; padding:5px 0; text-align:center; margin:auto;}
+#footer ul { display:inline-block;  }
+#footer ul li {float:left; margin-left:15px; text-align:center;}
+#footer ul li p{color:#B57F6F; font-family:'Rufina', Arial, sans-serif; font-size:11px; padding-top:4px; }
+#footer ul li p a{color:#B57F6F; font-family:'Rufina', Arial, sans-serif; font-size:11px; padding-top:4px; }
+#footer ul li p a:hover{color:#ccc;}
+
+/*................................./////////////////////////////////Slider//////////////////////////////////////////////////////..................*/
+/*=================================*/
+/* Nivo Slider Demo
+/* November 2010
+/* By: Gilbert Pellegrom
+/* http://dev7studios.com
+/*=================================*/
+
+/*===================*/
+/*=== Main Styles ===*/
+/*===================*/
+ .slider-wrapper { 	width: 100%;	margin: 0px auto;text-align:center;  bottom:0px;  padding:3px;}  /*====================*/ /*=== Other Styles ===*/ /*====================*/ 
+ /*
+ * jQuery Nivo Slider v3.2
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2012, Dev7studios
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+ 
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:absolute;
+	left:0;
+	width:98%;
+	height:auto;
+	overflow: hidden;
+	bottom:35px;border:4px solid #fff;
+	 -webkit-box-shadow: 0px 2px 5px 0px #4a4a4a;
+    -moz-box-shadow: 0px 2px 5px 0px #4a4a4a;
+    box-shadow: 0px 2px 5px 0px #4a4a4a;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	max-width: none;
+}
+.nivo-main-image {
+	display: block !important;
+	position: relative !important; 
+	width: 100% !important;
+}
+
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink { 	position:absolute; 	top:0px; 	left:0px; 	width:100%; 	height:100%; 	border:0; 	padding:0; 	margin:0; 	z-index:6; 	display:none; 	background:white; 	filter:alpha(opacity=0); 	opacity:0; }
+/* The slices and boxes in the Slider */
+.nivo-slice { 	display:block; 	position:absolute; 	z-index:5; 	height:100%; 	top:0; }
+.nivo-box { 	display:block; 	position:absolute; 	z-index:5; 	overflow:hidden; }
+.nivo-box img { display:block; }
+
+/* Caption styles */
+.nivo-caption { 	position:absolute; 	left:0px; 	bottom:0px; 	background:#632525; 	color:#fff; 	width:100%; 	z-index:8; 	padding:15px 25px; 	opacity: 0.8; 	overflow: hidden; 	display: none; 	-moz-opacity: 0.8; 		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */ 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */ 	box-sizing: border-box;         /* Opera/IE 8+ */ }
+.nivo-caption p { 	padding:5px; 	margin:0; } .nivo-caption a { 	display:inline !important; } .nivo-html-caption {     display:none; }
+/* Direction nav styles (e.g. Next & Prev) */ .nivo-directionNav a { 	position:absolute; 	top:45%; 	z-index:9; 	cursor:pointer; } .nivo-prevNav { 	left:0px; } .nivo-nextNav { 	right:0px; } /* Control nav styles (e.g. 1,2,3...) */ .nivo-controlNav { 	text-align:center; 	padding: 15px 0; 	display:none; } .nivo-controlNav a { 	cursor:pointer; } .nivo-controlNav a.active { 	font-weight:bold; }
+
+
+
+/* Skin Name: Nivo Slider Default Theme Skin URI: http://nivo.dev7studios.com Description: The default skin for the Nivo Slider. Version: 1.3 Author: Gilbert Pellegrom Author URI: http://dev7studios.com Supports Thumbs: true */
+
+.theme-default .nivoSlider { 	position:relative; 	background:#fff url(../img/loading.gif) no-repeat 50% 50%;     margin-bottom:10px;     -webkit-box-shadow: 0px 1px 5px 0px #4a4a4a;     -moz-box-shadow: 0px 1px 5px 0px #4a4a4a;     box-shadow: 0px 1px 5px 0px #4a4a4a; } .theme-default .nivoSlider img { 	position:absolute; 	top:0px; 	left:0px; 	display:none; } .theme-default .nivoSlider a { 	border:0; 	display:block; }  .theme-default .nivo-controlNav { 	text-align: center; 	padding: 20px 0; } .theme-default .nivo-controlNav a { 	display:inline-block; 	width:22px; 	height:22px; 	background:url(../img/bullets.png) no-repeat; 	text-indent:-9999px; 	border:0; 	margin: 0 2px; } .theme-default .nivo-controlNav a.active { 	background-position:0 -22px; }  .theme-default .nivo-directionNav a { 	display:block; 	width:30px; 	height:30px; 	background:url(../img/arrows.png) no-repeat; 	text-indent:-9999px; 	border:0; 	opacity: 0; 	-webkit-transition: all 200ms ease-in-out;     -moz-transition: all 200ms ease-in-out;     -o-transition: all 200ms ease-in-out;     transition: all 200ms ease-in-out; } .theme-default:hover .nivo-directionNav a { opacity: 1; } .theme-default a.nivo-nextNav { 	background-position:-30px 0; 	right:15px; } .theme-default a.nivo-prevNav { 	left:15px; }  .theme-default .nivo-caption {   }.theme-default .nivo-caption a {     color:#fff;     border-bottom:1px dotted #fff; } .theme-default .nivo-caption a:hover {     color:#fff; }  .theme-default .nivo-controlNav.nivo-thumbs-enabled { 	width: 100%; } .theme-default .nivo-controlNav.nivo-thumbs-enabled a { 	width: auto; 	height: auto; 	background: none; 	margin-bottom: 5px; } .theme-default .nivo-controlNav.nivo-thumbs-enabled img { 	display: block; 	width: 120px; 	height: auto; } 
+
+
+/* END STRUCTURE */
+
+
+/* PAGE STYLES */
+
+/* Pages */
+#page_up{background:url(../img/main_bg3.png) repeat-x top; height:200px; }
+#page_down{background: url(../img/net_pattern3.jpg) ; margin-top:10px;}
+#page_content{margin:auto; padding:0px; width:960px;}
+.content_full{}
+
+#header-pages { background: blue;height:86px;margin:10px 10px 5px 10px;}
+
+.mobile-meninav{ background:#eee; display:none; background:url(../img/mmenu_bg.gif) repeat-x top;border:1px solid #ccc;  text-align:center;}
+
+.mobile-meninav a{display:block;height:35px;padding-top:13px; }
+.mobile-meninav a:hover{background:#eee;}
+
+
+.mobile-menilist{display:none; border:1px solid #ccc; background:#eee; text-align:center;}
+.mobile-menilist ul{ display:none;}
+.mobile-menilist ul li{ }
+.mobile-menilist ul li a{ padding:8px 18px; display:block; border-bottom:1px solid #ccc;}
+.mobile-menilist ul li a:hover{background:#C9B4B4;}
+
+.meni-list ul{margin:auto; margin-top:30px;}
+
+.meni-list ul li{text-align:center;margin-bottom:5px;border-bottom:1px dotted #793A2E;padding:4px;}
+
+.meni-list ul li a{color:#611919;font-family: 'Rufina', serif, arial; font-size:13px; text-decoration:none;text-transform:uppercase;}
+
+.meni-list ul li a:hover{color:#ccc;}
+
+.darrow{position:relative; top:6px; left:5px;}
+
+
+
+
+.red-button
+{  height:38px; width:135px;line-height:42px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff; 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff; 
+	box-shadow:inset 0px 1px 0px 0px #ffffff; 
+	background:#641D1D;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #641D1D), color-stop(1, #6C2828) ); 
+	background:-moz-linear-gradient( center top, #641D1D 5%, #6C2828 100% );
+
+
+	border-radius:0px; 	border:1px solid #dcdcdc; 	display:inline-block; 	color:#666666; 	text-decoration:none; 	text-align:center; 	/*text-shadow:1px 1px 0px #ffffff;*/
+	-webkit-border-radius:10px; 
+	moz-border-radius:10px;border-radius:10px;
+}
+
+.red-button:hover
+{background:#723232; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #723232), color-stop(1, #793C3C) ); 	background:-moz-linear-gradient( center top, #723232 5%, #793C3C 100%) }
+
+
+
+
+#jelovnik {  margin-top:20px;  margin-bottom:0px; margin-left:auto; margin-right:auto; width:400px;}
+.jelovnik_mainpic {margin-top: 0px;    margin-right: auto;     margin-bottom: 0px;     margin-left: 30px;   }
+#jelovnik_top { height: 23px;   background-image: url(../img/meni_top.gif); background-repeat:no-repeat; border-top-style: none; border-right-style: none;   border-bottom-style: none;  border-left-style: none; }
+#jelovnik_content { background-image: url(../img/meni_mid.gif); background-repeat: repeat-y; padding: 10px; border-top-style: none; border-right-style: none;   border-bottom-style: none;  border-left-style: none; }
+#jelovnik_bottom {height:26px; background-image: url(../img/meni_bottom.gif);background-repeat: no-repeat; border-top-style: none; border-right-style: none;   border-bottom-style: none;  border-left-style: none; }
+.meni-table { margin-top: 0px;  margin-right: auto; margin-bottom: 0px; margin-left: auto; width:360px;  }
+.table_naslov { font-family: 'Rufina', Arial,serif; font-size: 15px;color: #333; height: 30px;font-style: italic; /*border-bottom:1px solid #DDD0CB;*/     }
+.meni-table td {padding:5px;   height: 45px;   line-height: 20px; }
+.td-broj { font-family:'Rufina', Arial,serif;  font-size: 11px;color: #333; text-align: left; width:15%;}
+.td-jelo {font-family:'Rufina', Arial,serif;  font-size: 12px;   color: #333; width:70%;}
+.td-cijena { font-family:'Rufina', Arial,serif;  font-size: 12px; color: #333; width:15%;}
+#kontakt_right {}
+.t_bottom{background: #FFFDD0 url(../img/meni_ukras.gif) no-repeat center; text-align:center; width:150px;   }
+#map{text-align:center; padding:5px; border:1px solid #ccc; background:#fff;}
+
+/* END PAGE STYLES */
