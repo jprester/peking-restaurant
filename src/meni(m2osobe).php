@@ -1,7 +1,4 @@
-<?php
-
-include('admin/init.php');
-
+<?php include('admin/init.php');
 $visit1="";
 $visit2="";
 $visit3="pressed";
@@ -9,18 +6,13 @@ $visit4="";
 $dvisit1="italic";
 $dvisit2="";
 $dvisit3="";
-
- $page_id= "";
-
-  ?>
+$page_id= ""; ?>
 <?php include('inc/header.php');?>
-
-
 		<div id="title">
 			<h1><img src="img/title3.png" width="63" height="61" border="0" alt="" /></h1>
 		</div>
 				
-				</div>					
+				</div>
           </div>
 		<div class="clearer"></div>
 
@@ -170,9 +162,8 @@ $dvisit3="";
 	</div>
 						<div id="jelovnik_bottom"></div>
 						
-						  <br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br /><br />
-						
-					  </div>				
+            <br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br /><br />
+					  </div>
 
 						
 					</div>
@@ -183,6 +174,6 @@ $dvisit3="";
 		 </div>
 			
 			
-        </div> 
+    </div> 
 		
 <?php include('inc/footer.php');	?>

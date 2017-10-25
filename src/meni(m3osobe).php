@@ -1,7 +1,4 @@
-<?php
-
-include('admin/init.php');
-
+<?php include('admin/init.php');
 $visit1="";
 $visit2="";
 $visit3="pressed";
@@ -10,9 +7,7 @@ $dvisit1="";
 $dvisit2="italic";
 $dvisit3="";
 $page_id= "";
-
-  ?>
-
+?>
 <?php include('inc/header.php');?>
 
 
@@ -20,7 +15,7 @@ $page_id= "";
       <h1><img src="img/title3.png" width="63" height="61" border="0" alt="" /></h1>
     </div>
         
-        </div>          
+        </div>
           </div>
     <div class="clearer"></div>
 
@@ -192,7 +187,7 @@ $page_id= "";
 						
 						  <br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br /><br /><br />
 						
-					  </div>				
+					  </div>
 
 						
 					</div>
