@@ -1,38 +1,35 @@
 <?php require_once('../init.php');
 Session::init();
 if (!isset($_SESSION['logged'])){
-Session::destroy();
-header('location: ../index.php');
+	Session::destroy();
+	header('location: ../index.php');
 }
-?>
-
-<?php
 $page="admin";
 $status="";
 $meni_ime = $_REQUEST["fname"];
 include("../inc/header_private.php"); 
+if (isset($_POST['submit'])) {
+	$novoJeloSort = $_POST['sort'] || 0;
+	$novoJeloBroj = $_POST['broj'] || 0;
+	$novoJeloNaziv = $_POST['naziv'];
+	$novoJeloNazivEn = $_POST['naziv_en'];
+	$novoJeloCijena = $_POST['cijena'];
 
-
- 	if (isset($_POST['submit']))
- 	{
-
-		 if (empty($_POST['broj'])|| empty($_POST['sort']) || empty($_POST['naziv']) || empty($_POST['naziv_en']) || empty($_POST['cijena'])) 
-				{	
-					$status="Ostavili ste neka polja prazna"; 
-				} else {
-				$jelo=new Jelo();
-				$jelo->insertJelo( $_POST['sort'], $_POST['broj'], $_POST['naziv'], $_POST['naziv_en'], $_POST['cijena'], $meni_ime );	
-				$status="Dodali ste novo jelo!";
-			}
+	if(empty($novoJeloNaziv) || empty($novoJeloNazivEn) || empty($novoJeloCijena)) {
+		print_r($_POST);
+		$status="Ostavili ste neka polja prazna. Molimo da barem upisete naziv, engleski naziv i cijenu"; 
+	} else {
+		$jelo=new Jelo();
+		$jelo->insertJelo($novoJeloSort, $novoJeloBroj, $novoJeloNaziv, $novoJeloNazivEn, $novoJeloCijena, $meni_ime);
+		$status="Dodali ste novo jelo!";
 	}
- ?>
+} ?>
 
 <div class = "container_12">
 	<br/> 
 <?php if ($page=="admin") {	echo "<a href='admin.php'> < POVRATAK</a>";} ?>
 		<br/>
 	<div class="grid_6 prefix_3">
-
 		<div id ="title">
 			<h2>
 				<?php 
@@ -77,23 +74,21 @@ include("../inc/header_private.php");
 		<table class ="popis-table">
 			<tr>
 				<th>redni broj</th><th>sortni broj</th><th>naziv jela</th><th>engleski naziv</th><th>cijena</th><th></th>
-
 			</tr>
-				
-					<?php 
-					$jelo=new Jelo(); 
-					$array_jela= $jelo->getJela($meni_ime);
-					foreach ($array_jela as $row) {
-						echo "<tr>".
-						"<td>".$row['broj']."</td>".
-						"<td>".$row['sort']."</td>".
-						"<td>".$row['naziv']."</td>".
-						"<td>".$row['naziv_en']."</td>".
-						"<td>".$row['cijena']."</td>".
-						"<td><a href=meni_jelo.php?fname=".$row['jid']." >" . 'UREDI' . "</a></td>".
-						"</tr>";
-					}
-					 ?>
+			<?php 
+			$jelo=new Jelo(); 
+			$array_jela= $jelo->getJela($meni_ime);
+			foreach ($array_jela as $row) {
+				echo "<tr>".
+				"<td>".$row['broj']."</td>".
+				"<td>".$row['sort']."</td>".
+				"<td>".$row['naziv']."</td>".
+				"<td>".$row['naziv_en']."</td>".
+				"<td>".$row['cijena']."</td>".
+				"<td><a href=meni_jelo.php?fname=".$row['jid']." >" . 'UREDI' . "</a></td>".
+				"</tr>";
+			}
+				?>
 
 		</table>
 		<br/>	<br/>

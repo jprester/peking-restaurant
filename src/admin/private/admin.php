@@ -20,13 +20,12 @@ include("../inc/header_private.php");?>
 				<p class ="log-pic"> <img src="../img/lock.png" width="13" height="17"></p>
 				<p class ="log-options">
 
-					 <?php if($_SESSION['logged']) {
-						?>
+					 <?php if($_SESSION['logged']) { ?>
 						Prijavljeni ste kao : <?php echo Session::get('logged'); ?>. <br/>	 Odjavite se <a href="logout.php" tite="Logout">ovdje.</a>
 						<?php
 						}
 
-						else{
+						else {
 							session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUCOJ LINIJI POŠALJE NA REDIRECT
 							Session::destroy();
 							header('location: ../index.php');

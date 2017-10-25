@@ -1,14 +1,17 @@
 <?php require_once('../init.php');
-	Session::init();
-	if (!isset($_SESSION['logged'])){
+Session::init();
+if (!isset($_SESSION['logged'])) {
 	Session::destroy();
 	header('location: ../index.php');
+	exit;
 }
+
 $page="admin";
 $status="";
 $jelo_id = $_REQUEST["fname"];
 $jelo=new Jelo();
-$jelo_arr= $jelo->chooseJelo($jelo_id);	
+$jelo_arr= $jelo->chooseJelo($jelo_id);
+
 foreach ($jelo_arr as $row ) {
 	$row_mid= $row['mid'];
 	$row_jid= $row['jid'];
@@ -19,47 +22,39 @@ foreach ($jelo_arr as $row ) {
 	$row_cijena= $row['cijena'];
 
 }
-include("../inc/header_private.php");?>
-<?php
-	// SPREMI
-	 if  (isset($_POST['spremi'])) 	
-			{
-				$id = $jelo_id;
-				$broj = $_POST["broj"];
-				$sort = $_POST["sort"];
-				$naziv = $_POST["naziv"];
-				$naziv_en = $_POST["naziv_en"];
-				$cijena = $_POST["cijena"];
 
-				 $jelo = new Jelo();
-				 $jelo->editJelo($id,$broj, $sort, $naziv,$naziv_en,$cijena);				 	
-				 $status="Uspješno ste promijenili jelo!";
+if (isset($_POST['spremi'])) {
+	$id = $jelo_id;
+	$broj = $_POST["broj"];
+	$sort = $_POST["sort"];
+	$naziv = $_POST["naziv"];
+	$naziv_en = $_POST["naziv_en"];
+	$cijena = $_POST["cijena"];
 
-				 // Ponovo ucitaj formu!
-				 $jelo=new Jelo();	
-				 $jelo_arr= $jelo->chooseJelo($jelo_id);
-				 foreach ($jelo_arr as $row ) {
-				 $row_mid= $row['mid'];
-				 $row_jid= $row['jid'];
-				 $row_naziv= $row['naziv'];
-				 $row_naziv_en= $row['naziv_en'];
-				 $row_broj= $row['broj'];
-				 $row_sort= $row['sort'];
-				 $row_cijena= $row['cijena'];
- }
-			}
+	$jelo = new Jelo();
+	$jelo->editJelo($id,$broj, $sort, $naziv,$naziv_en,$cijena);
+	$status="Uspješno ste promijenili jelo!";
 
-	// DELETE
-	if(isset($_POST['obrisi'])) 
-			{
-				Session::set('deleted', $row_mid);
-				$jelo = new Jelo();
-				$jelo->deleteJelo($jelo_id);
-				header('location: meni_popis.php?fname='.Session::get('deleted'));
-			}
-?>
-
-
+		// Ponovo ucitaj formu!
+		$jelo=new Jelo();	
+		$jelo_arr= $jelo->chooseJelo($jelo_id);
+		foreach ($jelo_arr as $row ) {
+		$row_mid= $row['mid'];
+		$row_jid= $row['jid'];
+		$row_naziv= $row['naziv'];
+		$row_naziv_en= $row['naziv_en'];
+		$row_broj= $row['broj'];
+		$row_sort= $row['sort'];
+		$row_cijena= $row['cijena'];
+	}}
+if(isset($_POST['obrisi'])) {
+	session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUCOJ LINIJI POŠALJE NA REDIRECT
+	Session::set('deleted', $row_mid);
+	$jelo = new Jelo();
+	$jelo->deleteJelo($jelo_id);
+	header('location: meni_popis.php?fname='.Session::get('deleted'));
+} ?>
+<?php include("../inc/header_private.php"); ?>
 <div class = "container_12">
 <br/>
  <?php if ($page=="admin") {	
@@ -82,20 +77,17 @@ include("../inc/header_private.php");?>
 				<p class ="log-pic"> <img src="../img/lock.png" width="13" height="17"></p>
 				<p class ="log-options">
 
-					 <?php	if($_SESSION['logged']) {
+					 <?php
+					 if($_SESSION['logged']) {
 						?>
 						Prijavljeni ste kao : <?php echo Session::get('logged'); ?>. <br/>	 Odjavite se <a href="logout.php" tite="Logout">ovdje.</a>
 						<?php
-						}
-
-						else{
-
-							session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT						
+					} else {
+						session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT						
 							Session::destroy();
 							header('location: ../index.php');
 							exit;
-						}
-						?>
+					}?>
 				 </p>
 				<div class ="clear"></div>
 		</div>
