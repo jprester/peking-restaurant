@@ -20,14 +20,7 @@
 					<img src="img/slide1.jpg" data-thumb="img/slide1.jpg" alt="Kineska hrana" title="Idealna lokacija u centru grada. " />
 						
 					<img src="img/slide5.jpg" data-thumb="img/slide5.jpg" alt="Restoran" title="Nadamo se da ćete nas posjetiti i uživati u gurmanskim čarima dalekog istoka. " />
-					
-					<!--<a href="http://dev7studios.com"><img src="img/up.jpg" data-thumb="img/up.jpg" alt="" title="Idealna lokacija u centru grada." /></a>
-					
-					<<img src="img/nemo.jpg" data-thumb="img/nemo.jpg" alt="" title="#htmlcaption" />-->
 				</div>
-				<!--<div id="htmlcaption" class="nivo-html-caption">
-					<strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
-				</div>-->
 			</div>
 		
 		</div>
@@ -72,17 +65,14 @@
 							Ili nam se javite putem maila:
 							</p>
 				
-					 <a href ="kontakt.php"> <a href ="kontakt.php"class ="red-button">Kontakt</a><!--<img src="img/button2.gif" alt="My button" class="button2" /> --></a> 
+					 <a href ="kontakt.php"> <a href ="kontakt.php"class ="red-button">Kontakt</a></a> 
 					</div>
 				
 				<div class="clear"></div>
 				</div>
 			</div>
 			<div class="clear"></div>
-		
 		</div>
-	
 		</div>
 		<div class="clear"></div>
-
 <?php include('inc/footer.php');?>

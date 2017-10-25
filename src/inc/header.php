@@ -1,8 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="hr">
-
 	<head>
-
 	<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Meta and titile ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<title>Kineski restoran Peking</title>
 		<meta name="description" content="Kineski restoran Peking " />
@@ -10,7 +8,6 @@
 		<meta name="author" content="Janko Prester" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=9" />
-		
 	<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Mobile meta ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		
@@ -59,67 +56,39 @@
 
 	<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Icon ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 	<link href='favicon.ico' rel='icon' type='image/x-icon'/>
-
-	
 	</head>
-
 	<body>
-	
-	
-	
 	<div id ="main">
 	
 	<div class ="mob-head"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>
 	
-      <div id ="head_bg">
-	  
-	  
+	<div id ="head_bg">
 		<div class ="container_12">
-		
-		  <div id ="header">
-		 
-			
-			<div id="logo"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>			
-				
-		 					 
-			 
+			<div id ="header">
+			<div id="logo"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>
 				<div class="grid_12 text-c">
 					<div id="navigation">
 						<ul>
-									  <li><a href="index.php" class ="<?php echo $visit1 ?>" >Početna</a></li>
+							<li><a href="index.php" class ="<?php echo $visit1 ?>" >Početna</a></li>
 							<li><a href="onama.php" class ="<?php echo $visit2 ?>" >O nama</a></li>
-						 <li><a href="meni.php" class ="<?php echo $visit3 ?>">Meni</a></li>
-						   <li><a href="kontakt.php" class ="<?php echo $visit4 ?>">Kontakt</a></li>
-									
-						</ul>								
+							<li><a href="meni.php" class ="<?php echo $visit3 ?>">Meni</a></li>
+							<li><a href="kontakt.php" class ="<?php echo $visit4 ?>">Kontakt</a></li>
+						</ul>
 					</div> 
-					
 					<div class="clear"></div>
 					<div class ="mmenu"><a class ="mmeni-txt" href ="#">NAVIGACIJA</a></div>	
 					<div class="clear"></div>
-					
-					
 				</div>
 				<div class="clear"></div>
-				
 				<div class="grid_12">
-					
-					
 					<div class ="mnav">
 						<ul>
 							<li><a href="index.php" >Početna</a></li>
 							<li><a href="onama.php" >O nama</a></li>
 							<li><a href="meni.php">Meni</a></li>
-						   <li><a href="kontakt.php">Kontakt</a></li>
-									
-						</ul>		
-					
+							<li><a href="kontakt.php">Kontakt</a></li>
+						</ul>
 					</div>	
 					<div class="clear"></div>
-					
-					
 				</div>
-		
-				
 				<div class="clear"></div>
-					

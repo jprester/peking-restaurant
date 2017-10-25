@@ -1,5 +1,4 @@
 <?php include('admin/init.php');?>
-
 <?php $visit1="";?>
 <?php $visit2="";?>
 <?php $visit3="pressed";?>
@@ -12,7 +11,6 @@
 			</div>
 		</div>
 		<div class="clearer"></div>
-
 
 	<div class="clear"></div>
 		</div>
@@ -34,7 +32,7 @@
 							</div>	
 
 						</div>
-						<br />
+						<br/>
 					</div>
 					<div class ="grid_6">
 						<div id="jelovnik" >
@@ -57,7 +55,7 @@
 								foreach ($array_jelo as $row) {
 									echo("<tr>". 
 									"<td class ='td-broj'>".$row['broj']."</td>".
-									"<td class ='td-jelo'>"."<strong>".$row['naziv']."</strong>"."<br />"."<h4>".$row['naziv_en']."<h4>"."</td>".
+									"<td class ='td-jelo'>"."<strong>".$row['naziv']."</strong>"."<br/>"."<h4>".$row['naziv_en']."<h4>"."</td>".
 									"<td class ='td-cijena'>".$row['cijena']."</td>".
 									"</tr>");
 								}
@@ -70,17 +68,11 @@
 						</div>
 						<div id="jelovnik_bottom"></div>
 						
-						<br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br />
-						
+						<br/><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br/><br/>
 					</div>
-
-						
 					</div>
-				
 			<div class="clearer"></div>
 		</div>
-
 </div>
-
 <br/><br/>
 <?php include('inc/footer.php');?>

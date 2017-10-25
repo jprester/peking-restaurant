@@ -22,7 +22,6 @@ Session::destroy();
 
 		}
 
-				
 	}
 
 	else{

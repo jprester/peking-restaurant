@@ -21,10 +21,8 @@
 					<p class = "txt3"><br/>
 					Za sve potrebne informacije, mozete nas kontaktirati <br/>
 						putem telefona ili e-maila: 
-
 						<br/><br/>
 						Telefon: 091-3776-361
-
 						<br/><br/>
 						E-mail: info@peking.hr
 						<br/><br/>
@@ -34,7 +32,6 @@
 						Ponedeljak - subota od 11:30h do 23h <br/>
 						Nedelja od 11:30h-22h
 						<br/><br/>Dostava: besplatna dostava (minimalna narudžba je 50kn na području centra ili po dogovoru)
-
 						<br/><br/>Restoran zadržava pravo promjene cijena! 
 					</p>
 						<br/>

@@ -3,7 +3,6 @@ $visit2="";
 $visit3="pressed";
 $visit4="";
 include('inc/header.php');
-//  include('admin/init.php');
  ?>
 
 		<div id="title">
@@ -19,16 +18,12 @@ include('inc/header.php');
 		<div id ="page_down">
 			<div class="container_12">
 					<div class ="grid_6">
-				
 						<div class="meni-list">
-					
-					
 					<ul>	
 						<?php include('inc/jelovnik_list.php');?>
 					</ul>
 						
 						</div>
-					
 						<div class="text-c"><div class="mobile-meninav"><a href="#">Izbor jela <span class ="darrow"><img src="img/darrow.png" alt="" width="13" height="11" border="0" /></span> </a></div></div>
 						<div class="text-c">
 
@@ -44,22 +39,15 @@ include('inc/header.php');
 					<div id="jelovnik">
 						<div id="jelovnik_top"></div>
 						<div id="jelovnik_content"><br />
-						 
-						 <p class="jelovnik_mainpic"><img src="img/jelovnik_pic.png" width="241" height="367" class="jelovnik_mainpic" /></p><br />
-						
-
-
+						<p class="jelovnik_mainpic"><img src="img/jelovnik_pic.png" width="241" height="367" class="jelovnik_mainpic" /></p><br />
 						</div>
 						<div id="jelovnik_bottom"></div>
-						
 						<br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br />
-						
 						</div>
 					</div>
 				
 				<div class="clear"></div>
 		 </div>
 	</div>
-
 <br/><br/>
 <?php include('inc/footer.php');?>
