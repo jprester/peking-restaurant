@@ -1,4 +1,5 @@
-#Peking Website
+Peking Website
+==============
 
 Website for "Peking" Chinese restaurant.
 
@@ -6,7 +7,7 @@ Website for "Peking" Chinese restaurant.
 
 Original version was made in 2014 so it needs lot of updates
 
-##Features
+## Features
 - responsive design
 - admin dashboard for editing menu items made with PHP & MySql
 
