@@ -75,7 +75,7 @@ $page_id= "";
             <div id="jelovnik_content">
            
           <table width="360" border="0" align="center" class="meni-table"><tr>
-           <th colspan="3" class="table_naslov">Menu za 3 osobe P3 389,00kn </th></tr>
+           <th colspan="3" class="table_naslov">Menu za 3 osobe P3 389,00kn / 51,63 EUR </th></tr>
            <tr>
              <td width="27" class="td-broj">1.</td>
              <td width="270" class="td-jelo"><strong>Kiselo - ljuta juha</strong><br />
@@ -123,7 +123,7 @@ $page_id= "";
              </td>
              </tr>
             <td class="td-broj"></td></tr>
-             <th colspan="3" class="table_naslov">Menu za 3 osobe P4 399,00kn</th></tr>
+             <th colspan="3" class="table_naslov">Menu za 3 osobe P4 399,00kn / 52,96 EUR</th></tr>
              <tr>
                <td valign="top" class="td-broj">1.</td>
                <td class="td-jelo"><strong>Salata od zelja (ljuto)</strong><br />
@@ -190,7 +190,7 @@ $page_id= "";
 	</div>
 						<div id="jelovnik_bottom"></div>
 						
-						  <br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br /><br /><br />
+						  <br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama i u EUR uz konverzijski tečaj 1 eur=7,53450 kn</p><br /><br /><br /><br />
 						
 					  </div>				
 
