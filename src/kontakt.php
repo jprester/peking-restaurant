@@ -34,19 +34,29 @@
 					Za sve potrebne informacije, mozete nas kontaktirati <br />
 						putem telefona ili e-maila: 
 
-						<br /><br />
-						Telefon: 091-3776-361
+						<div>
+							<h3>Poslovnica 1</h3>
+							<hr />
+							<p class="txt2"><strong>Telefon</strong>: <span class="bold">+385 91 3776361</span></p>
+							<p class="txt2"><strong>E-mail</strong>: <span class="bold">info@peking.hr</span></p>
+							<p class="txt2"><strong>Adresa</strong>: <span class="bold">Zagreb, Ilica 114</span></p>
+							<p class="txt2"><strong>Radno vrijeme</strong>: <br />
+							<span class="italic">Ponedeljak - subota od 11:30h do 23h <br />
+							Nedelja od 11:30h-22h</span></p>
+						</div>
+						<br />
+						<div>
+							<h3>Poslovnica 2</h3>
+							<hr />
+							<p class="txt2"><strong>Telefon</strong>: <span class="bold">+385 91 3776362</span></p>
+							<p class="txt2"><strong>E-mail</strong>: <span class="bold">zagrebacka@peking.hr</span></p>
+							<p class="txt2"><strong>Adresa</strong>: <span class="bold">Zagreb, Zagrebacka c. 191</span></p>
+							<p class="txt2"><strong>Radno vrijeme</strong>: <br />
+							<span class="bold">Ponedeljak - subota od 11:30h do 23h <br />
+							Nedelja od 11:30h-22h</span></p>
+						</div>
 
-						<br /><br />
-						E-mail: info@peking.hr
-                        <br /><br />
-						Adresa: Zagreb, Ilica 114
-                         <br /><br />
-						Radno vrijeme:<br />
-						Ponedeljak - subota od 11:30h do 23h <br />
-						Nedelja od 11:30h-22h
-
-						<br /><br />Dostava: besplatna dostava (minimalna narudžba je 50kn na području centra ili po dogovoru)
+						<br />Dostava: besplatna dostava (minimalna narudžba je 7 eura na području centra ili po dogovoru)
 
 						<br /><br />Restoran zadržava pravo promjene cijena! 
 					</p>
@@ -65,7 +75,7 @@
 			   
 		 </div>
 			<div class="clear"></div>
-			 <br /> <br /> <br /><br />
+			 <br /> <br />
         </div> 
 		
 <?php include('inc/footer.php');	?>
