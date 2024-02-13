@@ -37,22 +37,22 @@
 						<div>
 							<h3>Poslovnica 1</h3>
 							<hr />
-							<p class="txt2"><strong>Telefon</strong>: <span class="bold">+385 91 3776361</span></p>
-							<p class="txt2"><strong>E-mail</strong>: <span class="bold">info@peking.hr</span></p>
-							<p class="txt2"><strong>Adresa</strong>: <span class="bold">Zagreb, Ilica 114</span></p>
+							<p class="txt2"><strong>Telefon</strong>: <span>+385 91 3776361</span></p>
+							<p class="txt2"><strong>E-mail</strong>: <span>info@peking.hr</span></p>
+							<p class="txt2"><strong>Adresa</strong>: <span>Zagreb, Ilica 114</span></p>
 							<p class="txt2"><strong>Radno vrijeme</strong>: <br />
-							<span class="italic">Ponedeljak - subota od 11:30h do 23h <br />
+							<span>Ponedeljak - subota od 11:30h do 23h <br />
 							Nedelja od 11:30h-22h</span></p>
 						</div>
 						<br />
 						<div>
 							<h3>Poslovnica 2</h3>
 							<hr />
-							<p class="txt2"><strong>Telefon</strong>: <span class="bold">+385 91 3776362</span></p>
-							<p class="txt2"><strong>E-mail</strong>: <span class="bold">zagrebacka@peking.hr</span></p>
-							<p class="txt2"><strong>Adresa</strong>: <span class="bold">Zagreb, Zagrebacka c. 191</span></p>
+							<p class="txt2"><strong>Telefon</strong>: <span>+385 91 3776362</span></p>
+							<p class="txt2"><strong>E-mail</strong>: <span>zagrebacka@peking.hr</span></p>
+							<p class="txt2"><strong>Adresa</strong>: <span>Zagreb, Zagrebacka c. 191</span></p>
 							<p class="txt2"><strong>Radno vrijeme</strong>: <br />
-							<span class="bold">Ponedeljak - subota od 11:30h do 23h <br />
+							<span>Ponedeljak - subota od 11:30h do 23h <br />
 							Nedelja od 11:30h-22h</span></p>
 						</div>
 
