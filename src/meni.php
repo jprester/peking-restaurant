@@ -64,14 +64,14 @@
 						<div id="jelovnik_top"></div>
 						<div id="jelovnik_content"><br />
 						 
-						 <p class="jelovnik_mainpic"><img src="img/jelovnik_pic.png" width="241" height="367" class="jelovnik_mainpic" /></p><br />
+						 <p class="jelovnik_mainpic"><img src="img/jelovnik_pic2.png" width="241" height="367" class="jelovnik_mainpic" /></p><br />
 						
 
 
 						</div>
 						<div id="jelovnik_bottom"></div>
 						
-						<br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br />
+						<br /><p class="text-c txt2 italic">Sve cijene su izražene u EUR</p><br /><br />
 						
 					  </div>				
 

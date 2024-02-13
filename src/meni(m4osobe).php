@@ -77,7 +77,7 @@ $page_id= "";
             <div id="jelovnik_content">
 					 
 					<table width="360" border="0" align="center" class="meni-table">
-          <tr>         <th colspan="3" class="table_naslov">Menu za 4 osobe P5 419,00kn</th></tr>
+          <tr>         <th colspan="3" class="table_naslov">Menu za 4 osobe P5 82,00</th></tr>
            <tr>
              <td width="35" class="td-broj">1.</td>
              <td width="270" class="td-jelo"><strong>Kiselo - ljuta juha</strong><br />
@@ -104,8 +104,8 @@ $page_id= "";
            </tr>
            <tr>
              <td class="td-broj">5.</td>
-             <td class="td-jelo"><strong>Svinjetina s mahunovim klicam</strong>a <br />
-               Pork with beansporouts</td>
+             <td class="td-jelo"><strong>Svinjetina s povrćem</strong> <br />
+               Pork with vegetables</td>
              <td>&nbsp;</td>
            </tr>
            <tr>
@@ -127,7 +127,7 @@ $page_id= "";
              <td>&nbsp;</td>
            </tr>
 		   <tr><td colspan="3"></td></tr>
-             <th colspan="3" class="table_naslov">Menu za 4 osobe P6 469,00kn</th></tr>
+             <th colspan="3" class="table_naslov">Menu za 4 osobe P6 97,00</th></tr>
              <tr>
                <td class="td-broj">1.</td>
                <td class="td-jelo"><strong>Salata od zelja (ljuto</strong>)/
@@ -197,7 +197,7 @@ $page_id= "";
 	</div>
 						<div id="jelovnik_bottom"></div>
 						
-						  <br /><p class="text-c txt2 italic">Sve cijene su izražene u kunama</p><br /><br /><br /><br />
+						  <br /><p class="text-c txt2 italic">Sve cijene su izražene u EUR</p><br /><br /><br /><br />
 						
 					  </div>				
 
