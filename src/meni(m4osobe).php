@@ -77,7 +77,7 @@ $page_id= "";
             <div id="jelovnik_content">
 					 
 					<table width="360" border="0" align="center" class="meni-table">
-          <tr>         <th colspan="3" class="table_naslov">Menu za 4 osobe P5 82,00</th></tr>
+          <tr><th colspan="3" class="table_naslov">Menu za 4 osobe P5 89,00</th></tr>
            <tr>
              <td width="35" class="td-broj">1.</td>
              <td width="270" class="td-jelo"><strong>Kiselo - ljuta juha</strong><br />
@@ -86,14 +86,14 @@ $page_id= "";
            </tr>
            <tr>
              <td class="td-broj">2.</td>
-             <td class="td-jelo"><strong>Proljetna rolada</strong><br />
+             <td class="td-jelo"><strong>Proljetne rolade</strong><br />
                Spring rolls</td>
              <td>&nbsp;</td>
            </tr>
            <tr>
              <td class="td-broj">3.</td>
-             <td class="td-jelo"><strong>Piletina ''Gombao'</strong>'<br />
-               Chicken ''Gombao'' style (hot)</td>
+             <td class="td-jelo"><strong>Piletina ''Gombao'' (ljuto) (piletina, luk, mrkva, paprika, kikiriki )</strong><br />
+               Chicken ''Gombao'' style (hot) (chicken, onion, carrots, peppers, peanuts)</td>
              <td>&nbsp;</td>
            </tr>
            <tr>
@@ -104,14 +104,14 @@ $page_id= "";
            </tr>
            <tr>
              <td class="td-broj">5.</td>
-             <td class="td-jelo"><strong>Svinjetina s povrćem</strong> <br />
-               Pork with vegetables</td>
+             <td class="td-jelo"><strong>Svinjetina s povrćem</strong> (svinjetina, bambus, mrkva, šampinjoni, zelje) <br />
+               Pork with vegetables (chicken, bamboo, carrots, button mushrooms, cabbage)</td>
              <td>&nbsp;</td>
            </tr>
            <tr>
              <td class="td-broj">6.</td>
-             <td class="td-jelo"><strong>Pržena patka u kiselo-slatkom umaku</strong><br />
-               Fried duck with sweet and sour sauce</td>
+             <td class="td-jelo"><strong>Hrskava patka sa slatko-kiselim umakom</strong><br />
+               Crispy fried duck with sweet and sour sauce</td>
              <td>&nbsp;</td>
            </tr>
            <tr>
@@ -122,73 +122,52 @@ $page_id= "";
            </tr>
            <tr>
              <td class="td-broj">8.</td>
-             <td class="td-jelo"><strong>Pečeno voće</strong><br />
-               Fried fruit</td>
+             <td class="td-jelo"><strong>Pohane banane</strong><br />
+               Fried bananas</td>
              <td>&nbsp;</td>
            </tr>
 		   <tr><td colspan="3"></td></tr>
-             <th colspan="3" class="table_naslov">Menu za 4 osobe P6 97,00</th></tr>
+             <th colspan="3" class="table_naslov">Menu za 4 osobe P6 92,00</th></tr>
              <tr>
                <td class="td-broj">1.</td>
-               <td class="td-jelo"><strong>Salata od zelja (ljuto</strong>)/
-                 Cabbage salad  (hot)</td>
+               <td class="td-jelo"><strong>Kiselo - ljuta juha</strong> <br /> Hot and sour soup</td>
                <td>&nbsp;</td>
              </tr>
              <tr>
                <td class="td-broj">2.</td>
-               <td class="td-jelo"><strong>Salata od piletine</strong>/Chicken salad</td>
+               <td class="td-jelo"><strong>Proljetne rolade</strong> <br /> Spring rolls</td>
                <td>&nbsp;</td>
              </tr>
              <tr>
                <td class="td-broj">3.</td>
-               <td class="td-jelo"><strong>Salata od junetine</strong>/Beef salad  (hot)</td>
+               <td class="td-jelo"><strong>Hrskava patka sa slatko-kiselim umakom</strong><br />
+                 Crispy fried duck with sweet and sour sauce</td>
                <td>&nbsp;</td>
              </tr>
              <tr>
                <td class="td-broj">4.</td>
-               <td class="td-jelo"><strong>Salata od kozica</strong>/Shrimps salad</td>
-               <td>&nbsp;</td>
-             </tr>
-             <tr>
-               <td class="td-broj">5.</td>
-               <td class="td-jelo"><strong>Kiselo - ljuta juha</strong>/        Hot and sour soup</td>
-               <td>&nbsp;</td>
-             </tr>
-             <tr>
-               <td class="td-broj">6.</td>
-               <td class="td-jelo"><strong>Proljetna rolada</strong>/        Spring rolls</td>
-               <td>&nbsp;</td>
-             </tr>
-             <tr>
-               <td class="td-broj">7.</td>
-               <td class="td-jelo"><strong>Pržena patka sa kiselo-slatkim umaku</strong><br />
-                 Fried duck with sweet and sour sauce</td>
-               <td>&nbsp;</td>
-             </tr>
-             <tr>
-               <td class="td-broj">8.</td>
                <td class="td-jelo"><strong>Piletina s bambusom i kineskim gljivama</strong><br />
                  Chicken with bamboo and chinese mushrooms</td>
                <td>&nbsp;</td>
              </tr>
              <tr>
-               <td class="td-broj">9.</td>
-               <td class="td-jelo"><strong>Junetina ''Szechuan''/ </strong> Beef ''Szechuan'' style  (hot) </td>
+               <td class="td-broj">5.</td>
+               <td class="td-jelo"><strong>Junetina "Szechuan" (Ljuto) </strong>(junetina, luk, mrkva, paprika) <br/> Beef "Szechuan" style (hot) (beef, onion, carrots, peppers)</td>
                <td>&nbsp;</td>
              </tr>
              <tr>
-               <td class="td-broj">10.</td>
-               <td class="td-jelo"><strong>Pohana svinjetina u kiselo - slatkom umaku</strong>/Pohana svinjetina u kiselo - slatkom umaku</td>
+               <td class="td-broj">6.</td>
+               <td class="td-jelo"><strong>Pohana svinjetina u kiselo - slatkom umaku</strong> (svinjetina, ananas, grašak, mrkva, umak rajčice) <br />Fried pork in sweet and sour sauce (pork, pineapple, pears, carrots, tomato sauce)</td>
                <td>&nbsp;</td>
              </tr>
              <tr>
-               <td class="td-broj">11.</td>
-               <td class="td-jelo"><strong>Riža</strong>/ Rice</td>
+               <td class="td-broj">7.</td>
+               <td class="td-jelo"><strong>Riža</strong><br /> Rice</td>
                <td>&nbsp;</td>
              </tr>
              <tr>
-               <td class="td-broj">12.</td>
-               <td class="td-jelo"><strong>Pečeno voće</strong>/        Fried fruit</td>
+               <td class="td-broj">8.</td>
+               <td class="td-jelo"><strong>Pohani sladoled</strong><br /> Fried ice cream</td>
                <td>&nbsp;</td>
              </tr>
 					    <tr class ="t_bottom"><td colspan = "3" class ="t_bottom"></td></tr>
