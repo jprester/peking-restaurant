@@ -1,11 +1,38 @@
-*.zip
+# Environment files
+.env
+
+# Composer
+/vendor/
+composer.lock
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+*.swo
+
+# OS files
 .DS_Store
 _DS_Store
-*.css.map
-*.sublime-*
-.DS_Store
-.vscode/
-.sass-cache/
+Thumbs.db
+
+# Log files
+*.log
 src/error_log
+/src/admin/error_log
+
+# Build files
+*.zip
+*.css.map
 src/css
+
+# Sass cache
+.sass-cache/
+
+# Temporary files
+/tmp/
+/cache/
+
+# Domain files
 src/peking.hr
