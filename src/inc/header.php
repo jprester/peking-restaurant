@@ -103,3 +103,15 @@
 				</div>
 
 				<div class="clear"></div>
+
+				<div id="title">
+					<h1><img src="img/<?php echo isset($title_image) ? $title_image : 'title1.png'; ?>" width="<?php echo isset(
+    $title_width,
+)
+    ? $title_width
+    : '129'; ?>" height="<?php echo isset($title_height) ? $title_height : '56'; ?>" border="0" alt="" /></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

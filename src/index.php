@@ -7,13 +7,6 @@ $visit4 = '';
 include 'inc/header.php';
 ?>
 
-<div id="title">
-    <h1><img src="img/title1.png" width="129" height="56" border="0" alt="" /></h1>
-</div>
-</div>
-</div>
-</div>
-
 <div class="clearer"></div>
 
 <div class="clear"></div>

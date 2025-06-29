@@ -6,15 +6,14 @@ $visit1 = '';
 $visit2 = '';
 $visit3 = 'pressed';
 $visit4 = '';
+
+// Set title image for this page
+$title_image = 'title3.png';
+$title_width = '63';
+$title_height = '61';
+
 include 'inc/header.php';
 ?>
-
-<div id="title">
-    <h1><img src="img/title3.png" width="63" height="61" border="0" alt="" /></h1>
-</div>
-</div>
-</div>
-</div>
 
 <div class="clearer"></div>
 

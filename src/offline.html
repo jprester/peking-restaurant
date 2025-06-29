@@ -1,161 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Offline - Kineski restoran Peking</title>
     <style>
-        :root {
-            --color-primary: #A5745F;
-            --color-secondary: #572C2C;
-            --color-background: #fefefe;
-            --color-text: #333;
-            --font-primary: 'Rufina', Georgia, serif;
-            --font-secondary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-secondary);
-            line-height: 1.6;
-            color: var(--color-text);
-            background-color: var(--color-background);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        
-        .offline-container {
-            text-align: center;
-            max-width: 500px;
-            padding: 3rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .offline-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
-            color: var(--color-primary);
-        }
-        
-        .offline-title {
-            font-family: var(--font-primary);
-            font-size: 2rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-        }
-        
-        .offline-message {
-            font-size: 1.125rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-        
-        .retry-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--color-primary);
-            color: white;
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .retry-button:hover {
-            background: var(--color-secondary);
-        }
-        
-        .offline-tips {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e0e0e0;
-            text-align: left;
-        }
-        
-        .offline-tips h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-        
-        .offline-tips ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .offline-tips li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .offline-tips li:before {
-            content: "•";
-            color: var(--color-primary);
-            position: absolute;
-            left: 0;
-        }
+      :root {
+        --color-primary: #a5745f;
+        --color-secondary: #572c2c;
+        --color-background: #fefefe;
+        --color-text: #333;
+        --font-primary: 'Rufina', Georgia, serif;
+        --font-secondary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-secondary);
+        line-height: 1.6;
+        color: var(--color-text);
+        background-color: var(--color-background);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .offline-container {
+        text-align: center;
+        max-width: 500px;
+        padding: 3rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .offline-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 2rem;
+        color: var(--color-primary);
+      }
+
+      .offline-title {
+        font-family: var(--font-primary);
+        font-size: 2rem;
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+      }
+
+      .offline-message {
+        font-size: 1.125rem;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .retry-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--color-primary);
+        color: white;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .retry-button:hover {
+        background: var(--color-secondary);
+      }
+
+      .offline-tips {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e0e0e0;
+        text-align: left;
+      }
+
+      .offline-tips h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+      }
+
+      .offline-tips ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .offline-tips li {
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .offline-tips li:before {
+        content: '•';
+        color: var(--color-primary);
+        position: absolute;
+        left: 0;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="offline-container">
-        <div class="offline-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.64 7c-.45-.34-4.93-4-11.64-4-1.5 0-2.89.19-4.15.48L18.18 13.8 23.64 7zm-6.6 8.22L3.27 1.44 2 2.72l2.05 2.06C1.91 5.76.59 6.82.36 7l11.63 14.49L23.64 7l-6.6-8.22z"/>
-            </svg>
-        </div>
-        
-        <h1 class="offline-title">Nema internetske veze</h1>
-        
-        <p class="offline-message">
-            Izgleda da nema internetske veze. Molimo provjerite konekciju i pokušajte ponovo.
-        </p>
-        
-        <button class="retry-button" onclick="window.location.reload()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-            </svg>
-            Pokušaj ponovo
-        </button>
-        
-        <div class="offline-tips">
-            <h3>Dok čekate konekciju:</h3>
-            <ul>
-                <li>Provjerite jesu li WiFi ili mobilni podaci uključeni</li>
-                <li>Pokušajte se spojiti na drugu mrežu</li>
-                <li>Pozovite nas direktno na +385 1 4xx xxxx</li>
-                <li>Posjetite nas na adresi: Vaša adresa, Zagreb</li>
-            </ul>
-        </div>
+      <div class="offline-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M23.64 7c-.45-.34-4.93-4-11.64-4-1.5 0-2.89.19-4.15.48L18.18 13.8 23.64 7zm-6.6 8.22L3.27 1.44 2 2.72l2.05 2.06C1.91 5.76.59 6.82.36 7l11.63 14.49L23.64 7l-6.6-8.22z"
+          />
+        </svg>
+      </div>
+
+      <h1 class="offline-title">Nema internetske veze</h1>
+
+      <p class="offline-message">
+        Izgleda da nema internetske veze. Molimo provjerite konekciju i
+        pokušajte ponovo.
+      </p>
+
+      <button class="retry-button" onclick="window.location.reload()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+          />
+        </svg>
+        Pokušaj ponovo
+      </button>
+
+      <div class="offline-tips">
+        <h3>Dok čekate konekciju:</h3>
+        <ul>
+          <li>Provjerite jesu li WiFi ili mobilni podaci uključeni</li>
+          <li>Pokušajte se spojiti na drugu mrežu</li>
+          <li>Pozovite nas direktno na +385 1 4xx xxxx</li>
+          <li>Posjetite nas na adresi: Vaša adresa, Zagreb</li>
+        </ul>
+      </div>
     </div>
-    
+
     <script>
-        // Auto-retry when connection is restored
-        window.addEventListener('online', () => {
-            window.location.reload();
-        });
-        
-        // Show connection status
-        if (navigator.onLine) {
-            console.log('You are online');
-        } else {
-            console.log('You are offline');
-        }
+      // Auto-retry when connection is restored
+      window.addEventListener('online', () => {
+        window.location.reload();
+      });
+
+      // Show connection status
+      if (navigator.onLine) {
+        console.log('You are online');
+      } else {
+        console.log('You are offline');
+      }
     </script>
-</body>
+  </body>
 </html>
