@@ -1,6 +1,6 @@
 <?php
-$page = $page ?? "log";
-include("inc/header.php"); 
+$page = $page ?? 'log';
+include 'inc/header.php';
 ?>
 
 <div id="title"><h2>Login</h2></div><br/> 
@@ -21,7 +21,9 @@ include("inc/header.php");
         <table class="login-table">
             <tr>
                 <td class="text-r"><label>Korisničko ime</label></td> 
-                <td><input type="text" name="username" class="loginform" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required></td>
+                <td><input type="text" name="username" class="loginform" value="<?= htmlspecialchars(
+                    $_POST['username'] ?? '',
+                ) ?>" required></td>
             </tr>
 
             <tr>
@@ -39,4 +41,4 @@ include("inc/header.php");
 </div>
 
 <br/><br/><br/><br/><br/>
-<?php include('inc/footer.php'); ?>
+<?php include 'inc/footer.php'; ?>

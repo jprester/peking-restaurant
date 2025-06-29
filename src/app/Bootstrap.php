@@ -4,10 +4,8 @@ namespace Peking;
 
 use Dotenv\Dotenv;
 
-class Bootstrap
-{
-    public static function init(): void
-    {
+class Bootstrap {
+    public static function init(): void {
         // Load environment variables
         $dotenv = Dotenv::createImmutable(dirname(__DIR__, 2));
         $dotenv->load();
@@ -23,7 +21,7 @@ class Bootstrap
 
         // Configure session settings
         self::configureSession();
-        
+
         // Start session if not already started
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -33,8 +31,7 @@ class Bootstrap
         date_default_timezone_set('Europe/Zagreb');
     }
 
-    private static function configureSession(): void
-    {
+    private static function configureSession(): void {
         // Session security configuration
         ini_set('session.cookie_lifetime', $_ENV['SESSION_LIFETIME'] * 60);
         ini_set('session.cookie_secure', $_ENV['SESSION_SECURE'] ?? false);
@@ -42,10 +39,9 @@ class Bootstrap
         ini_set('session.cookie_samesite', $_ENV['SESSION_SAME_SITE'] ?? 'Strict');
         ini_set('session.use_strict_mode', 1);
         ini_set('session.use_only_cookies', 1);
-        
+
         // Regenerate session ID periodically
-        if (isset($_SESSION['last_regeneration']) && 
-            (time() - $_SESSION['last_regeneration']) > 300) {
+        if (isset($_SESSION['last_regeneration']) && time() - $_SESSION['last_regeneration'] > 300) {
             session_regenerate_id(true);
             $_SESSION['last_regeneration'] = time();
         } elseif (!isset($_SESSION['last_regeneration'])) {

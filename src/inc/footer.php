@@ -11,25 +11,17 @@
          </div>
 		 
 		 <div class ="clearer"></div>
-		
-		
-		</div>
-	  
-	  </div>
-	  
 
-	
-	
- <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
- <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
- <script type="text/javascript" src="js/peking_scripts.js"></script>
-    <script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider({effect: 'fade',  pauseTime: 5000});
-    });
-    </script>	
+		</div>
+	  </div>
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+	<script type="text/javascript" src="js/peking_scripts.js"></script>
+		<script type="text/javascript">
+		$(window).load(function() {
+			$('#slider').nivoSlider({effect: 'fade',  pauseTime: 5000});
+		});
+	</script>	
      
 	</body>
-
-
 </html>

@@ -17,20 +17,18 @@
 		
 	 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: CSS styles ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->	
 		
-	 <?php if ($page=="log") 
-	 {
-	  ?>
+	 <?php if ($page == 'log') { ?>
 		<link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" />		
 		<link rel="stylesheet" type="text/css" href="css/grid_fluid.css" media="screen" />	
 		<link rel="stylesheet" type="text/css" href="css/admin_style.css" media="screen" />	
 
 
-	<?php	 }	 else { ?>
+	<?php } else { ?>
 
 		<link rel="stylesheet" type="text/css" href="../css/reset.css" media="screen" />		
 		<link rel="stylesheet" type="text/css" href="../css/grid_fluid.css" media="screen" />	
 		<link rel="stylesheet" type="text/css" href="../css/admin_style.css" media="screen" />	
-<?php  }; ?>	
+<?php } ?>	
 
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Fonts ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 
@@ -45,18 +43,14 @@
 	 
 
 	<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Icon ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-	 <?php if ($page=="log") {?>
+	 <?php if ($page == 'log') { ?>
 	<link href='favicon.ico' rel='icon' type='image/x-icon'/>
 	<?php } else { ?>
 
 	<link href='../favicon.ico' rel='icon' type='image/x-icon'/>
-<?php }; ?>
+<?php } ?>
 	</head>
 
-
-
-
-</head>
 <body>
 
 
@@ -68,7 +62,6 @@
 
 <div id ="main">
 	
-	
       <div id ="head_bg">
 	  
 	  
@@ -77,18 +70,14 @@
 		  <div id ="header">
 		 
 			<div class="grid_12">
-				 <?php if ($page=="log") {?>
+				 <?php if ($page == 'log') { ?>
 				<div id="logo"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>			
 				<?php } else { ?>
 				<div id="logo"><a href="admin.php"><img src="../img/logo.png" width="134" height="130" border="0" alt="" /></a></div>	
-				<?php }; ?>
+				<?php } ?>
 				<br />	
 				<h1> Restoran Peking <br />Administracijske stranice</h1>		
 			</div>
-		 			
-		 					 
-			 
-				
 				<div class="clear"></div>
 
 				</div>
@@ -96,5 +85,4 @@
 			</div>
 
 
-		</div>
 	

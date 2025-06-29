@@ -2,12 +2,10 @@
 
 namespace Peking;
 
-class Config
-{
+class Config {
     private static array $config = [];
 
-    public static function load(): void
-    {
+    public static function load(): void {
         self::$config = [
             'database' => [
                 'host' => $_ENV['DB_HOST'],
@@ -19,7 +17,7 @@ class Config
                     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
                     \PDO::ATTR_EMULATE_PREPARES => false,
-                ]
+                ],
             ],
             'security' => [
                 'salt' => $_ENV['SALT'],
@@ -27,25 +25,24 @@ class Config
                 'password_options' => [
                     'memory_cost' => 65536,
                     'time_cost' => 4,
-                    'threads' => 3
-                ]
+                    'threads' => 3,
+                ],
             ],
             'app' => [
                 'env' => $_ENV['APP_ENV'],
                 'debug' => filter_var($_ENV['APP_DEBUG'], FILTER_VALIDATE_BOOLEAN),
-                'key' => $_ENV['APP_KEY'] ?? ''
+                'key' => $_ENV['APP_KEY'] ?? '',
             ],
             'session' => [
-                'lifetime' => (int)$_ENV['SESSION_LIFETIME'],
+                'lifetime' => (int) $_ENV['SESSION_LIFETIME'],
                 'secure' => filter_var($_ENV['SESSION_SECURE'], FILTER_VALIDATE_BOOLEAN),
                 'httponly' => filter_var($_ENV['SESSION_HTTP_ONLY'], FILTER_VALIDATE_BOOLEAN),
-                'samesite' => $_ENV['SESSION_SAME_SITE']
-            ]
+                'samesite' => $_ENV['SESSION_SAME_SITE'],
+            ],
         ];
     }
 
-    public static function get(string $key, mixed $default = null): mixed
-    {
+    public static function get(string $key, mixed $default = null): mixed {
         $keys = explode('.', $key);
         $value = self::$config;
 
@@ -59,18 +56,15 @@ class Config
         return $value;
     }
 
-    public static function database(): array
-    {
+    public static function database(): array {
         return self::get('database');
     }
 
-    public static function security(): array
-    {
+    public static function security(): array {
         return self::get('security');
     }
 
-    public static function isDebug(): bool
-    {
+    public static function isDebug(): bool {
         return self::get('app.debug', false);
     }
 }

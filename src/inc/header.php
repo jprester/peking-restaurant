@@ -1,9 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="hr">
-
-	<head>
- 
-		
+<head>
 	<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Meta and titile ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<title>Kineski restoran Peking</title>
 		<meta name="description" content="Kineski restoran Peking " />
@@ -17,8 +14,7 @@
 		
 	 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: CSS styles ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->			
 
-
-	<link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />	
+	<link rel="stylesheet" type="text/css" href="./css/screen.css" media="screen" />	
 
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" type="text/css" href="css/ie.css" media="screen" />	
@@ -56,41 +52,26 @@
 		
 	<![endif]--> 
 
-	 
-
 	<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Icon ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 	<link href='favicon.ico' rel='icon' type='image/x-icon'/>
 
 	
-	</head>
+</head>
 
-	<body>
-	
-	
-	
+<body>
 	<div id ="main">
-	
 	<div class ="mob-head"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>
-	
       <div id ="head_bg">
-	  
-	  
 		<div class ="container_12">
-		
 		  <div id ="header">
-		 
-			
-			<div id="logo"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>			
-				
-		 					 
-			 
+			<div id="logo"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>
 				<div class="grid_12 text-c">
 					<div id="navigation">
 						<ul>
-									  <li><a href="index.php" class ="<?php echo $visit1 ?>" >Početna</a></li>
-							<li><a href="onama.php" class ="<?php echo $visit2 ?>" >O nama</a></li>
-						 <li><a href="meni.php" class ="<?php echo $visit3 ?>">Meni</a></li>
-						   <li><a href="kontakt.php" class ="<?php echo $visit4 ?>">Kontakt</a></li>
+									  <li><a href="index.php" class ="<?php echo $visit1; ?>" >Početna</a></li>
+							<li><a href="onama.php" class ="<?php echo $visit2; ?>" >O nama</a></li>
+						 <li><a href="meni.php" class ="<?php echo $visit3; ?>">Meni</a></li>
+						   <li><a href="kontakt.php" class ="<?php echo $visit4; ?>">Kontakt</a></li>
 									
 						</ul>								
 					</div> 
@@ -120,7 +101,5 @@
 					
 					
 				</div>
-		
-				
+
 				<div class="clear"></div>
-					

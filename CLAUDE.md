@@ -33,7 +33,7 @@ This is a website for "Peking" Chinese restaurant, originally built in 2014. It'
   - User authentication table (referenced in User.php)
 
 ### Styling & Assets
-- **CSS Framework**: Uses Compass/SASS with config in `src/config.rb`
+- **CSS Framework**: Uses modern Sass (Node.js) for compilation
 - **SASS Structure**: `src/sass/` with modular includes in `sass/include/`
 - **Grid System**: Custom 12-column grid (grid_fixed.css, grid_fluid.css)
 - **JavaScript**: jQuery 1.9.0, Nivo Slider for image carousel
@@ -47,9 +47,9 @@ This is a website for "Peking" Chinese restaurant, originally built in 2014. It'
 - Default settings: localhost, database 'peking', user 'root', pass 'root'
 
 ### SASS/CSS Compilation
-- **Config**: `src/config.rb` (Compass configuration)
-- **Output**: Compressed CSS to `css/` directory
-- **Source**: SASS files in `sass/` directory
+- **Build Tool**: Node.js Sass (package.json scripts)
+- **Output**: Compressed CSS to `src/css/` directory
+- **Source**: SASS files in `src/sass/` directory
 
 ## Development Commands
 
@@ -69,11 +69,32 @@ mysql -u root -p peking < database/migrations/001_update_users_table.sql
 
 ### CSS Development
 ```bash
-# Compile SASS (from src/ directory)
-compass compile
+# Install Node.js dependencies
+npm install
+
+# Compile SASS once
+npm run build-css
 
 # Watch for SASS changes
-compass watch
+npm run watch-css
+```
+
+### Code Formatting
+```bash
+# Format all JavaScript and PHP files
+npm run format
+
+# Format only JavaScript files
+npm run format:js
+
+# Format only PHP files
+npm run format:php
+
+# Check formatting without changing files
+npm run format:check
+
+# Alias for format checking
+npm run lint
 ```
 
 ### Security Commands
@@ -114,6 +135,13 @@ php -r "echo password_hash('your_password', PASSWORD_ARGON2ID);"
 - **Dependency injection** ready structure
 - **Error logging** and exception handling
 - **Database migrations** system for schema updates
+
+### Code Quality
+- **Modern SCSS** with @use syntax, variables, and mixins
+- **Prettier formatting** for JavaScript files with consistent style
+- **PHP-CS-Fixer** for PHP code formatting following PSR-12 standards
+- **Automated formatting** scripts for maintaining code quality
+- **VS Code integration** with format-on-save configuration
 
 ### Backward Compatibility
 - Original PHP files maintained for gradual migration

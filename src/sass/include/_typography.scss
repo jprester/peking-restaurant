@@ -1,67 +1,188 @@
-/* ::::::::::::::::::::::::: TEXTAR THEME FONTS ::::::::::::::::::::::::::::: */
+@use 'variables' as vars;
 
-body{font-family:'Rufina', Arial,serif; font-size:1em; font-size:100%; font-weight:normal; line-height:1.7em;}
+// Main typography styles
 
+body {
+  font-family: vars.$primary-font;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.7em;
+}
 
-h1{font-weight:normal; font-family:'Rufina', Arial,serif; font-size:2.8em; letter-spacing:0.07em; line-height:1em;}
-h2{font-weight:normal; font-family:'Rufina', Arial,serif;  font-weight:normal; font-size:2.8em; color:#444; line-height:1.2em;}
-h3{font-weight:normal; font-size:1.5em;}
-h4{font-weight:normal; font-size:1em;}
-h5{font-weight:normal; font-size:0.94em;}
-h6{font-weight:normal;}
+// Heading styles
+h1 {
+  font-weight: normal;
+  font-family: vars.$primary-font;
+  font-size: 2.8em;
+  letter-spacing: 0.07em;
+  line-height: 1em;
+}
 
+h2 {
+  font-weight: normal;
+  font-family: vars.$primary-font;
+  font-size: 2.8em;
+  color: #444;
+  line-height: 1.2em;
+}
 
-blockquote{ font-family: Georgia, sans-serif; font-size:1.5em; letter-spacing:0.07em; font-style:italic;line-height:1em;}
+h3 {
+  font-weight: normal;
+  font-size: 1.5em;
+  font-family: vars.$primary-font;
+}
 
-.bold{font-weight:bold;}
-.italic{font-style:italic;}
-.fancy{}
+h4 {
+  font-weight: normal;
+  font-size: 1em;
+}
 
-.txt1{ font-size:1.3; color:#222; line-height:21px;}
-.txt2{}
+h5 {
+  font-weight: normal;
+  font-size: 0.94em;
+}
 
+h6 {
+  font-weight: normal;
+}
 
-a{text-decoration:none;  font-weight:normal; }
-a:hover{text-decoration:none; color:#E0E0E0 ; }
+// Block quote styles
+blockquote {
+  font-family: Georgia, sans-serif;
+  font-size: 1.5em;
+  letter-spacing: 0.07em;
+  font-style: italic;
+  line-height: 1em;
+}
 
+// Utility classes
+.bold {
+  font-weight: bold;
+}
 
-/* TEXT STYLES */
+.italic {
+  font-style: italic;
+}
 
+.txt1 {
+  font-size: 1.3em;
+  color: #222;
+  line-height: 21px;
+}
 
-.txt1{color:#303030; font-size:1em; font-family:'Rufina', Arial,serif; /*font-style:italic;*/}
-.txt_ita{color:#303030; font-size:1em; font-family:'Rufina', Arial,Georgia; font-style:italic; line-height:18px;}
-.txt2{color:#333333 ; font-size:0.95em; font-family:'Rufina',Arial,Georgia; line-height:1.2em;}
-.txt3{color:#333333 ; font-size:1em; font-family:'Rufina', serif, arial; }
-h3{ font-family:'Rufina', serif, Arial; font-size:18px;  }
-p {margin:10px 0;}
-.nav_kin{color:#8C574B; font:13px "Helvetica", Arial, sans-serif; }
+// Link styles
+a {
+  text-decoration: none;
+  font-weight: normal;
 
+  &:hover {
+    text-decoration: none;
+    color: #E0E0E0;
+  }
+}
 
-/* END TEXT STYLES */
+// Text utility classes
+.txt1 {
+  color: #303030;
+  font-size: 1em;
+  font-family: vars.$primary-font;
+}
 
-#navigation ul li a { color:#999; font:1em "Rufina", Arial, sans-serif; font-weight:normal; text-decoration:none; }
-#navigation ul li a:hover { color:#ccc;}
-#navigation ul li a.pressed{color:#8C574B;  }
+.txt_ita {
+  color: #303030;
+  font-size: 1em;
+  font-family: vars.$primary-font;
+  font-style: italic;
+  line-height: 18px;
+}
 
-.mmenu a{font-size:1.3em; color:#9F6F5B;}
+.txt2 {
+  color: vars.$text-color;
+  font-size: 0.95em;
+  font-family: vars.$primary-font;
+  line-height: 1.2em;
+}
 
-.mnav ul li a{color:#9F6F5B; font:1.2em "Rufina", Arial, sans-serif;}
+.txt3 {
+  color: vars.$text-color;
+  font-size: 1em;
+  font-family: vars.$primary-font;
+}
 
+p {
+  margin: 10px 0;
+}
 
+.nav_kin {
+  color: #8C574B;
+  font: 13px vars.$secondary-font;
+}
 
-.theme-default .nivo-caption {  font-family: 'Marcellus SC', serif; font-size:1.3em; font-weight:normal; color:#eee; text-align:left;  }
+// Navigation styles
+#navigation ul li a {
+  color: #999;
+  font: 1em vars.$primary-font;
+  font-weight: normal;
+  text-decoration: none;
 
+  &:hover {
+    color: #ccc;
+  }
 
-.meni-list ul li a{color:#611919; font-family: 'Rufina', serif, arial; font-size:1em; text-decoration:none;text-transform:uppercase;}
+  &.pressed {
+    color: #8C574B;
+  }
+}
 
-.meni-list ul li a:hover{color:#ccc;}
+// Mobile menu styles
+.mmenu a {
+  font-size: 1.3em;
+  color: #9F6F5B;
+}
 
-.mobile-meninav{}
-.mobile-meninav a{ color:#707070; font:1.6em "Rufina", Arial, sans-serif; }
+.mnav ul li a {
+  color: #9F6F5B;
+  font: 1.2em vars.$primary-font;
+}
 
-.mobile-menilist{}
-.mobile-menilist ul{}
-.mobile-menilist ul li{ }
-.mobile-menilist ul li a{ color:#9F6F5B; font:1.4em "Rufina", Arial, sans-serif;}
+// Slider caption styles
+.theme-default .nivo-caption {
+  font-family: 'Marcellus SC', serif;
+  font-size: 1.3em;
+  font-weight: normal;
+  color: #eee;
+  text-align: left;
+}
 
-.red-button{font-size:1.1em; font-weight:normal; font-style:normal; font-family: 'Linden Hill', serif; color:#ececec; }
+// Menu list styles
+.meni-list ul li a {
+  color: #611919;
+  font-family: vars.$primary-font;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #ccc;
+  }
+}
+
+// Mobile navigation styles
+.mobile-meninav a {
+  color: #707070;
+  font: 1.6em vars.$primary-font;
+}
+
+.mobile-menilist ul li a {
+  color: #9F6F5B;
+  font: 1.4em vars.$primary-font;
+}
+
+// Button styles
+.red-button {
+  font-size: 1.1em;
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'Linden Hill', serif;
+  color: #ececec;
+}

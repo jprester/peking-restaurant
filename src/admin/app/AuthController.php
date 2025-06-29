@@ -2,10 +2,8 @@
 
 namespace Peking\Admin;
 
-class AuthController extends Controller
-{
-    public function login(): void
-    {
+class AuthController extends Controller {
+    public function login(): void {
         // If already logged in, redirect to dashboard
         if ($this->auth->isLoggedIn()) {
             $this->redirect('/admin/private/admin.php');
@@ -36,6 +34,7 @@ class AuthController extends Controller
 
         // Get flash message if available
         $flash = $this->getFlashMessage();
+
         if ($flash) {
             $message = $flash['message'];
             $messageType = $flash['type'];
@@ -44,12 +43,11 @@ class AuthController extends Controller
         $this->render('login', [
             'message' => $message,
             'messageType' => $messageType,
-            'page' => 'log'
+            'page' => 'log',
         ]);
     }
 
-    public function logout(): void
-    {
+    public function logout(): void {
         $this->auth->logout();
         $this->setFlashMessage('Uspješno ste se odjavili.', 'success');
         $this->redirect('/admin/');

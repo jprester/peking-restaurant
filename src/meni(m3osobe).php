@@ -1,19 +1,18 @@
 <?php
 
-include('admin/init.php');
+include 'admin/init.php';
 
-$visit1="";
-$visit2="";
-$visit3="pressed";
-$visit4="";
-$dvisit1="";
-$dvisit2="italic";
-$dvisit3="";
-$page_id= "";
+$visit1 = '';
+$visit2 = '';
+$visit3 = 'pressed';
+$visit4 = '';
+$dvisit1 = '';
+$dvisit2 = 'italic';
+$dvisit3 = '';
+$page_id = '';
+?>
 
-  ?>
-
-<?php include('inc/header.php');?>
+<?php include 'inc/header.php'; ?>
 
 
     <div id="title">
@@ -45,7 +44,7 @@ $page_id= "";
             <div class="meni-list">          
            
             <ul>  
-            <?php include('inc/jelovnik_list.php');?>
+            <?php include 'inc/jelovnik_list.php'; ?>
               </ul>
             
             
@@ -57,7 +56,7 @@ $page_id= "";
               <div class="mobile-menilist">
               
                 <ul>
-                <?php include('inc/jelovnik_list.php');?>
+                <?php include 'inc/jelovnik_list.php'; ?>
                 </ul>
               
               </div>  
@@ -184,4 +183,4 @@ $page_id= "";
 			
         </div> 
 		
-<?php include('inc/footer.php');  ?>
+<?php include 'inc/footer.php'; ?>

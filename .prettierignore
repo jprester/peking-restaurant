@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+src/css/
+*.min.js
+*.min.css
+
+# Version control
+.git/
+
+# Cache directories
+.cache/
+.tmp/
+
+# Logs
+*.log
+
+# Database dumps
+*.sql
+
+# Images and media
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.ico
+*.webp
+
+# Legacy files that should not be formatted
+src/js/jquery-*.js
+src/js/ie6.min.js
+src/js/html5.js
+src/js/*.pack.js
+src/js/slides.min.jquery.js
+src/admin/js/jquery-*.js
+src/admin/js/ie6.min.js
+src/admin/js/html5.js

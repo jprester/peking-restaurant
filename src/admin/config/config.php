@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 // Legacy configuration - use environment variables if available, fallback to defaults
 define('DB_TYPE', 'mysql');
 define('DB_HOST', $_ENV['DB_HOST'] ?? 'localhost');
@@ -12,4 +13,3 @@ define('SALT', $_ENV['SALT'] ?? 'e2313peking32iaew');
 if (DB_USER === 'root' && DB_PASS === 'root') {
     error_log('WARNING: Using default database credentials. Please update your .env file.');
 }
- ?>

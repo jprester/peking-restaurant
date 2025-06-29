@@ -1,40 +1,47 @@
-<?php require_once('../init.php');
+<?php require_once '../init.php';
 Session::init();
-if (!isset($_SESSION['logged'])){
-Session::destroy();
-header('location: ../index.php');
+
+if (!isset($_SESSION['logged'])) {
+    Session::destroy();
+    header('location: ../index.php');
 }
- ?>
+?>
 
  <?php
-$page="admin";
-$status="";
-$meni_ime = $_REQUEST["fname"];
- include("../inc/header.php"); 
+ $page = 'admin';
+ $status = '';
+ $meni_ime = $_REQUEST['fname'];
+ include '../inc/header.php';
 
-
- 	if (isset($_POST['submit']))
- 	{
-
-		 if  (empty($_POST['broj'])|| empty($_POST['sort']) || empty($_POST['naziv']) || empty($_POST['naziv_en']) || empty($_POST['cijena'])) 
-				  {	
-				  	$status="Ostavili ste neka polja prazna"; 
-						}
-
-				 else
-				 
-				 {
-				 	$jelo=new Jelo();
-				 	$jelo->insertJelo( $_POST['sort'], $_POST['broj'], $_POST['naziv'], $_POST['naziv_en'], $_POST['cijena'], $meni_ime );	
-					$status="Dodali ste novo jelo!";
-
-				 }
-	}
+ if (isset($_POST['submit'])) {
+     if (
+         empty($_POST['broj']) ||
+         empty($_POST['sort']) ||
+         empty($_POST['naziv']) ||
+         empty($_POST['naziv_en']) ||
+         empty($_POST['cijena'])
+     ) {
+         $status = 'Ostavili ste neka polja prazna';
+     } else {
+         $jelo = new Jelo();
+         $jelo->insertJelo(
+             $_POST['sort'],
+             $_POST['broj'],
+             $_POST['naziv'],
+             $_POST['naziv_en'],
+             $_POST['cijena'],
+             $meni_ime,
+         );
+         $status = 'Dodali ste novo jelo!';
+     }
+ }
  ?>
 
 <div class = "container_12">
 	<br/> 
-<?php if ($page=="admin") {	echo "<a href='admin.php'> < POVRATAK</a>";} ?>
+<?php if ($page == 'admin') {
+    echo "<a href='admin.php'> < POVRATAK</a>";
+} ?>
 		<br/>
 
 
@@ -42,11 +49,11 @@ $meni_ime = $_REQUEST["fname"];
 
 		<div id ="title">
 			<h2>
-				<?php 
-				$page_id=$_REQUEST["fname"];
-				$meni = new Meni();
-				echo $meni->chooseMeni($page_id);		   
-				 ?>
+				<?php
+    $page_id = $_REQUEST['fname'];
+    $meni = new Meni();
+    echo $meni->chooseMeni($page_id);
+    ?>
 			</h2>
 		</div>
 
@@ -65,20 +72,14 @@ $meni_ime = $_REQUEST["fname"];
 				<p class ="log-pic"> <img src="../img/lock.png" width="13" height="17"></p>
 				<p class ="log-options">
 
-					 <?php	if($_SESSION['logged']) {
-						?>
-						Prijavljeni ste kao : <?php echo Session::get('logged'); ?>. <br />	 Odjavite se <a href="logout.php" tite="Logout">ovdje.</a>
-						<?php
-						}
-
-						else{
-
-							session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT						
-							Session::destroy();
-							header('location: ../index.php');
-							exit;
-						}
-						?>
+					 <?php if ($_SESSION['logged']) { ?>
+						Prijavljeni ste kao : <?php echo Session::get(
+          'logged',
+      ); ?>. <br />	 Odjavite se <a href="logout.php" tite="Logout">ovdje.</a>
+						<?php } else {session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT
+          Session::destroy();
+          header('location: ../index.php');
+          exit();} ?>
 
 				 </p>
 				<div class ="clear"></div>
@@ -89,14 +90,10 @@ $meni_ime = $_REQUEST["fname"];
 
 	<div class ="clear"></div>
 		<div class ="text-c"><p><?php echo $status; ?></p>
-		<?php if (isset($_SESSION['deleted'])){
-			echo "Obrisali ste jelo id: ".Session::get('deleted');
-		 unset($_SESSION['deleted']);
-		}
-
-
-
-		 ?>
+		<?php if (isset($_SESSION['deleted'])) {
+      echo 'Obrisali ste jelo id: ' . Session::get('deleted');
+      unset($_SESSION['deleted']);
+  } ?>
 
 		</div> 	
 
@@ -111,20 +108,35 @@ $meni_ime = $_REQUEST["fname"];
 
 			</tr>
 				
-					<?php 
-					$jelo=new Jelo(); 
-					$array_jela= $jelo->getJela($meni_ime);
-					foreach ($array_jela as $row) {
-				     echo "<tr>". 
-				     "<td>".$row['broj']."</td>".
-				     "<td>".$row['sort']."</td>".
-				     "<td>".$row['naziv']."</td>".
-				     "<td>".$row['naziv_en']."</td>".
-				     "<td>".$row['cijena']."</td>".	
-				     "<td><a href=meni_jelo.php?fname=".$row['jid']." >" . 'UREDI' . "</a></td>".					
-				     "</tr>";
-					}
-					 ?>
+					<?php
+     $jelo = new Jelo();
+     $array_jela = $jelo->getJela($meni_ime);
+
+     foreach ($array_jela as $row) {
+         echo '<tr>' .
+             '<td>' .
+             $row['broj'] .
+             '</td>' .
+             '<td>' .
+             $row['sort'] .
+             '</td>' .
+             '<td>' .
+             $row['naziv'] .
+             '</td>' .
+             '<td>' .
+             $row['naziv_en'] .
+             '</td>' .
+             '<td>' .
+             $row['cijena'] .
+             '</td>' .
+             '<td><a href=meni_jelo.php?fname=' .
+             $row['jid'] .
+             ' >' .
+             'UREDI' .
+             '</a></td>' .
+             '</tr>';
+     }
+     ?>
 
 		</table>
 
@@ -162,4 +174,4 @@ $meni_ime = $_REQUEST["fname"];
 	</div>
 
 
- <?php include('../inc/footer.php')?>
+ <?php include '../inc/footer.php'; ?>

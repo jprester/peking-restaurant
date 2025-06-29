@@ -12,6 +12,8 @@ composer.lock
 *.swp
 *.swo
 
+/node_modules/
+
 # OS files
 .DS_Store
 _DS_Store

@@ -1,0 +1,31 @@
+{
+  "name": "peking-restaurant",
+  "version": "1.0.0",
+  "description": "Peking Chinese restaurant website",
+  "scripts": {
+    "build-css": "sass src/sass/screen.scss:src/css/screen.css --style=compressed",
+    "watch-css": "sass src/sass/screen.scss:src/css/screen.css --watch --style=compressed",
+    "build-css-all": "sass src/sass:src/css --style=compressed",
+    "watch-css-all": "sass src/sass:src/css --watch --style=compressed",
+    "build-css-expanded": "sass src/sass/screen.scss:src/css/screen.css --style=expanded",
+    "watch-css-expanded": "sass src/sass/screen.scss:src/css/screen.css --watch --style=expanded",
+    "clean-css": "rm -rf src/css/*.css",
+    "dev": "npm run watch-css",
+    "build": "npm run build-css",
+    "build:all": "npm run build-css-all",
+    "format": "npm run format:js && npm run format:php",
+    "format:js": "prettier --write \"src/**/*.js\"",
+    "format:php": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --allow-risky=yes",
+    "format:php-prettier": "prettier --write \"src/**/*.php\"",
+    "format:check": "npm run format:check:js && npm run format:check:php",
+    "format:check:js": "prettier --check \"src/**/*.js\"",
+    "format:check:php": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --dry-run --diff --allow-risky=yes",
+    "format:check:php-prettier": "prettier --check \"src/**/*.php\"",
+    "lint": "npm run format:check"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.22.4",
+    "prettier": "^3.6.2",
+    "sass": "^1.70.0"
+  }
+}

@@ -1,15 +1,16 @@
-<?php require_once('../init.php');
+<?php require_once '../init.php';
 Session::init();
-if (!isset($_SESSION['logged'])){
-Session::destroy();
-header('location: ../index.php');
-}
 
- ?>
+if (!isset($_SESSION['logged'])) {
+    Session::destroy();
+    header('location: ../index.php');
+}
+?>
 
  <?php
-$page="admin";
- include("../inc/header.php"); ?>
+ $page = 'admin';
+ include '../inc/header.php';
+ ?>
 
 
 
@@ -28,20 +29,14 @@ $page="admin";
 				<p class ="log-pic"> <img src="../img/lock.png" width="13" height="17"></p>
 				<p class ="log-options">
 
-					 <?php	if($_SESSION['logged']) {
-						?>
-						Prijavljeni ste kao : <?php echo Session::get('logged'); ?>. <br />	 Odjavite se <a href="logout.php" tite="Logout">ovdje.</a>
-						<?php
-						}
-
-						else{
-
-							session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT						
-							Session::destroy();
-							header('location: ../index.php');
-							exit;
-						}
-						?>
+					 <?php if ($_SESSION['logged']) { ?>
+						Prijavljeni ste kao : <?php echo Session::get(
+          'logged',
+      ); ?>. <br />	 Odjavite se <a href="logout.php" tite="Logout">ovdje.</a>
+						<?php } else {session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT
+          Session::destroy();
+          header('location: ../index.php');
+          exit();} ?>
 
 				 </p>
 				<div class ="clear"></div>
@@ -59,13 +54,14 @@ $page="admin";
 		
 		<ul>
 		
-				<?php					
-					$meni=new Meni();
-					$meni_array=$meni->getMeni();  
-					 foreach ($meni_array as $row) {
-					echo "<li class ='text-c'><a href=meni_popis.php?fname=".$row['mid']." >" . $row['meni_ime'] . "</a></li>";
-					}
-					?>
+				<?php
+    $meni = new Meni();
+    $meni_array = $meni->getMeni();
+
+    foreach ($meni_array as $row) {
+        echo "<li class ='text-c'><a href=meni_popis.php?fname=" . $row['mid'] . ' >' . $row['meni_ime'] . '</a></li>';
+    }
+    ?>
 		</ul>
 			
 		   <br />		
@@ -74,4 +70,4 @@ $page="admin";
 
 
 </div>
-<?php include('../inc/footer.php')?>
+<?php include '../inc/footer.php'; ?>

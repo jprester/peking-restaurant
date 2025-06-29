@@ -1,36 +1,41 @@
 {
-    "name": "peking-restaurant/website",
-    "description": "Peking Chinese Restaurant Website",
-    "type": "project",
-    "require": {
-        "php": ">=8.1",
-        "vlucas/phpdotenv": "^5.5",
-        "ramsey/uuid": "^4.7"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^10.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Peking\\": "src/app/",
-            "Peking\\Admin\\": "src/admin/app/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ]
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+  "name": "peking-restaurant/website",
+  "description": "Peking Chinese Restaurant Website",
+  "type": "project",
+  "require": {
+    "php": ">=8.1",
+    "vlucas/phpdotenv": "^5.5",
+    "ramsey/uuid": "^4.7"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.75",
+    "phpunit/phpunit": "^10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Peking\\": "src/app/",
+      "Peking\\Admin\\": "src/admin/app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "scss:compile": "cd src && compass compile",
+    "scss:watch": "cd src && compass watch",
+    "scss:clean": "cd src && compass clean",
+    "build:css": "composer scss:compile"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
