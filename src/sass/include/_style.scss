@@ -333,8 +333,8 @@ body#kon a#konnav {
 .dtitle {
   height: 37px;
   background: url(../img/dtitle_bg2.png) repeat-x;
-  color: #9f6f5b;
-  font-family: 'Rufina', serif, Arial;
+  color: vars.$menu-border;
+  font-family: vars.$primary-font;
   font-size: 18px;
 }
 
