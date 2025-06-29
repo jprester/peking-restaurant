@@ -1,7 +1,8 @@
 <?php
 
 require_once '../init.php';
-$user = new User();
-$user->logout();
 
-header('location: ../index.php');
+use Peking\Admin\AuthController;
+
+$controller = new AuthController();
+$controller->logout();

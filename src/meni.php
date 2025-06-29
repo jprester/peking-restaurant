@@ -1,15 +1,19 @@
 <?php
+// Initialize Bootstrap before any output
+require_once 'admin/init.php';
+
 $visit1 = '';
 $visit2 = '';
 $visit3 = 'pressed';
 $visit4 = '';
 include 'inc/header.php';
-
-//  include('admin/init.php');
 ?>
 
 <div id="title">
     <h1><img src="img/title3.png" width="63" height="61" border="0" alt="" /></h1>
+</div>
+</div>
+</div>
 </div>
 
 <div class="clearer"></div>

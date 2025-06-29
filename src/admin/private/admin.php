@@ -1,9 +1,14 @@
-<?php require_once '../init.php';
-Session::init();
+<?php
+require_once '../init.php';
 
-if (!isset($_SESSION['logged'])) {
-    Session::destroy();
-    header('location: ../index.php');
+use Peking\Admin\Auth;
+
+// Use modern authentication system
+$auth = new Auth();
+
+if (!$auth->isLoggedIn()) {
+    header('location: ../login_new.php');
+    exit();
 }
 ?>
 
@@ -13,14 +18,19 @@ if (!isset($_SESSION['logged'])) {
  ?>
 
 
-
+</div>
+</div>
+</div>
 <div class = "container_12">
 
 	<br/>
 
+	
 
 <div class="grid_6 prefix_3">
 <div id ="title"><h2>Glavni izbornik</h2></div><br/> <div class="container_12 text-c"><p class ="txt1">Izaberite koji dio menija želite uređivati</p></div></div>
+
+
 <div class="grid_3">
 		
 
@@ -29,14 +39,16 @@ if (!isset($_SESSION['logged'])) {
 				<p class ="log-pic"> <img src="../img/lock.png" width="13" height="17"></p>
 				<p class ="log-options">
 
-					 <?php if ($_SESSION['logged']) { ?>
-						Prijavljeni ste kao : <?php echo Session::get(
-          'logged',
-      ); ?>. <br />	 Odjavite se <a href="logout.php" tite="Logout">ovdje.</a>
-						<?php } else {session_write_close(); // OVO JE JAKO BITNO DA PRESTANE PISAT SESSION I U IDUĆOJ LINIJI POŠALJE NA REDIRECT
-          Session::destroy();
-          header('location: ../index.php');
-          exit();} ?>
+					 <?php
+      $currentUser = $auth->getCurrentUser();
+
+      if ($currentUser) { ?>
+						Prijavljeni ste kao : <?php echo htmlspecialchars(
+          $currentUser['username'],
+      ); ?>. <br />	 Odjavite se <a href="logout.php" title="Logout">ovdje.</a>
+						<?php } else {header('location: ../login_new.php');
+          exit();}
+      ?>
 
 				 </p>
 				<div class ="clear"></div>

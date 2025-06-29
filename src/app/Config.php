@@ -2,10 +2,12 @@
 
 namespace Peking;
 
-class Config {
+class Config
+{
     private static array $config = [];
 
-    public static function load(): void {
+    public static function load(): void
+    {
         self::$config = [
             'database' => [
                 'host' => $_ENV['DB_HOST'],
@@ -42,7 +44,8 @@ class Config {
         ];
     }
 
-    public static function get(string $key, mixed $default = null): mixed {
+    public static function get(string $key, mixed $default = null): mixed
+    {
         $keys = explode('.', $key);
         $value = self::$config;
 
@@ -56,15 +59,18 @@ class Config {
         return $value;
     }
 
-    public static function database(): array {
+    public static function database(): array
+    {
         return self::get('database');
     }
 
-    public static function security(): array {
+    public static function security(): array
+    {
         return self::get('security');
     }
 
-    public static function isDebug(): bool {
+    public static function isDebug(): bool
+    {
         return self::get('app.debug', false);
     }
 }

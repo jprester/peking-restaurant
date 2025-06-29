@@ -2,32 +2,38 @@
 
 namespace Peking\Admin;
 
-class MenuManager {
+class MenuManager
+{
     private Database $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Database::getInstance();
     }
 
-    public function getAllMenus(): array {
+    public function getAllMenus(): array
+    {
         $sql = 'SELECT mid, meni_ime, en_ime FROM meni ORDER BY mid';
 
         return $this->db->fetchAll($sql);
     }
 
-    public function getMenuById(int $menuId): ?array {
+    public function getMenuById(int $menuId): ?array
+    {
         $sql = 'SELECT mid, meni_ime, en_ime FROM meni WHERE mid = :mid';
 
         return $this->db->fetch($sql, ['mid' => $menuId]);
     }
 
-    public function getMenuByName(string $name): ?array {
+    public function getMenuByName(string $name): ?array
+    {
         $sql = 'SELECT mid, meni_ime, en_ime FROM meni WHERE meni_ime = :name';
 
         return $this->db->fetch($sql, ['name' => $name]);
     }
 
-    public function createMenu(array $data): string {
+    public function createMenu(array $data): string
+    {
         $validator = new Validator($data);
 
         if (
@@ -44,7 +50,8 @@ class MenuManager {
         return $this->db->insert('meni', $cleanData);
     }
 
-    public function updateMenu(int $menuId, array $data): bool {
+    public function updateMenu(int $menuId, array $data): bool
+    {
         $validator = new Validator($data);
 
         if (
@@ -62,7 +69,8 @@ class MenuManager {
         return $rowsAffected > 0;
     }
 
-    public function deleteMenu(int $menuId): bool {
+    public function deleteMenu(int $menuId): bool
+    {
         // Check if menu has dishes
         $dishCount = $this->db->fetch('SELECT COUNT(*) as count FROM jela WHERE mid = :mid', ['mid' => $menuId]);
 
@@ -75,7 +83,8 @@ class MenuManager {
         return $rowsAffected > 0;
     }
 
-    public function getDishesByMenu(int $menuId): array {
+    public function getDishesByMenu(int $menuId): array
+    {
         $sql = 'SELECT jid, sort, broj, naziv, naziv_en, cijena, mid 
                 FROM jela 
                 WHERE mid = :mid 
@@ -84,13 +93,15 @@ class MenuManager {
         return $this->db->fetchAll($sql, ['mid' => $menuId]);
     }
 
-    public function getDishById(int $dishId): ?array {
+    public function getDishById(int $dishId): ?array
+    {
         $sql = 'SELECT jid, sort, broj, naziv, naziv_en, cijena, mid FROM jela WHERE jid = :jid';
 
         return $this->db->fetch($sql, ['jid' => $dishId]);
     }
 
-    public function createDish(array $data): string {
+    public function createDish(array $data): string
+    {
         $validator = new Validator($data);
 
         if (
@@ -122,7 +133,8 @@ class MenuManager {
         return $this->db->insert('jela', $cleanData);
     }
 
-    public function updateDish(int $dishId, array $data): bool {
+    public function updateDish(int $dishId, array $data): bool
+    {
         $validator = new Validator($data);
 
         if (
@@ -148,13 +160,15 @@ class MenuManager {
         return $rowsAffected > 0;
     }
 
-    public function deleteDish(int $dishId): bool {
+    public function deleteDish(int $dishId): bool
+    {
         $rowsAffected = $this->db->delete('jela', ['jid' => $dishId]);
 
         return $rowsAffected > 0;
     }
 
-    public function reorderDishes(int $menuId, array $dishOrder): bool {
+    public function reorderDishes(int $menuId, array $dishOrder): bool
+    {
         try {
             $this->db->beginTransaction();
 

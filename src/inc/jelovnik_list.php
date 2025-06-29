@@ -1,6 +1,6 @@
 <?php
 
-include 'admin/init.php';
+// Bootstrap already initialized in main page
 
 $visit1 = '';
 $visit2 = '';

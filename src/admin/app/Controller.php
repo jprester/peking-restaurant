@@ -2,26 +2,31 @@
 
 namespace Peking\Admin;
 
-abstract class Controller {
+abstract class Controller
+{
     protected Auth $auth;
     protected array $data = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->auth = new Auth();
     }
 
-    protected function requireAuth(): void {
+    protected function requireAuth(): void
+    {
         if (!$this->auth->isLoggedIn()) {
             $this->redirect('/admin/');
         }
     }
 
-    protected function redirect(string $path): void {
+    protected function redirect(string $path): void
+    {
         header("Location: $path");
         exit();
     }
 
-    protected function render(string $view, array $data = []): void {
+    protected function render(string $view, array $data = []): void
+    {
         $this->data = array_merge($this->data, $data);
         extract($this->data);
 
@@ -34,19 +39,22 @@ abstract class Controller {
         }
     }
 
-    protected function json(array $data, int $statusCode = 200): void {
+    protected function json(array $data, int $statusCode = 200): void
+    {
         http_response_code($statusCode);
         header('Content-Type: application/json');
         echo json_encode($data);
         exit();
     }
 
-    protected function setFlashMessage(string $message, string $type = 'info'): void {
+    protected function setFlashMessage(string $message, string $type = 'info'): void
+    {
         $_SESSION['flash_message'] = $message;
         $_SESSION['flash_type'] = $type;
     }
 
-    protected function getFlashMessage(): ?array {
+    protected function getFlashMessage(): ?array
+    {
         if (isset($_SESSION['flash_message'])) {
             $message = [
                 'message' => $_SESSION['flash_message'],
@@ -62,7 +70,8 @@ abstract class Controller {
         return null;
     }
 
-    protected function validateCSRF(): bool {
+    protected function validateCSRF(): bool
+    {
         $token = $_POST['csrf_token'] ?? '';
 
         return Validator::validateCSRF($token);

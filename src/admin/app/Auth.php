@@ -5,16 +5,19 @@ namespace Peking\Admin;
 use Peking\Config;
 use Ramsey\Uuid\Uuid;
 
-class Auth {
+class Auth
+{
     private Database $db;
     private array $securityConfig;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Database::getInstance();
         $this->securityConfig = Config::security();
     }
 
-    public function login(string $username, string $password): bool {
+    public function login(string $username, string $password): bool
+    {
         // Input validation
         if (empty($username) || empty($password)) {
             return false;
@@ -45,7 +48,8 @@ class Auth {
         return true;
     }
 
-    public function logout(): void {
+    public function logout(): void
+    {
         if (isset($_SESSION['user_id'])) {
             $this->destroySession();
         }
@@ -55,11 +59,13 @@ class Auth {
         session_regenerate_id(true);
     }
 
-    public function isLoggedIn(): bool {
+    public function isLoggedIn(): bool
+    {
         return isset($_SESSION['user_id']) && isset($_SESSION['csrf_token']) && $this->validateSession();
     }
 
-    public function getCurrentUser(): ?array {
+    public function getCurrentUser(): ?array
+    {
         if (!$this->isLoggedIn()) {
             return null;
         }
@@ -67,7 +73,8 @@ class Auth {
         return $this->getUserById($_SESSION['user_id']);
     }
 
-    public function generateCSRFToken(): string {
+    public function generateCSRFToken(): string
+    {
         if (!isset($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         }
@@ -75,11 +82,13 @@ class Auth {
         return $_SESSION['csrf_token'];
     }
 
-    public function validateCSRFToken(string $token): bool {
+    public function validateCSRFToken(string $token): bool
+    {
         return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
     }
 
-    public function hashPassword(string $password): string {
+    public function hashPassword(string $password): string
+    {
         return password_hash(
             $password,
             $this->securityConfig['password_algo'],
@@ -87,28 +96,33 @@ class Auth {
         );
     }
 
-    private function verifyPassword(string $password, string $hash): bool {
+    private function verifyPassword(string $password, string $hash): bool
+    {
         return password_verify($password, $hash);
     }
 
-    private function getUserByUsername(string $username): ?array {
+    private function getUserByUsername(string $username): ?array
+    {
         $sql = 'SELECT uid, username, password, email, created_at FROM users WHERE username = :username AND active = 1';
 
         return $this->db->fetch($sql, ['username' => $username]);
     }
 
-    private function getUserById(int $userId): ?array {
+    private function getUserById(int $userId): ?array
+    {
         $sql = 'SELECT uid, username, email, created_at FROM users WHERE uid = :uid AND active = 1';
 
         return $this->db->fetch($sql, ['uid' => $userId]);
     }
 
-    private function updateUserPassword(int $userId, string $password): void {
+    private function updateUserPassword(int $userId, string $password): void
+    {
         $hashedPassword = $this->hashPassword($password);
         $this->db->update('users', ['password' => $hashedPassword], ['uid' => $userId]);
     }
 
-    private function createSession(array $user): void {
+    private function createSession(array $user): void
+    {
         // Regenerate session ID to prevent fixation
         session_regenerate_id(true);
 
@@ -130,7 +144,8 @@ class Auth {
         );
     }
 
-    private function destroySession(): void {
+    private function destroySession(): void
+    {
         unset($_SESSION['user_id']);
         unset($_SESSION['username']);
         unset($_SESSION['login_time']);
@@ -139,7 +154,8 @@ class Auth {
         unset($_SESSION['session_id']);
     }
 
-    private function validateSession(): bool {
+    private function validateSession(): bool
+    {
         // Check session timeout
         $sessionLifetime = Config::get('session.lifetime', 120) * 60;
 

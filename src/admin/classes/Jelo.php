@@ -1,6 +1,13 @@
 <?php
 
-class Jelo extends Db {
+/**
+ * DEPRECATED: Legacy Jelo class redirected to modern secure implementation
+ * This class now uses JeloModern for backward compatibility.
+ */
+class Jelo
+{
+    private $modern;
+
     public $jid;
     public $sort;
     public $broj;
@@ -9,68 +16,38 @@ class Jelo extends Db {
     public $cijena;
     public $mid;
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct()
+    {
+        // Log usage of legacy class
+        error_log('INFO: Legacy Jelo class used. Consider migrating to Peking\Admin\DishRepository.');
+
+        // Use modern implementation
+        require_once __DIR__ . '/JeloModern.php';
+        $this->modern = new JeloModern();
     }
 
-    public function getJela($value) {
-        //var_dump($this->pdo);
-        $sql = 'SELECT * FROM jela WHERE mid = :mid ORDER BY sort';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':mid' => $value,
-        ]);
-        $result = $stmt->fetchAll();
-
-        return $result;
+    public function getJela($value)
+    {
+        return $this->modern->getJela($value);
     }
 
-    public function chooseJelo($value) {
-        $sql = 'SELECT * FROM jela WHERE jid=:jid';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':jid' => $value,
-        ]);
-
-        $result = $stmt->fetchAll();
-
-        return $result;
+    public function chooseJelo($value)
+    {
+        return $this->modern->chooseJelo($value);
     }
 
-    public function insertJelo($sort, $broj, $naziv, $naziv_en, $cijena, $mid) {
-        $sql =
-            'INSERT into jela (sort, broj, naziv, naziv_en, cijena, mid) VALUES (:sort, :broj, :naziv, :naziv_en, :cijena,:mid)';
-        $stmt = $this->pdo->prepare($sql);
-
-        $stmt->execute([
-            ':sort' => $sort,
-            ':broj' => $broj,
-            ':naziv' => $naziv,
-            ':naziv_en' => $naziv_en,
-            ':cijena' => $cijena,
-            ':mid' => $mid,
-        ]);
+    public function insertJelo($sort, $broj, $naziv, $naziv_en, $cijena, $mid)
+    {
+        return $this->modern->insertJelo($sort, $broj, $naziv, $naziv_en, $cijena, $mid);
     }
 
-    public function deleteJelo($jid) {
-        $sql = 'DELETE  FROM jela WHERE jid = :jid';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':jid' => $jid,
-        ]);
+    public function deleteJelo($jid)
+    {
+        return $this->modern->deleteJelo($jid);
     }
 
-    public function editJelo($jid, $broj, $sort, $naziv, $naziv_en, $cijena) {
-        $sql =
-            'UPDATE jela SET broj= :broj, sort= :sort, naziv= :naziv, naziv_en= :naziv_en, cijena= :cijena WHERE jid = :jid';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':jid' => $jid,
-            ':sort' => $sort,
-            ':broj' => $broj,
-            ':naziv' => $naziv,
-            ':naziv_en' => $naziv_en,
-            ':cijena' => $cijena,
-        ]);
+    public function editJelo($jid, $broj, $sort, $naziv, $naziv_en, $cijena)
+    {
+        return $this->modern->editJelo($jid, $broj, $sort, $naziv, $naziv_en, $cijena);
     }
 }

@@ -1,35 +1,34 @@
 <?php
 
-class Meni extends Db {
+/**
+ * DEPRECATED: Legacy Meni class redirected to modern secure implementation
+ * This class now uses MeniModern for backward compatibility.
+ */
+class Meni
+{
+    private $modern;
+
     public $mid;
     public $meni_ime;
     public $en_ime;
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct()
+    {
+        // Log usage of legacy class
+        error_log('INFO: Legacy Meni class used. Consider migrating to Peking\Admin\MenuRepository.');
+
+        // Use modern implementation
+        require_once __DIR__ . '/MeniModern.php';
+        $this->modern = new MeniModern();
     }
 
-    public function getMeni() {
-        //var_dump($this->pdo);
-        $sql = 'SELECT mid, meni_ime, en_ime FROM meni ORDER BY mid';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-
-        $result = $stmt->fetchAll();
-
-        return $result;
+    public function getMeni()
+    {
+        return $this->modern->getMeni();
     }
 
-    public function chooseMeni($value) {
-        //var_dump($this->pdo);
-        $sql = 'SELECT meni_ime FROM meni WHERE mid=:mid';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':mid' => $value,
-        ]);
-
-        foreach ($stmt as $row) {
-            return $row['meni_ime'];
-        }
+    public function chooseMeni($value)
+    {
+        return $this->modern->chooseMeni($value);
     }
 }
