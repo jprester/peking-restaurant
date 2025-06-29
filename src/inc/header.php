@@ -4,7 +4,7 @@
 	<!-- :::::::::::::::::::::::::::::::::::::::::::::::::::: Meta and titile ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<title>Kineski restoran Peking</title>
 		<meta name="description" content="Kineski restoran Peking " />
-		<meta name="keywords" content="Kinseki restoran, Peking, Kineska hrana, restaurant, chinese,Zagreb" />
+		<meta name="keywords" content="Kineski restoran, Peking, Kineska hrana, restaurant, chinese,Zagreb" />
 		<meta name="author" content="Janko Prester" />
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=9" />
@@ -59,14 +59,14 @@
 </head>
 
 <body>
-	<div id ="main">
+	<div class="main">
 	<div class ="mob-head"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>
-      <div id ="head_bg">
-		<div class ="container_12">
-		  <div id ="header">
-			<div id="logo"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>
+      <div class="head-bg">
+		<div class="container_12">
+		  <div class="header">
+			<div id="logo" class="logo"><a href="index.php"><img src="img/logo.png" width="134" height="130" border="0" alt="" /></a></div>
 				<div class="grid_12 text-c">
-					<div id="navigation">
+					<div id="navigation" class="navigation">
 						<ul>
 									  <li><a href="index.php" class ="<?php echo $visit1; ?>" >Početna</a></li>
 							<li><a href="onama.php" class ="<?php echo $visit2; ?>" >O nama</a></li>
@@ -114,4 +114,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+

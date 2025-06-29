@@ -16,7 +16,7 @@ include 'inc/header.php';
 
 <div class="clear"></div>
 
-<div id="page_down">
+<div class="page-down">
     <div class="container_12">
         <div class="grid_6">
             <p class="txt3">

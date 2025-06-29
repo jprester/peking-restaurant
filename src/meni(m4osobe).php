@@ -43,23 +43,23 @@ $page_id = '';
           
           <div class ="grid_6">
         
-            <div class="meni-list">
+            <div class="food-menu-list">
         
              <ul>
-            <?php include 'inc/jelovnik_list.php'; ?>
+            <?php include 'inc/food-menu-list.php'; ?>
               </ul>
             
             
             </div>
           
-            <div class="text-c"><div class="mobile-meninav"><a href="#">Izbor jela <span class ="darrow"><img src="img/darrow.png" alt="" width="13" height="11" border="0" /></span> </a></div></div>
+            <div class="text-c"><div class="food-navigation-mobile"><a href="#">Izbor jela <span class ="darrow"><img src="img/darrow.png" alt="" width="13" height="11" border="0" /></span> </a></div></div>
             
             <div class="text-c">
               <div class="mobile-menilist">
                 
                 <ul>
               
-                <?php include 'inc/jelovnik_list.php'; ?>
+                <?php include 'inc/food-menu-list.php'; ?>
               
                 </ul>
               

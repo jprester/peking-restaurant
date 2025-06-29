@@ -9,23 +9,26 @@ This is a website for "Peking" Chinese restaurant, originally built in 2014. It'
 ## Architecture
 
 ### Frontend Structure
+
 - **Main Site**: Located in `src/` directory
   - `index.php` - Homepage with image slider and restaurant info
   - `meni.php`, `meni_izbor.php` - Menu display pages
   - `kontakt.php`, `onama.php` - Contact and about pages
-  - `inc/` - Shared includes (header.php, footer.php, jelovnik_list.php)
+  - `inc/` - Shared includes (header.php, footer.php, food-menu-list.php)
 
 ### Admin Dashboard
+
 - **Location**: `src/admin/` directory
 - **Architecture**: Object-oriented PHP with PDO database layer
 - **Key Classes**:
   - `Db.php` - Base database connection class using PDO
   - `Meni.php` - Menu management (extends Db)
-  - `Jelo.php` - Individual dish management (extends Db) 
+  - `Jelo.php` - Individual dish management (extends Db)
   - `User.php` - User authentication (extends Db)
   - `Sessions.php` - Session management
 
 ### Database Schema
+
 - **Engine**: MySQL with utf8_bin collation
 - **Key Tables**:
   - `jela` - Dishes (jid, sort, broj, naziv, naziv_en, cijena, mid)
@@ -33,6 +36,7 @@ This is a website for "Peking" Chinese restaurant, originally built in 2014. It'
   - User authentication table (referenced in User.php)
 
 ### Styling & Assets
+
 - **CSS Framework**: Uses modern Sass (Node.js) for compilation
 - **SASS Structure**: `src/sass/` with modular includes in `sass/include/`
 - **Grid System**: Custom 12-column grid (grid_fixed.css, grid_fluid.css)
@@ -42,11 +46,13 @@ This is a website for "Peking" Chinese restaurant, originally built in 2014. It'
 ## Configuration
 
 ### Database Configuration
+
 - **Admin Config**: `src/admin/config/config.php`
 - **Main Config**: `src/admin/inc/dbconfig.php`
 - Default settings: localhost, database 'peking', user 'root', pass 'root'
 
 ### SASS/CSS Compilation
+
 - **Build Tool**: Node.js Sass (package.json scripts)
 - **Output**: Compressed CSS to `src/css/` directory
 - **Source**: SASS files in `src/sass/` directory
@@ -54,6 +60,7 @@ This is a website for "Peking" Chinese restaurant, originally built in 2014. It'
 ## Development Commands
 
 ### Initial Setup
+
 ```bash
 # Install dependencies
 composer install
@@ -68,6 +75,7 @@ mysql -u root -p peking < database/migrations/001_update_users_table.sql
 ```
 
 ### CSS Development
+
 ```bash
 # Install Node.js dependencies
 npm install
@@ -80,6 +88,7 @@ npm run watch-css
 ```
 
 ### Code Formatting
+
 ```bash
 # Format all JavaScript and PHP files
 npm run format
@@ -98,6 +107,7 @@ npm run lint
 ```
 
 ### Security Commands
+
 ```bash
 # Generate secure password hash for admin user
 php -r "echo password_hash('your_password', PASSWORD_ARGON2ID);"
@@ -121,6 +131,7 @@ php -r "echo password_hash('your_password', PASSWORD_ARGON2ID);"
 ## Modernization (2024)
 
 ### Security Improvements
+
 - **Environment-based configuration** via `.env` files
 - **Modern password hashing** with Argon2ID algorithm
 - **CSRF protection** on all admin forms
@@ -129,6 +140,7 @@ php -r "echo password_hash('your_password', PASSWORD_ARGON2ID);"
 - **Database security** with prepared statements and error handling
 
 ### Code Architecture
+
 - **Composer autoloading** with PSR-4 namespace structure
 - **Modern Database class** with singleton pattern and full CRUD operations
 - **MVC pattern** for admin controllers and views
@@ -137,6 +149,7 @@ php -r "echo password_hash('your_password', PASSWORD_ARGON2ID);"
 - **Database migrations** system for schema updates
 
 ### Code Quality
+
 - **Modern SCSS** with @use syntax, variables, and mixins
 - **Prettier formatting** for JavaScript files with consistent style
 - **PHP-CS-Fixer** for PHP code formatting following PSR-12 standards
@@ -144,6 +157,7 @@ php -r "echo password_hash('your_password', PASSWORD_ARGON2ID);"
 - **VS Code integration** with format-on-save configuration
 
 ### Backward Compatibility
+
 - Original PHP files maintained for gradual migration
 - Old classes still available during transition period
 - Frontend/UI completely unchanged

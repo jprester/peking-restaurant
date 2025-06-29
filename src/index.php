@@ -44,10 +44,10 @@ include 'inc/header.php';
 </div>
 <div class="clear"></div>
 
-<div id="down_bg">
+<div class="down-bg">
     <div class="container_12">
         <div class="grid_6">
-            <div id="dcontent1">
+            <div class="dcontent1">
                 <h3 class="dtitle">Što nudimo</h3>
 
                 <div class="grid_1-3 alpha">
@@ -71,7 +71,7 @@ include 'inc/header.php';
         </div>
 
         <div class="grid_6 omega">
-            <div id="dcontent2">
+            <div class="dcontent2">
                 <h3 class="dtitle">Dostava</h3>
 
                 <div class="grid_1-3 alpha">

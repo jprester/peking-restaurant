@@ -77,7 +77,10 @@ blockquote {
 }
 
 // Grid modifiers
-.grid_1-4, .grid_1-3, .grid_2-3, .grid_1-2 {
+.grid_1-4,
+.grid_1-3,
+.grid_2-3,
+.grid_1-2 {
   &.alpha {
     margin-left: 0;
   }
@@ -87,7 +90,14 @@ blockquote {
   }
 }
 
-.grid_1, .grid_2, .grid_3, .grid_4, .grid_5, .grid_6, .grid_7, .grid_8 {
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8 {
   &.right {
     float: right;
   }
@@ -130,7 +140,10 @@ body#onam a#onamnav,
 body#meni a#menunav,
 body#kon a#konnav {
   color: vars.$primary-color;
-  font: 16px "Gill Sans MT", Arial, sans-serif;
+  font:
+    16px 'Gill Sans MT',
+    Arial,
+    sans-serif;
   display: block;
   padding: 8px 10px 6px;
   width: 108px;
@@ -140,7 +153,7 @@ body#kon a#konnav {
 }
 
 // Main content area
-#main {
+.main {
   // Main wrapper styles
 }
 
@@ -149,28 +162,28 @@ body#kon a#konnav {
   display: none;
   width: 100%;
   text-align: center;
-  background: #422D2D;
+  background: #422d2d;
 }
 
 // Header background
-#head_bg {
+.head-bg {
   background: #392222 url(../img/main_bg.png) repeat-x top;
   height: 205px;
 }
 
-#header {
+.header {
   height: 155px;
   margin: 0 auto;
 }
 
-#logo {
+.logo {
   position: absolute;
   top: 0;
   opacity: 0.85;
 }
 
 // Main navigation
-#navigation {
+.navigation {
   display: inline;
   text-align: center;
 
@@ -187,8 +200,8 @@ body#kon a#konnav {
       a {
         display: block;
         padding: 11px 25px;
-        border-left: 1px solid #3B2222;
-        border-right: 1px solid #3B2222;
+        border-left: 1px solid #3b2222;
+        border-right: 1px solid #3b2222;
 
         &:hover {
           color: #ccc;
@@ -208,8 +221,8 @@ body#kon a#konnav {
   position: relative;
   top: 0;
   padding: 4px 54px;
-  background: #3B2222;
-  border: 1px solid #9F6F5B;
+  background: #3b2222;
+  border: 1px solid #9f6f5b;
 
   &:hover {
     // Hover state
@@ -228,17 +241,17 @@ body#kon a#konnav {
 
   ul {
     display: none;
-    border: 1px solid #9F6F5B;
+    border: 1px solid #9f6f5b;
 
     li {
       a {
         margin: 0;
         padding: 10px 78px;
         display: block;
-        background: #3B2222;
+        background: #3b2222;
 
         &:hover {
-          background: #5B2222;
+          background: #5b2222;
         }
       }
     }
@@ -284,15 +297,15 @@ body#kon a#konnav {
 }
 
 // Content sections
-#down_bg {
+.down-bg {
   background: url(../img/net_pattern3.jpg);
 }
 
-#down {
+.down {
   // Down section styles
 }
 
-#dcontent1 {
+.dcontent1 {
   height: 320px;
   text-align: left;
 
@@ -306,7 +319,7 @@ body#kon a#konnav {
   }
 }
 
-#dcontent2 {
+.dcontent2 {
   height: 320px;
   text-align: left;
 
@@ -319,7 +332,7 @@ body#kon a#konnav {
 .dtitle {
   height: 37px;
   background: url(../img/dtitle_bg2.png) repeat-x;
-  color: #9F6F5B;
+  color: #9f6f5b;
 }
 
 // Button styles
@@ -362,11 +375,11 @@ body#kon a#konnav {
 }
 
 // Footer styles
-#foot_bg {
+.foot_bg {
   background: #220000 url(../img/foot_bg2.gif) repeat-x top;
 }
 
-#footer {
+.footer {
   color: #fff;
   height: 80px;
   padding: 5px 0;
@@ -382,13 +395,13 @@ body#kon a#konnav {
       text-align: center;
 
       p {
-        color: #B57F6F;
+        color: #b57f6f;
         font-family: vars.$primary-font;
         font-size: 11px;
         padding-top: 4px;
 
         a {
-          color: #B57F6F;
+          color: #b57f6f;
           font-family: vars.$primary-font;
           font-size: 11px;
           padding-top: 4px;
@@ -405,17 +418,17 @@ body#kon a#konnav {
 // Page-specific styles
 
 // Page layout styles
-#page_up {
+.page-up {
   background: url(../img/main_bg3.png) repeat-x top;
   height: 200px;
 }
 
-#page_down {
+.page-down {
   background: url(../img/net_pattern3.jpg);
   margin-top: 10px;
 }
 
-#page_content {
+.page-content {
   margin: auto;
   padding: 0;
   width: 960px;
@@ -423,12 +436,6 @@ body#kon a#konnav {
 
 .content_full {
   // Full content styles
-}
-
-#header-pages {
-  background: blue;
-  height: 86px;
-  margin: 10px 10px 5px 10px;
 }
 
 // Mobile menu navigation
@@ -440,8 +447,9 @@ body#kon a#konnav {
 
   a {
     display: block;
-    height: 35px;
-    padding-top: 13px;
+    padding: 6px;
+    font: 1.4em vars.$primary-font;
+    color: #9f6f5b;
 
     &:hover {
       background: #eee;
@@ -465,7 +473,7 @@ body#kon a#konnav {
         border-bottom: 1px solid #ccc;
 
         &:hover {
-          background: #C9B4B4;
+          background: #c9b4b4;
         }
       }
     }
@@ -473,7 +481,7 @@ body#kon a#konnav {
 }
 
 // Menu list styles
-.meni-list {
+.food-menu-list {
   ul {
     margin: auto;
     margin-top: 30px;
@@ -481,7 +489,7 @@ body#kon a#konnav {
     li {
       text-align: center;
       margin-bottom: 5px;
-      border-bottom: 1px dotted #793A2E;
+      border-bottom: 1px dotted #793a2e;
       padding: 4px;
 
       a {
@@ -505,14 +513,13 @@ body#kon a#konnav {
   left: 5px;
 }
 
-
 // Red button component
 .red-button {
   height: 38px;
   width: 135px;
   line-height: 42px;
   @include mixins.box-shadow(inset 0px 1px 0px 0px #ffffff);
-  @include mixins.linear-gradient(#641D1D, #6C2828);
+  @include mixins.linear-gradient(#641d1d, #6c2828);
   @include mixins.border-radius(10px);
   border: 1px solid #dcdcdc;
   display: inline-block;
@@ -521,39 +528,42 @@ body#kon a#konnav {
   text-align: center;
 
   &:hover {
-    @include mixins.linear-gradient(#723232, #793C3C);
+    @include mixins.linear-gradient(#723232, #793c3c);
   }
 }
 
 // Menu (jelovnik) styles
-#jelovnik {
+.food-menu {
   margin: 20px auto 0;
-  width: 400px;
+  width: 393px;
 }
 
-.jelovnik_mainpic {
-  margin: 0 auto 0 30px;
+.food-menu-image-wrapper {
+  text-align: center;
+
+  .food-menu-image {
+  }
 }
 
-#jelovnik_top {
+.food-menu-top {
   height: 23px;
   background: url(../img/meni_top.gif) no-repeat;
   border: none;
 }
 
-#jelovnik_content {
+.food-menu-content {
   background: url(../img/meni_mid.gif) repeat-y;
   padding: 10px;
   border: none;
 }
 
-#jelovnik_bottom {
+.food-menu-bottom {
   height: 26px;
   background: url(../img/meni_bottom.gif) no-repeat;
   border: none;
 }
 
-.meni-table {
+.food-menu-table {
   margin: 0 auto;
   width: 360px;
 
@@ -564,7 +574,7 @@ body#kon a#konnav {
   }
 }
 
-.table_naslov {
+.table-title {
   font-family: vars.$primary-font;
   font-size: 15px;
   color: vars.$text-color;
@@ -594,17 +604,17 @@ body#kon a#konnav {
   width: 15%;
 }
 
-#kontakt_right {
+.contact-right {
   // Contact section styles
 }
 
 .t_bottom {
-  background: #FFFDD0 url(../img/meni_ukras.gif) no-repeat center;
+  background: #fffdd0 url(../img/meni_ukras.gif) no-repeat center;
   text-align: center;
   width: 150px;
 }
 
-#map {
+.contact-map {
   text-align: center;
   padding: 5px;
   border: 1px solid #ccc;

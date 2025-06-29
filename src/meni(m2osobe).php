@@ -26,17 +26,17 @@ include 'inc/header.php';
 
 <div class="clear"></div>
 
-<div id="page_down">
+<div class="page-down">
     <div class="container_12">
         <div class="grid_6">
-            <div class="meni-list">
+        <div class="food-menu-list">
                 <ul>
-                    <?php include 'inc/jelovnik_list.php'; ?>
+                    <?php include 'inc/food-menu-list.php'; ?>
                 </ul>
             </div>
 
             <div class="text-c">
-                <div class="mobile-meninav">
+            <div class="mobile-meninav">
                     <a href="#">
                         Izbor jela
                         <span class="darrow">
@@ -49,7 +49,7 @@ include 'inc/header.php';
             <div class="text-c">
                 <div class="mobile-menilist">
                     <ul>
-                        <?php include 'inc/jelovnik_list.php'; ?>
+                        <?php include 'inc/food-menu-list.php'; ?>
                     </ul>
                 </div>
             </div>
@@ -58,9 +58,9 @@ include 'inc/header.php';
         <br />
         <br />
         <div class="grid_6">
-            <div id="jelovnik">
-                <div id="jelovnik_top"></div>
-                <div id="jelovnik_content">
+            <div class="food-menu">
+                <div class="food-menu-top"></div>
+                <div class="food-menu-content">
                     <table width="360" border="0" align="center" class="meni-table">
                         <tr>
                             <th colspan="3" class="table_naslov">Menu za 2 osobe P1 42,00</th>
@@ -174,7 +174,7 @@ include 'inc/header.php';
                         </tr>
                     </table>
                 </div>
-                <div id="jelovnik_bottom"></div>
+                <div class="food-menu-bottom"></div>
 
                 <br />
                 <p class="text-c txt2 italic">Sve cijene su izražene u EUR</p>

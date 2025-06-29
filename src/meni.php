@@ -19,17 +19,17 @@ include 'inc/header.php';
 
 <div class="clear"></div>
 
-<div id="page_down">
+<div class="page-down">
     <div class="container_12">
         <div class="grid_6">
-            <div class="meni-list">
+        <div class="food-menu-list">
                 <ul>
-                    <?php include 'inc/jelovnik_list.php'; ?>
+                    <?php include 'inc/food-menu-list.php'; ?>
                 </ul>
             </div>
 
             <div class="text-c">
-                <div class="mobile-meninav">
+            <div class="mobile-meninav">
                     <a href="#">
                         Izbor jela 
                         <span class="darrow">
@@ -42,7 +42,7 @@ include 'inc/header.php';
             <div class="text-c">
                 <div class="mobile-menilist">
                     <ul>
-                        <?php include 'inc/jelovnik_list.php'; ?>
+                        <?php include 'inc/food-menu-list.php'; ?>
                     </ul>
                 </div>
             </div>
@@ -50,16 +50,14 @@ include 'inc/header.php';
         </div>
 
         <div class="grid_6">
-            <div id="jelovnik">
-                <div id="jelovnik_top"></div>
-                <div id="jelovnik_content">
-                    <br />
-                    <p class="jelovnik_mainpic">
-                        <img src="img/jelovnik_pic2.png" width="241" height="367" class="jelovnik_mainpic" />
+            <div class="food-menu">
+                <div class="food-menu-top"></div>
+                <div class="food-menu-content">
+                    <p class="food-menu-image-wrapper">
+                        <img src="img/jelovnik_pic2.png" class="food-menu-image" />
                     </p>
-                    <br />
                 </div>
-                <div id="jelovnik_bottom"></div>
+                <div class="food-menu-bottom"></div>
 
                 <br />
                 <p class="text-c txt2 italic">Sve cijene su izražene u EUR</p>

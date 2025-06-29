@@ -44,10 +44,10 @@ $page_id = '';
           
           <div class ="grid_6">
         
-            <div class="meni-list">          
+            <div class="food-menu-list">          
            
             <ul>  
-            <?php include 'inc/jelovnik_list.php'; ?>
+            <?php include 'inc/food-menu-list.php'; ?>
               </ul>
             
             
@@ -59,7 +59,7 @@ $page_id = '';
               <div class="mobile-menilist">
               
                 <ul>
-                <?php include 'inc/jelovnik_list.php'; ?>
+                <?php include 'inc/food-menu-list.php'; ?>
                 </ul>
               
               </div>  
@@ -71,10 +71,10 @@ $page_id = '';
            <div class ="grid_6">           
         
     
-            <div id="jelovnik" >
+            <div class="food-menu">
             
-            <div id="jelovnik_top"></div>
-            <div id="jelovnik_content">
+            <div class="food-menu-top"></div>
+            <div class="food-menu-content">
            
           <table width="360" border="0" align="center" class="meni-table"><tr>
            <th colspan="3" class="table_naslov">Menu za 3 osobe P3 69,00</th></tr>
@@ -169,7 +169,7 @@ $page_id = '';
 					
 				
 	</div>
-						<div id="jelovnik_bottom"></div>
+						<div class="food-menu-bottom"></div>
 						
 						  <br /><p class="text-c txt2 italic">Sve cijene su izražene u EUR</p><br /><br /><br /><br />
 						
