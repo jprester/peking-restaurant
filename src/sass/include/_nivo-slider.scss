@@ -23,8 +23,8 @@
   height: auto;
   overflow: hidden;
   bottom: 35px;
-  border: 4px solid #fff;
-  @include mixins.box-shadow(0px 2px 5px 0px #4a4a4a);
+  border: 4px solid vars.$white;
+  @include mixins.box-shadow(0px 2px 5px 0px vars.$slider-shadow);
 
   img {
     position: absolute;
@@ -82,8 +82,8 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background: #632525;
-  color: #fff;
+  background: vars.$slider-caption-bg;
+  color: vars.$white;
   width: 100%;
   z-index: 8;
   padding: 15px 25px;
@@ -141,9 +141,10 @@
 .theme-default {
   .nivoSlider {
     position: relative;
-    background: #fff url(../img/loading.gif) no-repeat 50% 50%;
+    background: vars.$slider-loading-bg url(../img/loading.gif) no-repeat 50%
+      50%;
     margin-bottom: 10px;
-    @include mixins.box-shadow(0px 1px 5px 0px #4a4a4a);
+    @include mixins.box-shadow(0px 1px 5px 0px vars.$slider-shadow);
 
     img {
       position: absolute;
@@ -203,11 +204,11 @@
 
   .nivo-caption {
     a {
-      color: #fff;
-      border-bottom: 1px dotted #fff;
+      color: vars.$slider-caption-link;
+      border-bottom: 1px dotted vars.$slider-caption-link;
 
       &:hover {
-        color: #fff;
+        color: vars.$slider-caption-link;
       }
     }
   }

@@ -484,7 +484,7 @@
     height: 150px;
   }
   #head_bg {
-    background: #392222 url(../img/main_bg.png) repeat-x top;
+    background: vars.$dark-brown url(../img/main_bg.png) repeat-x top;
     height: 40px;
     border: none;
   }
@@ -508,7 +508,7 @@
     margin-top: 10px;
   }
   .food-navigation-mobile a {
-    color: #515151;
+    color: vars.$mid-grey;
   }
   .dcontent1 {
     margin-top: 10px;

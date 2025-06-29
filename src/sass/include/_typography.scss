@@ -22,7 +22,7 @@ h2 {
   font-weight: normal;
   font-family: vars.$primary-font;
   font-size: 2.8em;
-  color: #444;
+  color: vars.$heading-grey;
   line-height: 1.2em;
 }
 
@@ -66,7 +66,7 @@ blockquote {
 
 .txt1 {
   font-size: 1.3em;
-  color: #222;
+  color: vars.$txt1-grey;
   line-height: 21px;
 }
 
@@ -77,19 +77,19 @@ a {
 
   &:hover {
     text-decoration: none;
-    color: #e0e0e0;
+    color: vars.$link-hover;
   }
 }
 
 // Text utility classes
 .txt1 {
-  color: #303030;
+  color: vars.$txt1-dark;
   font-size: 1em;
   font-family: vars.$primary-font;
 }
 
 .txt_ita {
-  color: #303030;
+  color: vars.$txt1-dark;
   font-size: 1em;
   font-family: vars.$primary-font;
   font-style: italic;
@@ -114,34 +114,34 @@ p {
 }
 
 .nav_kin {
-  color: #8c574b;
+  color: vars.$nav-kin;
   font: 13px vars.$secondary-font;
 }
 
 // Navigation styles
 #navigation ul li a {
-  color: #999;
+  color: vars.$nav-link;
   font: 1em vars.$primary-font;
   font-weight: normal;
   text-decoration: none;
 
   &:hover {
-    color: #ccc;
+    color: vars.$nav-hover;
   }
 
   &.pressed {
-    color: #8c574b;
+    color: vars.$nav-kin;
   }
 }
 
 // Mobile menu styles
 .mmenu a {
   font-size: 1.3em;
-  color: #9f6f5b;
+  color: vars.$footer-link;
 }
 
 .mnav ul li a {
-  color: #9f6f5b;
+  color: vars.$footer-link;
   font: 1.2em vars.$primary-font;
 }
 
@@ -150,31 +150,31 @@ p {
   font-family: 'Marcellus SC', serif;
   font-size: 1.3em;
   font-weight: normal;
-  color: #eee;
+  color: vars.$light-grey;
   text-align: left;
 }
 
 // Menu list styles
 .food-menu-list ul li a {
-  color: #611919;
+  color: vars.$food-menu-link;
   font-family: vars.$primary-font;
   font-size: 1em;
   text-decoration: none;
   text-transform: uppercase;
 
   &:hover {
-    color: #ccc;
+    color: vars.$nav-hover;
   }
 }
 
 // Mobile navigation styles
 .food-navigation-mobile a {
-  color: #707070;
+  color: vars.$food-nav-mobile;
   font: 1.6em vars.$primary-font;
 }
 
 .mobile-menilist ul li a {
-  color: #9f6f5b;
+  color: vars.$footer-link;
   font: 1.4em vars.$primary-font;
 }
 
@@ -184,5 +184,5 @@ p {
   font-weight: normal;
   font-style: normal;
   font-family: 'Linden Hill', serif;
-  color: #ececec;
+  color: vars.$red-button-text;
 }

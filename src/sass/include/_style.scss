@@ -3,7 +3,7 @@
 
 // Block quote styles
 blockquote {
-  background: #eee;
+  background: vars.$light-grey;
   padding: 15px;
   border: 1px solid vars.$accent-color;
 }
@@ -128,7 +128,7 @@ blockquote {
 
 // Main structure styles
 body {
-  background: vars.$background-color url(../img/net_pattern.jpg);
+  background: url(../img/net_pattern.jpg) repeat;
   margin: 0;
   padding: 0;
   font-family: vars.$primary-font;
@@ -162,12 +162,12 @@ body#kon a#konnav {
   display: none;
   width: 100%;
   text-align: center;
-  background: #422d2d;
+  background: vars.$deep-brown;
 }
 
 // Header background
 .head-bg {
-  background: #392222 url(../img/main_bg.png) repeat-x top;
+  background: vars.$dark-brown url(../img/main_bg.png) repeat-x top;
   height: 205px;
 }
 
@@ -200,11 +200,12 @@ body#kon a#konnav {
       a {
         display: block;
         padding: 11px 25px;
-        border-left: 1px solid #3b2222;
-        border-right: 1px solid #3b2222;
+        border-left: 1px solid vars.$nav-border;
+        border-right: 1px solid vars.$nav-border;
+        color: vars.$nav-hover;
 
         &:hover {
-          color: #ccc;
+          color: vars.$nav-hover;
         }
 
         &.pressed {
@@ -221,8 +222,8 @@ body#kon a#konnav {
   position: relative;
   top: 0;
   padding: 4px 54px;
-  background: #3b2222;
-  border: 1px solid #9f6f5b;
+  background: vars.$menu-bg;
+  border: 1px solid vars.$menu-border;
 
   &:hover {
     // Hover state
@@ -241,17 +242,17 @@ body#kon a#konnav {
 
   ul {
     display: none;
-    border: 1px solid #9f6f5b;
+    border: 1px solid vars.$menu-border;
 
     li {
       a {
         margin: 0;
         padding: 10px 78px;
         display: block;
-        background: #3b2222;
+        background: vars.$menu-bg;
 
         &:hover {
-          background: #5b2222;
+          background: vars.$menu-hover;
         }
       }
     }
@@ -272,7 +273,7 @@ body#kon a#konnav {
 .slider-container {
   height: 360px;
   background: vars.$background-color;
-  border: 1px solid #444;
+  border: 1px solid vars.$slider-border;
   padding: 3px;
   position: relative;
   bottom: 50px;
@@ -298,7 +299,7 @@ body#kon a#konnav {
 
 // Content sections
 .down-bg {
-  background: url(../img/net_pattern3.jpg);
+  background: url(../img/net_pattern.jpg) repeat;
 }
 
 .down {
@@ -333,6 +334,8 @@ body#kon a#konnav {
   height: 37px;
   background: url(../img/dtitle_bg2.png) repeat-x;
   color: #9f6f5b;
+  font-family: 'Rufina', serif, Arial;
+  font-size: 18px;
 }
 
 // Button styles
@@ -376,11 +379,11 @@ body#kon a#konnav {
 
 // Footer styles
 .foot_bg {
-  background: #220000 url(../img/foot_bg2.gif) repeat-x top;
+  background: vars.$footer-bg url(../img/foot_bg2.gif) repeat-x top;
 }
 
 .footer {
-  color: #fff;
+  color: vars.$white;
   height: 80px;
   padding: 5px 0;
   text-align: center;
@@ -395,19 +398,19 @@ body#kon a#konnav {
       text-align: center;
 
       p {
-        color: #b57f6f;
+        color: vars.$footer-link;
         font-family: vars.$primary-font;
         font-size: 11px;
         padding-top: 4px;
 
         a {
-          color: #b57f6f;
+          color: vars.$footer-link;
           font-family: vars.$primary-font;
           font-size: 11px;
           padding-top: 4px;
 
           &:hover {
-            color: #ccc;
+            color: vars.$footer-link;
           }
         }
       }
@@ -419,12 +422,11 @@ body#kon a#konnav {
 
 // Page layout styles
 .page-up {
-  background: url(../img/main_bg3.png) repeat-x top;
+  background: vars.$background-color;
   height: 200px;
 }
 
 .page-down {
-  background: url(../img/net_pattern3.jpg);
   margin-top: 10px;
 }
 
@@ -440,27 +442,27 @@ body#kon a#konnav {
 
 // Mobile menu navigation
 .mobile-meninav {
-  background: #eee url(../img/mmenu_bg.gif) repeat-x top;
+  background: vars.$light-grey url(../img/mmenu_bg.gif) repeat-x top;
   display: none;
-  border: 1px solid #ccc;
+  border: 1px solid vars.$contact-border;
   text-align: center;
 
   a {
     display: block;
     padding: 6px;
     font: 1.4em vars.$primary-font;
-    color: #9f6f5b;
+    color: vars.$footer-link;
 
     &:hover {
-      background: #eee;
+      background: vars.$light-grey;
     }
   }
 }
 
 .mobile-menilist {
   display: none;
-  border: 1px solid #ccc;
-  background: #eee;
+  border: 1px solid vars.$contact-border;
+  background: vars.$light-grey;
   text-align: center;
 
   ul {
@@ -470,10 +472,10 @@ body#kon a#konnav {
       a {
         padding: 8px 18px;
         display: block;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid vars.$contact-border;
 
         &:hover {
-          background: #c9b4b4;
+          background: vars.$mobile-nav-bg;
         }
       }
     }
@@ -489,18 +491,18 @@ body#kon a#konnav {
     li {
       text-align: center;
       margin-bottom: 5px;
-      border-bottom: 1px dotted #793a2e;
+      border-bottom: 1px dotted vars.$food-menu-border;
       padding: 4px;
 
       a {
-        color: #611919;
+        color: vars.$food-menu-link;
         font-family: vars.$primary-font;
         font-size: 13px;
         text-decoration: none;
         text-transform: uppercase;
 
         &:hover {
-          color: #ccc;
+          color: vars.$nav-hover;
         }
       }
     }
@@ -515,20 +517,27 @@ body#kon a#konnav {
 
 // Red button component
 .red-button {
-  height: 38px;
-  width: 135px;
-  line-height: 42px;
-  @include mixins.box-shadow(inset 0px 1px 0px 0px #ffffff);
-  @include mixins.linear-gradient(#641d1d, #6c2828);
-  @include mixins.border-radius(10px);
-  border: 1px solid #dcdcdc;
+  padding: 6px 20px;
+
+  @include mixins.box-shadow(inset 0px 1px 0px 0px vars.$button-shadow);
+  @include mixins.linear-gradient(
+    vars.$button-gradient1,
+    vars.$button-gradient2
+  );
+  border: 1px solid vars.$button-border;
   display: inline-block;
-  color: #666666;
+  color: vars.$button-text;
   text-decoration: none;
   text-align: center;
+  -webkit-border-radius: 10px;
+  moz-border-radius: 10px;
+  border-radius: 10px;
 
   &:hover {
-    @include mixins.linear-gradient(#723232, #793c3c);
+    @include mixins.linear-gradient(
+      vars.$button-hover-gradient1,
+      vars.$button-hover-gradient2
+    );
   }
 }
 
@@ -609,7 +618,7 @@ body#kon a#konnav {
 }
 
 .t_bottom {
-  background: #fffdd0 url(../img/meni_ukras.gif) no-repeat center;
+  background: vars.$menu-bottom-bg url(../img/meni_ukras.gif) no-repeat center;
   text-align: center;
   width: 150px;
 }
@@ -617,6 +626,6 @@ body#kon a#konnav {
 .contact-map {
   text-align: center;
   padding: 5px;
-  border: 1px solid #ccc;
-  background: #fff;
+  border: 1px solid vars.$contact-border;
+  background: vars.$contact-bg;
 }
