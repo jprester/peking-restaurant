@@ -15,22 +15,31 @@
     <!-- Login Screen -->
     <div x-show="!loggedIn" class="flex items-center justify-center min-h-screen">
         <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-            <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Peking Admin</h1>
+            <div class="flex items-center justify-between mb-6">
+                <h1 class="text-2xl font-bold text-gray-800" x-text="t('adminTitle')"></h1>
+                <div class="flex gap-2">
+                    <button type="button" @click="setLang('hr')"
+                        class="px-2 py-1 text-xs rounded border border-gray-200"
+                        :class="lang === 'hr' ? 'bg-gray-800 text-white' : 'text-gray-500'">HR</button>
+                    <button type="button" @click="setLang('en')"
+                        class="px-2 py-1 text-xs rounded border border-gray-200"
+                        :class="lang === 'en' ? 'bg-gray-800 text-white' : 'text-gray-500'">EN</button>
+                </div>
+            </div>
             <div x-show="loginError" class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm" x-text="loginError"></div>
             <form @submit.prevent="login()">
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('username')"></label>
                     <input type="text" x-model="loginForm.username" required
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
                 </div>
                 <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('password')"></label>
                     <input type="password" x-model="loginForm.password" required
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
                 </div>
-                <button type="submit" class="w-full bg-amber-700 text-white py-2 px-4 rounded-md hover:bg-amber-800 transition">
-                    Log In
-                </button>
+                <button type="submit" class="w-full bg-amber-700 text-white py-2 px-4 rounded-md hover:bg-amber-800 transition"
+                    x-text="t('login')"></button>
             </form>
         </div>
     </div>
@@ -41,24 +50,35 @@
         <!-- Sidebar -->
         <aside class="w-64 bg-gray-800 text-white flex-shrink-0">
             <div class="p-4 border-b border-gray-700">
-                <h2 class="text-lg font-bold">Peking CMS</h2>
-                <p class="text-sm text-gray-400" x-text="'Logged in as ' + username"></p>
+                <h2 class="text-lg font-bold" x-text="t('cmsTitle')"></h2>
+                <p class="text-sm text-gray-400" x-text="t('loggedInAs', { name: username })"></p>
             </div>
             <nav class="p-4">
                 <button @click="currentView = 'categories'" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition mb-1"
                     :class="currentView === 'categories' || currentView === 'dishes' ? 'bg-gray-700' : ''">
-                    Menu Categories
+                    <span x-text="t('menuCategories')"></span>
                 </button>
                 <button @click="currentView = 'comboMenus'; loadComboMenus()" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition mb-1"
                     :class="currentView === 'comboMenus' || currentView === 'comboMenuEdit' ? 'bg-gray-700' : ''">
-                    Combo Menus
+                    <span x-text="t('comboMenus')"></span>
                 </button>
                 <div class="border-t border-gray-700 mt-4 pt-4">
+                    <div class="text-xs uppercase text-gray-400 mb-2" x-text="t('language')"></div>
+                    <div class="flex gap-2">
+                        <button type="button" @click="setLang('hr')"
+                            class="px-2 py-1 text-xs rounded border border-gray-700"
+                            :class="lang === 'hr' ? 'bg-gray-700 text-white' : 'text-gray-300'">HR</button>
+                        <button type="button" @click="setLang('en')"
+                            class="px-2 py-1 text-xs rounded border border-gray-700"
+                            :class="lang === 'en' ? 'bg-gray-700 text-white' : 'text-gray-300'">EN</button>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-4 pt-4">
                     <button @click="showPasswordModal = true" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition mb-1 text-gray-400">
-                        Change Password
+                        <span x-text="t('changePassword')"></span>
                     </button>
                     <button @click="logout()" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition text-red-400">
-                        Logout
+                        <span x-text="t('logout')"></span>
                     </button>
                 </div>
             </nav>
@@ -70,20 +90,19 @@
             <!-- Categories List -->
             <div x-show="currentView === 'categories'">
                 <div class="flex justify-between items-center mb-6">
-                    <h1 class="text-2xl font-bold text-gray-800">Menu Categories</h1>
-                    <button @click="openCategoryModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">
-                        + Add Category
-                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800" x-text="t('menuCategories')"></h1>
+                    <button @click="openCategoryModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition"
+                        x-text="t('addCategory')"></button>
                 </div>
                 <div class="bg-white rounded-lg shadow">
                     <table class="w-full">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Order</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (CRO)</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (EN)</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Dishes</th>
-                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('order')"></th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('nameCroShort')"></th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('nameEnShort')"></th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('dishes')"></th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase" x-text="t('actions')"></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
@@ -102,8 +121,8 @@
                                     <td class="px-6 py-4 text-sm text-gray-500" x-text="cat.nameEn"></td>
                                     <td class="px-6 py-4 text-sm text-gray-500" x-text="cat.dishCount"></td>
                                     <td class="px-6 py-4 text-sm text-right" @click.stop>
-                                        <button @click="openCategoryModal(cat)" class="text-blue-600 hover:text-blue-800 mr-3">Edit</button>
-                                        <button @click="deleteCategory(cat.id)" class="text-red-600 hover:text-red-800">Delete</button>
+                                        <button @click="openCategoryModal(cat)" class="text-blue-600 hover:text-blue-800 mr-3" x-text="t('edit')"></button>
+                                        <button @click="deleteCategory(cat.id)" class="text-red-600 hover:text-red-800" x-text="t('delete')"></button>
                                     </td>
                                 </tr>
                             </template>
@@ -116,23 +135,25 @@
             <div x-show="currentView === 'dishes'">
                 <div class="flex justify-between items-center mb-6">
                     <div>
-                        <button @click="currentView = 'categories'" class="text-amber-700 hover:text-amber-800 text-sm mb-1">&larr; Back to Categories</button>
+                        <button @click="currentView = 'categories'" class="text-amber-700 hover:text-amber-800 text-sm mb-1">
+                            <span aria-hidden="true">&larr;</span>
+                            <span x-text="t('backToCategories')"></span>
+                        </button>
                         <h1 class="text-2xl font-bold text-gray-800" x-text="selectedCategory?.nameCro + ' / ' + selectedCategory?.nameEn"></h1>
                     </div>
-                    <button @click="openDishModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">
-                        + Add Dish
-                    </button>
+                    <button @click="openDishModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition"
+                        x-text="t('addDish')"></button>
                 </div>
                 <div class="bg-white rounded-lg shadow">
                     <table class="w-full">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Order</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">No.</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (CRO)</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (EN)</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Price (EUR)</th>
-                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('order')"></th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('numberShort')"></th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('nameCroShort')"></th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('nameEnShort')"></th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('priceEur')"></th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase" x-text="t('actions')"></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
@@ -152,30 +173,27 @@
                                     <td class="px-4 py-3 text-sm text-gray-500" x-text="dish.nameEn"></td>
                                     <td class="px-4 py-3 text-sm text-gray-900" x-text="parseFloat(dish.price).toFixed(2)"></td>
                                     <td class="px-4 py-3 text-sm">
-                                        <button @click="openDishModal(dish)" class="text-blue-600 hover:text-blue-800 mr-3">Edit</button>
-                                        <button @click="deleteDish(dish.id)" class="text-red-600 hover:text-red-800">Delete</button>
+                                        <button @click="openDishModal(dish)" class="text-blue-600 hover:text-blue-800 mr-3" x-text="t('edit')"></button>
+                                        <button @click="deleteDish(dish.id)" class="text-red-600 hover:text-red-800" x-text="t('delete')"></button>
                                     </td>
                                 </tr>
                             </template>
                         </tbody>
                     </table>
-                    <div x-show="dishes.length === 0" class="p-8 text-center text-gray-500">
-                        No dishes in this category yet.
-                    </div>
+                    <div x-show="dishes.length === 0" class="p-8 text-center text-gray-500" x-text="t('noDishes')"></div>
                 </div>
             </div>
 
             <!-- Combo Menus List -->
             <div x-show="currentView === 'comboMenus'">
                 <div class="flex justify-between items-center mb-6">
-                    <h1 class="text-2xl font-bold text-gray-800">Combo Menus</h1>
-                    <button @click="openComboModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">
-                        + Add Combo Menu
-                    </button>
+                    <h1 class="text-2xl font-bold text-gray-800" x-text="t('comboMenus')"></h1>
+                    <button @click="openComboModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition"
+                        x-text="t('addComboMenu')"></button>
                 </div>
                 <template x-for="pc in [2, 3, 4]" :key="pc">
                     <div class="mb-8">
-                        <h2 class="text-lg font-semibold text-gray-700 mb-3" x-text="'Menu for ' + pc + ' People'"></h2>
+                        <h2 class="text-lg font-semibold text-gray-700 mb-3" x-text="t('menuForPeople', { count: pc })"></h2>
                         <div class="grid gap-4" :class="comboMenusByPersonCount(pc).length > 1 ? 'md:grid-cols-2' : ''">
                             <template x-for="combo in comboMenusByPersonCount(pc)" :key="combo.id">
                                 <div class="bg-white rounded-lg shadow p-5">
@@ -185,8 +203,8 @@
                                             <p class="text-amber-700 font-semibold text-xl" x-text="parseFloat(combo.price).toFixed(2) + ' EUR'"></p>
                                         </div>
                                         <div class="flex gap-2">
-                                            <button @click="editComboMenu(combo)" class="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
-                                            <button @click="deleteComboMenu(combo.id)" class="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                                            <button @click="editComboMenu(combo)" class="text-blue-600 hover:text-blue-800 text-sm" x-text="t('edit')"></button>
+                                            <button @click="deleteComboMenu(combo.id)" class="text-red-600 hover:text-red-800 text-sm" x-text="t('delete')"></button>
                                         </div>
                                     </div>
                                     <ol class="list-decimal list-inside space-y-1">
@@ -200,25 +218,27 @@
                                 </div>
                             </template>
                         </div>
-                        <div x-show="comboMenusByPersonCount(pc).length === 0" class="bg-white rounded-lg shadow p-8 text-center text-gray-500">
-                            No combo menus for <span x-text="pc"></span> people.
-                        </div>
+                        <div x-show="comboMenusByPersonCount(pc).length === 0" class="bg-white rounded-lg shadow p-8 text-center text-gray-500"
+                            x-text="t('noComboMenus', { count: pc })"></div>
                     </div>
                 </template>
             </div>
 
             <!-- Combo Menu Edit -->
             <div x-show="currentView === 'comboMenuEdit'">
-                <button @click="currentView = 'comboMenus'; loadComboMenus()" class="text-amber-700 hover:text-amber-800 text-sm mb-4">&larr; Back to Combo Menus</button>
+                <button @click="currentView = 'comboMenus'; loadComboMenus()" class="text-amber-700 hover:text-amber-800 text-sm mb-4">
+                    <span aria-hidden="true">&larr;</span>
+                    <span x-text="t('backToComboMenus')"></span>
+                </button>
                 <div class="bg-white rounded-lg shadow p-6 max-w-2xl">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4" x-text="editingCombo.id ? 'Edit Combo Menu' : 'New Combo Menu'"></h2>
+                    <h2 class="text-xl font-bold text-gray-800 mb-4" x-text="editingCombo.id ? t('editComboMenu') : t('newComboMenu')"></h2>
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Name (e.g. Menu P1)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameExample')"></label>
                             <input type="text" x-model="editingCombo.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Person Count</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('personCount')"></label>
                             <select x-model="editingCombo.personCount" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -226,46 +246,45 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Name (CRO)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameCroShort')"></label>
                             <input type="text" x-model="editingCombo.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Name (EN)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameEnShort')"></label>
                             <input type="text" x-model="editingCombo.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Price (EUR)</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('priceEur')"></label>
                             <input type="number" step="0.01" x-model="editingCombo.price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('sortOrder')"></label>
                             <input type="number" x-model="editingCombo.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                         </div>
                     </div>
-                    <button @click="saveComboMenu()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition mb-6">
-                        Save Menu Details
-                    </button>
+                    <button @click="saveComboMenu()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition mb-6"
+                        x-text="t('saveMenuDetails')"></button>
 
                     <!-- Items -->
                     <template x-if="editingCombo.id">
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-3 border-t pt-4">Menu Items</h3>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-3 border-t pt-4" x-text="t('menuItems')"></h3>
                             <div class="space-y-2 mb-4">
                                 <template x-for="(item, idx) in editingCombo.items || []" :key="item.id || idx">
                                     <div class="flex items-center gap-2 bg-gray-50 p-3 rounded">
                                         <span class="text-sm text-gray-500 w-8" x-text="item.itemNumber + '.'"></span>
-                                        <input type="text" x-model="item.nameCro" placeholder="Name (CRO)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                        <input type="text" x-model="item.nameEn" placeholder="Name (EN)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                        <button @click="saveComboItem(item)" class="text-green-600 hover:text-green-800 text-sm">Save</button>
-                                        <button @click="deleteComboItem(item.id)" class="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                                        <input type="text" x-model="item.nameCro" :placeholder="t('nameCroShort')" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                        <input type="text" x-model="item.nameEn" :placeholder="t('nameEnShort')" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                        <button @click="saveComboItem(item)" class="text-green-600 hover:text-green-800 text-sm" x-text="t('save')"></button>
+                                        <button @click="deleteComboItem(item.id)" class="text-red-600 hover:text-red-800 text-sm" x-text="t('delete')"></button>
                                     </div>
                                 </template>
                             </div>
                             <div class="flex items-center gap-2 bg-blue-50 p-3 rounded">
                                 <span class="text-sm text-gray-500 w-8" x-text="((editingCombo.items || []).length + 1) + '.'"></span>
-                                <input type="text" x-model="newItem.nameCro" placeholder="New item (CRO)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                <input type="text" x-model="newItem.nameEn" placeholder="New item (EN)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                                <button @click="addComboItem()" class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">Add</button>
+                                <input type="text" x-model="newItem.nameCro" :placeholder="t('newItemCro')" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                <input type="text" x-model="newItem.nameEn" :placeholder="t('newItemEn')" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                <button @click="addComboItem()" class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700" x-text="t('add')"></button>
                             </div>
                         </div>
                     </template>
@@ -278,22 +297,22 @@
     <!-- Category Modal -->
     <div x-show="showCategoryModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click.self="showCategoryModal = false">
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            <h2 class="text-xl font-bold mb-4" x-text="editingCategory.id ? 'Edit Category' : 'New Category'"></h2>
+            <h2 class="text-xl font-bold mb-4" x-text="editingCategory.id ? t('editCategory') : t('newCategory')"></h2>
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Name (Croatian)</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameCroLong')"></label>
                 <input type="text" x-model="editingCategory.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Name (English)</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameEnLong')"></label>
                 <input type="text" x-model="editingCategory.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('sortOrder')"></label>
                 <input type="number" x-model="editingCategory.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div class="flex justify-end gap-3">
-                <button @click="showCategoryModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Cancel</button>
-                <button @click="saveCategory()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800">Save</button>
+                <button @click="showCategoryModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50" x-text="t('cancel')"></button>
+                <button @click="saveCategory()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800" x-text="t('save')"></button>
             </div>
         </div>
     </div>
@@ -301,32 +320,32 @@
     <!-- Dish Modal -->
     <div x-show="showDishModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click.self="showDishModal = false">
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            <h2 class="text-xl font-bold mb-4" x-text="editingDish.id ? 'Edit Dish' : 'New Dish'"></h2>
+            <h2 class="text-xl font-bold mb-4" x-text="editingDish.id ? t('editDish') : t('newDish')"></h2>
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Dish Number</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('dishNumber')"></label>
                     <input type="text" x-model="editingDish.dishNumber" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('sortOrder')"></label>
                     <input type="number" x-model="editingDish.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
             </div>
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Name (Croatian)</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameCroLong')"></label>
                 <input type="text" x-model="editingDish.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Name (English)</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameEnLong')"></label>
                 <input type="text" x-model="editingDish.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div class="mb-6">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Price (EUR)</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('priceEur')"></label>
                 <input type="number" step="0.01" x-model="editingDish.price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div class="flex justify-end gap-3">
-                <button @click="showDishModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Cancel</button>
-                <button @click="saveDish()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800">Save</button>
+                <button @click="showDishModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50" x-text="t('cancel')"></button>
+                <button @click="saveDish()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800" x-text="t('save')"></button>
             </div>
         </div>
     </div>
@@ -334,42 +353,42 @@
     <!-- Combo Menu Modal (for creating new) -->
     <div x-show="showComboModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click.self="showComboModal = false">
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-            <h2 class="text-xl font-bold mb-4">New Combo Menu</h2>
+            <h2 class="text-xl font-bold mb-4" x-text="t('newComboMenu')"></h2>
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Name (e.g. Menu P7)</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameExampleNew')"></label>
                 <input type="text" x-model="newCombo.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
             </div>
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Person Count</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('personCount')"></label>
                 <select x-model="newCombo.personCount" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                    <option value="2">2 people</option>
-                    <option value="3">3 people</option>
-                    <option value="4">4 people</option>
+                    <option value="2" x-text="t('peopleCountOption', { count: 2 })"></option>
+                    <option value="3" x-text="t('peopleCountOption', { count: 3 })"></option>
+                    <option value="4" x-text="t('peopleCountOption', { count: 4 })"></option>
                 </select>
             </div>
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Name (CRO)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameCroShort')"></label>
                     <input type="text" x-model="newCombo.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Name (EN)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('nameEnShort')"></label>
                     <input type="text" x-model="newCombo.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Price (EUR)</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('priceEur')"></label>
                     <input type="number" step="0.01" x-model="newCombo.price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('sortOrder')"></label>
                     <input type="number" x-model="newCombo.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
             </div>
             <div class="flex justify-end gap-3">
-                <button @click="showComboModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Cancel</button>
-                <button @click="createComboMenu()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800">Create</button>
+                <button @click="showComboModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50" x-text="t('cancel')"></button>
+                <button @click="createComboMenu()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800" x-text="t('create')"></button>
             </div>
         </div>
     </div>
@@ -382,16 +401,16 @@
     <!-- Password Modal -->
     <div x-show="showPasswordModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" x-cloak>
         <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm">
-            <h2 class="text-xl font-bold mb-4">Change Password</h2>
+            <h2 class="text-xl font-bold mb-4" x-text="t('changePasswordTitle')"></h2>
             <form @submit.prevent="changePassword()">
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-1" x-text="t('newPassword')"></label>
                     <input type="password" x-model="newPassword" required minlength="6"
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
                 </div>
                 <div class="flex justify-end gap-3">
-                    <button type="button" @click="showPasswordModal = false" class="px-4 py-2 text-gray-600 hover:text-gray-800">Cancel</button>
-                    <button type="submit" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">Update Password</button>
+                    <button type="button" @click="showPasswordModal = false" class="px-4 py-2 text-gray-600 hover:text-gray-800" x-text="t('cancel')"></button>
+                    <button type="submit" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition" x-text="t('updatePassword')"></button>
                 </div>
             </form>
         </div>
@@ -408,6 +427,157 @@ function adminApp() {
     const apiBase = pathParts.join('/') || '';
 
     return {
+        lang: 'hr',
+        i18n: {
+            en: {
+                adminTitle: 'Peking Admin',
+                cmsTitle: 'Peking CMS',
+                username: 'Username',
+                password: 'Password',
+                login: 'Log In',
+                loggedInAs: 'Logged in as {name}',
+                menuCategories: 'Menu Categories',
+                comboMenus: 'Combo Menus',
+                changePassword: 'Change Password',
+                logout: 'Logout',
+                language: 'Language',
+                order: 'Order',
+                numberShort: 'No.',
+                nameCroShort: 'Name (CRO)',
+                nameEnShort: 'Name (EN)',
+                nameCroLong: 'Name (Croatian)',
+                nameEnLong: 'Name (English)',
+                dishes: 'Dishes',
+                actions: 'Actions',
+                addCategory: '+ Add Category',
+                addDish: '+ Add Dish',
+                addComboMenu: '+ Add Combo Menu',
+                backToCategories: 'Back to Categories',
+                backToComboMenus: 'Back to Combo Menus',
+                priceEur: 'Price (EUR)',
+                sortOrder: 'Sort Order',
+                dishNumber: 'Dish Number',
+                noDishes: 'No dishes in this category yet.',
+                menuForPeople: 'Menu for {count} people',
+                noComboMenus: 'No combo menus for {count} people.',
+                edit: 'Edit',
+                delete: 'Delete',
+                save: 'Save',
+                cancel: 'Cancel',
+                create: 'Create',
+                newCategory: 'New Category',
+                editCategory: 'Edit Category',
+                newDish: 'New Dish',
+                editDish: 'Edit Dish',
+                newComboMenu: 'New Combo Menu',
+                editComboMenu: 'Edit Combo Menu',
+                nameExample: 'Name (e.g. Menu P1)',
+                nameExampleNew: 'Name (e.g. Menu P7)',
+                personCount: 'Person Count',
+                peopleCountOption: '{count} people',
+                saveMenuDetails: 'Save Menu Details',
+                menuItems: 'Menu Items',
+                newItemCro: 'New item (CRO)',
+                newItemEn: 'New item (EN)',
+                add: 'Add',
+                changePasswordTitle: 'Change Password',
+                newPassword: 'New Password',
+                updatePassword: 'Update Password',
+                categoryUpdated: 'Category updated',
+                categoryCreated: 'Category created',
+                categoryDeleted: 'Category deleted',
+                categoriesReordered: 'Categories reordered',
+                dishUpdated: 'Dish updated',
+                dishCreated: 'Dish created',
+                dishDeleted: 'Dish deleted',
+                dishesReordered: 'Dishes reordered',
+                comboMenuCreated: 'Combo menu created',
+                comboMenuSaved: 'Combo menu saved',
+                comboMenuDeleted: 'Combo menu deleted',
+                itemAdded: 'Item added',
+                itemUpdated: 'Item updated',
+                itemDeleted: 'Item deleted',
+                passwordUpdated: 'Password updated successfully',
+                deleteCategoryConfirm: 'Delete this category and ALL its dishes?',
+                deleteDishConfirm: 'Delete this dish?',
+                deleteComboMenuConfirm: 'Delete this combo menu and all its items?',
+                deleteItemConfirm: 'Delete this item?'
+            },
+            hr: {
+                adminTitle: 'Peking Admin',
+                cmsTitle: 'Peking CMS',
+                username: 'Korisnicko ime',
+                password: 'Lozinka',
+                login: 'Prijava',
+                loggedInAs: 'Prijavljen kao {name}',
+                menuCategories: 'Kategorije menija',
+                comboMenus: 'Combo meniji',
+                changePassword: 'Promijeni lozinku',
+                logout: 'Odjava',
+                language: 'Jezik',
+                order: 'Redoslijed',
+                numberShort: 'Br.',
+                nameCroShort: 'Naziv (CRO)',
+                nameEnShort: 'Naziv (EN)',
+                nameCroLong: 'Naziv (hrvatski)',
+                nameEnLong: 'Naziv (engleski)',
+                dishes: 'Jela',
+                actions: 'Akcije',
+                addCategory: '+ Dodaj kategoriju',
+                addDish: '+ Dodaj jelo',
+                addComboMenu: '+ Dodaj combo meni',
+                backToCategories: 'Natrag na kategorije',
+                backToComboMenus: 'Natrag na combo menije',
+                priceEur: 'Cijena (EUR)',
+                sortOrder: 'Redoslijed',
+                dishNumber: 'Broj jela',
+                noDishes: 'Nema jela u ovoj kategoriji.',
+                menuForPeople: 'Meni za {count} osobe',
+                noComboMenus: 'Nema combo menija za {count} osobe.',
+                edit: 'Uredi',
+                delete: 'Obrisi',
+                save: 'Spremi',
+                cancel: 'Odustani',
+                create: 'Kreiraj',
+                newCategory: 'Nova kategorija',
+                editCategory: 'Uredi kategoriju',
+                newDish: 'Novo jelo',
+                editDish: 'Uredi jelo',
+                newComboMenu: 'Novi combo meni',
+                editComboMenu: 'Uredi combo meni',
+                nameExample: 'Naziv (npr. Menu P1)',
+                nameExampleNew: 'Naziv (npr. Menu P7)',
+                personCount: 'Broj osoba',
+                peopleCountOption: '{count} osoba',
+                saveMenuDetails: 'Spremi detalje menija',
+                menuItems: 'Stavke menija',
+                newItemCro: 'Nova stavka (CRO)',
+                newItemEn: 'Nova stavka (EN)',
+                add: 'Dodaj',
+                changePasswordTitle: 'Promijeni lozinku',
+                newPassword: 'Nova lozinka',
+                updatePassword: 'Azuriraj lozinku',
+                categoryUpdated: 'Kategorija azurirana',
+                categoryCreated: 'Kategorija kreirana',
+                categoryDeleted: 'Kategorija obrisana',
+                categoriesReordered: 'Kategorije poslozene',
+                dishUpdated: 'Jelo azurirano',
+                dishCreated: 'Jelo kreirano',
+                dishDeleted: 'Jelo obrisano',
+                dishesReordered: 'Jela poslozena',
+                comboMenuCreated: 'Combo meni kreiran',
+                comboMenuSaved: 'Combo meni spremljen',
+                comboMenuDeleted: 'Combo meni obrisan',
+                itemAdded: 'Stavka dodana',
+                itemUpdated: 'Stavka azurirana',
+                itemDeleted: 'Stavka obrisana',
+                passwordUpdated: 'Lozinka azurirana',
+                deleteCategoryConfirm: 'Obrisati ovu kategoriju i SVA njezina jela?',
+                deleteDishConfirm: 'Obrisati ovo jelo?',
+                deleteComboMenuConfirm: 'Obrisati ovaj combo meni i sve stavke?',
+                deleteItemConfirm: 'Obrisati ovu stavku?'
+            }
+        },
         // Auth state
         loggedIn: false,
         username: '',
@@ -442,6 +612,10 @@ function adminApp() {
 
         async init() {
             try {
+                const savedLang = localStorage.getItem('adminLang');
+                if (savedLang && this.i18n[savedLang]) {
+                    this.lang = savedLang;
+                }
                 const res = await this.api('GET', '/api/auth/me');
                 this.csrfToken = res.csrfToken;
                 if (res.authenticated) {
@@ -452,6 +626,22 @@ function adminApp() {
             } catch (e) {
                 console.error('Init failed:', e);
             }
+        },
+
+        setLang(lang) {
+            if (this.i18n[lang]) {
+                this.lang = lang;
+                localStorage.setItem('adminLang', lang);
+            }
+        },
+
+        t(key, params = {}) {
+            const dictionary = this.i18n[this.lang] || {};
+            let text = dictionary[key] || key;
+            Object.keys(params).forEach((param) => {
+                text = text.replace(`{${param}}`, params[param]);
+            });
+            return text;
         },
 
         // --- API Helper ---
@@ -557,10 +747,10 @@ function adminApp() {
             try {
                 if (this.editingCategory.id) {
                     await this.api('PUT', `/api/categories/${this.editingCategory.id}`, this.editingCategory);
-                    this.showToast('Category updated');
+                    this.showToast(this.t('categoryUpdated'));
                 } else {
                     await this.api('POST', '/api/categories', this.editingCategory);
-                    this.showToast('Category created');
+                    this.showToast(this.t('categoryCreated'));
                 }
                 this.showCategoryModal = false;
                 await this.loadCategories();
@@ -582,7 +772,7 @@ function adminApp() {
             try {
                 const ids = this.categories.map(c => c.id);
                 await this.api('POST', '/api/categories/reorder', { ids });
-                this.showToast('Categories reordered');
+                this.showToast(this.t('categoriesReordered'));
                 await this.loadCategories(); // Refresh to get correct sortOrder numbers
             } catch (e) {
                 this.showToast(e.message, 'error');
@@ -591,10 +781,10 @@ function adminApp() {
         },
 
         async deleteCategory(id) {
-            if (!confirm('Delete this category and ALL its dishes?')) return;
+            if (!confirm(this.t('deleteCategoryConfirm'))) return;
             try {
                 await this.api('DELETE', `/api/categories/${id}`);
-                this.showToast('Category deleted');
+                this.showToast(this.t('categoryDeleted'));
                 await this.loadCategories();
             } catch (e) {
                 this.showToast(e.message, 'error');
@@ -619,10 +809,10 @@ function adminApp() {
             try {
                 if (this.editingDish.id) {
                     await this.api('PUT', `/api/dishes/${this.editingDish.id}`, this.editingDish);
-                    this.showToast('Dish updated');
+                    this.showToast(this.t('dishUpdated'));
                 } else {
                     await this.api('POST', '/api/dishes', this.editingDish);
-                    this.showToast('Dish created');
+                    this.showToast(this.t('dishCreated'));
                 }
                 this.showDishModal = false;
                 this.dishes = await this.api('GET', `/api/dishes?categoryId=${this.selectedCategory.id}`);
@@ -645,7 +835,7 @@ function adminApp() {
             try {
                 const ids = this.dishes.map(d => d.id);
                 await this.api('POST', '/api/dishes/reorder', { ids });
-                this.showToast('Dishes reordered');
+                this.showToast(this.t('dishesReordered'));
                 // Refresh to get correct sortOrder numbers
                 this.dishes = await this.api('GET', `/api/dishes?categoryId=${this.selectedCategory.id}`);
             } catch (e) {
@@ -656,10 +846,10 @@ function adminApp() {
         },
 
         async deleteDish(id) {
-            if (!confirm('Delete this dish?')) return;
+            if (!confirm(this.t('deleteDishConfirm'))) return;
             try {
                 await this.api('DELETE', `/api/dishes/${id}`);
-                this.showToast('Dish deleted');
+                this.showToast(this.t('dishDeleted'));
                 this.dishes = await this.api('GET', `/api/dishes?categoryId=${this.selectedCategory.id}`);
                 await this.loadCategories();
             } catch (e) {
@@ -685,7 +875,7 @@ function adminApp() {
             try {
                 const created = await this.api('POST', '/api/comboMenus', this.newCombo);
                 this.showComboModal = false;
-                this.showToast('Combo menu created');
+                this.showToast(this.t('comboMenuCreated'));
                 this.editingCombo = created;
                 this.currentView = 'comboMenuEdit';
             } catch (e) {
@@ -702,7 +892,7 @@ function adminApp() {
         async saveComboMenu() {
             try {
                 await this.api('PUT', `/api/comboMenus/${this.editingCombo.id}`, this.editingCombo);
-                this.showToast('Combo menu saved');
+                this.showToast(this.t('comboMenuSaved'));
                 await this.loadComboMenus();
                 // Refresh editingCombo with latest data
                 this.editingCombo = await this.api('GET', `/api/comboMenus/${this.editingCombo.id}`);
@@ -712,10 +902,10 @@ function adminApp() {
         },
 
         async deleteComboMenu(id) {
-            if (!confirm('Delete this combo menu and all its items?')) return;
+            if (!confirm(this.t('deleteComboMenuConfirm'))) return;
             try {
                 await this.api('DELETE', `/api/comboMenus/${id}`);
-                this.showToast('Combo menu deleted');
+                this.showToast(this.t('comboMenuDeleted'));
                 await this.loadComboMenus();
             } catch (e) {
                 this.showToast(e.message, 'error');
@@ -734,7 +924,7 @@ function adminApp() {
                 });
                 this.newItem = { nameCro: '', nameEn: '' };
                 this.editingCombo = await this.api('GET', `/api/comboMenus/${this.editingCombo.id}`);
-                this.showToast('Item added');
+                this.showToast(this.t('itemAdded'));
             } catch (e) {
                 this.showToast(e.message, 'error');
             }
@@ -743,18 +933,18 @@ function adminApp() {
         async saveComboItem(item) {
             try {
                 await this.api('PUT', `/api/comboMenus/${this.editingCombo.id}/items/${item.id}`, item);
-                this.showToast('Item updated');
+                this.showToast(this.t('itemUpdated'));
             } catch (e) {
                 this.showToast(e.message, 'error');
             }
         },
 
         async deleteComboItem(itemId) {
-            if (!confirm('Delete this item?')) return;
+            if (!confirm(this.t('deleteItemConfirm'))) return;
             try {
                 await this.api('DELETE', `/api/comboMenus/${this.editingCombo.id}/items/${itemId}`);
                 this.editingCombo = await this.api('GET', `/api/comboMenus/${this.editingCombo.id}`);
-                this.showToast('Item deleted');
+                this.showToast(this.t('itemDeleted'));
             } catch (e) {
                 this.showToast(e.message, 'error');
             }
@@ -763,7 +953,7 @@ function adminApp() {
         async changePassword() {
             try {
                 await this.api('POST', '/api/auth/change-password', { newPassword: this.newPassword });
-                this.showToast('Password updated successfully');
+                this.showToast(this.t('passwordUpdated'));
                 this.showPasswordModal = false;
                 this.newPassword = '';
             } catch (e) {
