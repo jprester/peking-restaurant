@@ -1,5 +1,5 @@
 
-                <div id="title">
+                <div class="page-title">
                     <h1><img src="<?= BASE_URL ?>/img/title1.png" width="129" height="56" alt="Peking"></h1>
                 </div>
             </div>
@@ -20,7 +20,7 @@
     </div>
 
     <!-- Content Sections -->
-    <div id="down_bg">
+    <div class="down-bg">
         <div class="container content-grid">
             <div class="content-col">
                 <h3 class="dtitle">&Scaron;to nudimo</h3>

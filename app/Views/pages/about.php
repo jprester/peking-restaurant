@@ -1,12 +1,12 @@
 
-                <div id="title">
+                <div class="page-title">
                     <h1><img src="<?= BASE_URL ?>/img/title2.png" width="130" height="53" alt="O nama"></h1>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="page_down">
+    <div class="page-down">
         <div class="container content-grid">
             <div class="content-col">
                 <p class="txt3">Dragi na&scaron;i gosti,<br><br>

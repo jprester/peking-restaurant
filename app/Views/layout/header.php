@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div id="main">
+<div class="main">
 
     <!-- Mobile Header -->
     <div class="mob-head">
@@ -33,14 +33,14 @@
     </nav>
 
     <!-- Header -->
-    <div id="head_bg">
+    <div class="head-bg">
         <div class="container">
-            <div id="header">
-                <div id="logo">
+            <div class="site-header">
+                <div class="site-logo">
                     <a href="<?= BASE_URL ?>/"><img src="<?= BASE_URL ?>/img/logo.png" width="134" height="130" alt="Peking logo"></a>
                 </div>
 
-                <nav id="navigation">
+                <nav class="site-nav">
                     <ul>
                         <li><a href="<?= BASE_URL ?>/" class="<?= ($activePage ?? '') === 'home' ? 'pressed' : '' ?>">Početna</a></li>
                         <li><a href="<?= BASE_URL ?>/about" class="<?= ($activePage ?? '') === 'about' ? 'pressed' : '' ?>">O nama</a></li>

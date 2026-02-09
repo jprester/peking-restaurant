@@ -1,12 +1,12 @@
 
-                <div id="title">
+                <div class="page-title">
                     <h1><img src="<?= BASE_URL ?>/img/title4.png" width="105" height="60" alt="Kontakt"></h1>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="page_down">
+    <div class="page-down">
         <div class="container content-grid">
             <div class="content-col">
                 <p class="txt3"><br>
@@ -47,7 +47,7 @@
 
             <div class="content-col">
                 <br><br>
-                <div id="map">
+                <div class="map">
                     <iframe width="100%" height="350" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.0!2d15.9595!3d45.8126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d6f3c7e3d9ab%3A0x0!2sIlica+114%2C+10000+Zagreb!5e0!3m2!1shr!2shr!4v1700000000000!5m2!1shr!2shr">
                     </iframe>

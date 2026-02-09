@@ -1,21 +1,21 @@
 
-                <div id="title">
+                <div class="page-title">
                     <h1><img src="<?= BASE_URL ?>/img/title3.png"  alt="Meni"></h1>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="page_down">
+    <div class="page-down">
         <div class="container menu-layout">
 
             <?php include APP_ROOT . '/Views/partials/menuSidebar.php'; ?>
 
             <!-- Combo Menus -->
-            <div id="jelovnik">
+            <div class="jelovnik">
                 <?php foreach ($menus as $menu): ?>
-                    <div id="jelovnik_top"></div>
-                    <div id="jelovnik_content">
+                    <div class="jelovnik-top"></div>
+                    <div class="jelovnik-content">
                         <table class="meni-table">
                             <tr>
                                 <td colspan="3" class="table_naslov">
@@ -38,7 +38,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div id="jelovnik_bottom"></div>
+                    <div class="jelovnik-bottom"></div>
                     <br>
                 <?php endforeach; ?>
 

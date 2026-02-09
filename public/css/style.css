@@ -176,33 +176,33 @@ p {
   color: #e8d0c6;
 }
 
-#head_bg {
+.head-bg {
   background: #392222 url("../img/main_bg.png") repeat-x top;
   min-height: 205px;
 }
 
-#header {
+.site-header {
   height: 155px;
   position: relative;
 }
 
-#logo {
+.site-logo {
   position: absolute;
   top: 0;
   opacity: 0.85;
 }
 
 /* --- Navigation --- */
-#navigation {
+.site-nav {
   text-align: center;
 }
 
-#navigation ul {
+.site-nav ul {
   display: inline-flex;
   gap: 0;
 }
 
-#navigation ul li a {
+.site-nav ul li a {
   display: block;
   padding: 11px 25px;
   border-left: 1px solid #3b2222;
@@ -215,10 +215,10 @@ p {
   transition: color 0.2s;
 }
 
-#navigation ul li a:hover {
+.site-nav ul li a:hover {
   color: #ccc;
 }
-#navigation ul li a.pressed {
+.site-nav ul li a.pressed {
   color: #8c574b;
 }
 
@@ -304,7 +304,7 @@ p {
 /* ==========================================================================
    Title
    ========================================================================== */
-#title {
+.page-title {
   text-align: center;
   margin-top: 45px;
 }
@@ -344,12 +344,12 @@ p {
 /* ==========================================================================
    Content Sections (Home / About / Contact)
    ========================================================================== */
-#down_bg {
+.down-bg {
   background: url("../img/net_pattern3.jpg");
   padding: 20px 0 40px;
 }
 
-#page_down {
+.page-down {
   padding: 20px 0 40px;
 }
 
@@ -489,22 +489,22 @@ p {
 }
 
 /* --- Dish Table (jelovnik) --- */
-#jelovnik {
+.jelovnik {
   width: 400px;
   margin: 20px auto 0;
 }
 
-#jelovnik_top {
+.jelovnik-top {
   height: 23px;
   background: url("../img/meni_top.gif") no-repeat;
 }
 
-#jelovnik_content {
+.jelovnik-content {
   background: url("../img/meni_mid.gif") repeat-y;
   padding: 10px;
 }
 
-#jelovnik_bottom {
+.jelovnik-bottom {
   height: 26px;
   background: url("../img/meni_bottom.gif") no-repeat;
 }
@@ -602,7 +602,7 @@ p {
   margin: 8px 0;
 }
 
-#map {
+.map {
   text-align: center;
   padding: 5px;
   border: 1px solid #ccc;
@@ -611,7 +611,7 @@ p {
   border-radius: 4px;
 }
 
-#map iframe {
+.map iframe {
   max-width: 100%;
   border-radius: 2px;
 }
@@ -619,11 +619,11 @@ p {
 /* ==========================================================================
    Footer
    ========================================================================== */
-#foot_bg {
+.foot-bg {
   background: #200 url("../img/foot_bg2.gif") repeat-x top;
 }
 
-#footer {
+.site-footer {
   color: #fff;
   padding: 15px 0;
   text-align: center;
@@ -633,16 +633,16 @@ p {
   gap: 20px;
 }
 
-#footer p {
+.site-footer p {
   color: #b57f6f;
   font-family: "Rufina", Arial, sans-serif;
   font-size: 11px;
 }
 
-#footer p a {
+.site-footer p a {
   color: #b57f6f;
 }
-#footer p a:hover {
+.site-footer p a:hover {
   color: #ccc;
 }
 
@@ -661,14 +661,14 @@ p {
   .mob-toggle {
     display: block;
   }
-  #navigation {
+  .site-nav {
     display: none;
   }
-  #logo {
+  .site-logo {
     display: none;
   }
 
-  #head_bg {
+  .head-bg {
     display: none;
   }
 
@@ -688,12 +688,12 @@ p {
     display: block;
   }
 
-  #jelovnik {
+  .jelovnik {
     width: 100%;
     max-width: 400px;
   }
 
-  #title {
+  .page-title {
     margin-top: 20px;
   }
   .slider-wrapper {
@@ -708,11 +708,11 @@ p {
   body {
     font-size: 14px;
   }
-  #title {
+  .page-title {
     margin-top: 10px;
   }
 
-  #jelovnik {
+  .jelovnik {
     width: 100%;
     max-width: 350px;
   }
@@ -721,13 +721,13 @@ p {
     width: 100%;
   }
 
-  #jelovnik_top {
+  .jelovnik-top {
     background-image: url("../img/meni_top_small.gif");
   }
-  #jelovnik_content {
+  .jelovnik-content {
     background-image: url("../img/meni_mid_small.gif");
   }
-  #jelovnik_bottom {
+  .jelovnik-bottom {
     background-image: url("../img/meni_bottom_small.gif");
   }
 }
