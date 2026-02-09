@@ -9,7 +9,7 @@
     <div class="page-down">
         <div class="container content-grid">
             <div class="content-col">
-                <p class="txt3"><br>
+                <p class="text-body"><br>
                     Za sve potrebne informacije, mo&zcaron;ete nas kontaktirati<br>
                     putem telefona ili e-maila:
                 </p>
@@ -17,10 +17,10 @@
                 <div class="contact-block">
                     <h3>Poslovnica 1</h3>
                     <hr>
-                    <p class="txt2"><strong>Telefon</strong>: +385 91 3776361</p>
-                    <p class="txt2"><strong>E-mail</strong>: info@peking.hr</p>
-                    <p class="txt2"><strong>Adresa</strong>: Zagreb, Ilica 114</p>
-                    <p class="txt2"><strong>Radno vrijeme</strong>:<br>
+                    <p class="text-secondary"><strong>Telefon</strong>: +385 91 3776361</p>
+                    <p class="text-secondary"><strong>E-mail</strong>: info@peking.hr</p>
+                    <p class="text-secondary"><strong>Adresa</strong>: Zagreb, Ilica 114</p>
+                    <p class="text-secondary"><strong>Radno vrijeme</strong>:<br>
                         Ponedjeljak - subota od 11:30h do 23h<br>
                         Nedjelja od 11:30h-22h
                     </p>
@@ -31,18 +31,18 @@
                 <div class="contact-block">
                     <h3>Poslovnica 2</h3>
                     <hr>
-                    <p class="txt2"><strong>Telefon</strong>: +385 91 3776362</p>
-                    <p class="txt2"><strong>E-mail</strong>: zagrebacka@peking.hr</p>
-                    <p class="txt2"><strong>Adresa</strong>: Zagreb, Zagreba&ccaron;ka c. 191</p>
-                    <p class="txt2"><strong>Radno vrijeme</strong>:<br>
+                    <p class="text-secondary"><strong>Telefon</strong>: +385 91 3776362</p>
+                    <p class="text-secondary"><strong>E-mail</strong>: zagrebacka@peking.hr</p>
+                    <p class="text-secondary"><strong>Adresa</strong>: Zagreb, Zagreba&ccaron;ka c. 191</p>
+                    <p class="text-secondary"><strong>Radno vrijeme</strong>:<br>
                         Ponedjeljak - subota od 11:30h do 23h<br>
                         Nedjelja od 11:30h-22h
                     </p>
                 </div>
 
                 <br>
-                <p class="txt2">Dostava: besplatna dostava (minimalna narud&zcaron;ba je 7 eura na podru&ccaron;ju centra ili po dogovoru)</p>
-                <p class="txt2">Restoran zadr&zcaron;ava pravo promjene cijena!</p>
+                <p class="text-secondary">Dostava: besplatna dostava (minimalna narud&zcaron;ba je 7 eura na podru&ccaron;ju centra ili po dogovoru)</p>
+                <p class="text-secondary">Restoran zadr&zcaron;ava pravo promjene cijena!</p>
             </div>
 
             <div class="content-col">

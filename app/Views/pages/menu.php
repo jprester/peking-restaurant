@@ -12,16 +12,16 @@
             <?php include APP_ROOT . '/Views/partials/menuSidebar.php'; ?>
 
             <!-- Main Image -->
-            <div class="jelovnik">
-                <div class="jelovnik-top"></div>
-                <div class="jelovnik-content">
+            <div class="dish-menu">
+                <div class="dish-menu-top"></div>
+                <div class="dish-menu-content">
                     <br>
-                    <p class="jelovnik_mainpic"><img src="<?= BASE_URL ?>/img/jelovnik_pic2.png" width="241" height="367" alt="Jelovnik"></p>
+                    <p class="dish-menu-mainpic"><img src="<?= BASE_URL ?>/img/jelovnik_pic2.png" width="241" height="367" alt="Jelovnik"></p>
                     <br>
                 </div>
-                <div class="jelovnik-bottom"></div>
+                <div class="dish-menu-bottom"></div>
                 <br>
-                <p class="text-center txt2" style="font-style: italic;">Sve cijene su izražene u EUR</p>
+                <p class="text-center text-secondary" style="font-style: italic;">Sve cijene su izražene u EUR</p>
             </div>
 
         </div>

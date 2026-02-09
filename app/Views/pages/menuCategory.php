@@ -12,32 +12,32 @@
             <?php include APP_ROOT . '/Views/partials/menuSidebar.php'; ?>
 
             <!-- Dish Table -->
-            <div class="jelovnik">
-                <div class="jelovnik-top"></div>
-                <div class="jelovnik-content">
-                    <table class="meni-table">
+            <div class="dish-menu">
+                <div class="dish-menu-top"></div>
+                <div class="dish-menu-content">
+                    <table class="menu-table">
                         <tr>
-                            <td colspan="3" class="table_naslov">
+                            <td colspan="3" class="table-title">
                                 <?= htmlspecialchars($category['nameCro']) ?>
                                 / <?= htmlspecialchars($category['nameEn']) ?>
                             </td>
                         </tr>
                         <?php foreach ($dishes as $dish): ?>
                             <tr>
-                                <td class="td-broj"><?= htmlspecialchars($dish['dishNumber']) ?></td>
-                                <td class="td-jelo">
+                                <td class="td-number"><?= htmlspecialchars($dish['dishNumber']) ?></td>
+                                <td class="td-dish">
                                     <strong><?= htmlspecialchars($dish['nameCro']) ?></strong><br>
                                     <span class="dish-en"><?= htmlspecialchars($dish['nameEn']) ?></span>
                                 </td>
-                                <td class="td-cijena"><?= number_format((float) $dish['price'], 2, ',', '') ?> &euro;</td>
+                                <td class="td-price"><?= number_format((float) $dish['price'], 2, ',', '') ?> &euro;</td>
                             </tr>
                         <?php endforeach; ?>
                         <tr>
-                            <td colspan="3" class="t_bottom">&nbsp;</td>
+                            <td colspan="3" class="table-bottom">&nbsp;</td>
                         </tr>
                     </table>
                 </div>
-                <div class="jelovnik-bottom"></div>
+                <div class="dish-menu-bottom"></div>
             </div>
 
         </div>

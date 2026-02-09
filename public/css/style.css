@@ -70,20 +70,20 @@ p {
   margin: 10px 0;
 }
 
-.txt1 {
+.text-primary {
   color: #303030;
   font-size: 1em;
   font-family: "Rufina", Arial, serif;
 }
 
-.txt2 {
+.text-secondary {
   color: #333;
   font-size: 0.95em;
   font-family: "Rufina", Arial, Georgia, serif;
   line-height: 1.4;
 }
 
-.txt3 {
+.text-body {
   color: #333;
   font-size: 1em;
   font-family: "Rufina", serif, Arial;
@@ -382,7 +382,7 @@ p {
   flex: 1;
 }
 
-.dtitle {
+.section-title {
   height: 37px;
   background: url("../img/dtitle_bg2.png") repeat-x;
   color: #9f6f5b;
@@ -422,14 +422,14 @@ p {
 }
 
 /* --- Sidebar --- */
-.meni-list {
+.menu-list {
   flex: 0 0 220px;
 }
-.meni-list ul {
+.menu-list ul {
   margin-top: 30px;
 }
 
-.meni-list ul li {
+.menu-list ul li {
   text-align: center;
   margin-bottom: 5px;
   border-bottom: 1px dotted #793a2e;
@@ -437,14 +437,14 @@ p {
   transition: background-color 0.2s;
 }
 
-.meni-list ul li:hover {
+.menu-list ul li:hover {
   background-color: rgba(97, 25, 25, 0.05);
 }
-.meni-list ul li.active {
+.menu-list ul li.active {
   background-color: rgba(165, 116, 95, 0.08);
 }
 
-.meni-list ul li a {
+.menu-list ul li a {
   color: #611919;
   font-family: "Rufina", serif, Arial;
   font-size: 0.9em;
@@ -457,16 +457,16 @@ p {
     background-color 0.2s;
 }
 
-.meni-list ul li a:hover {
+.menu-list ul li a:hover {
   color: #ccc;
 }
 
-.meni-list ul li.active a {
+.menu-list ul li.active a {
   color: #a5745f;
   font-weight: bold;
 }
 
-.meni-list ul li .en-name {
+.menu-list ul li .en-name {
   display: block;
   font-size: 0.8em;
   color: #888;
@@ -474,7 +474,7 @@ p {
   font-style: italic;
 }
 
-.meni-list ul li.combo-link {
+.menu-list ul li.combo-link {
   border-bottom-color: #a5745f;
 }
 
@@ -483,39 +483,39 @@ p {
 }
 
 /* --- Menu Main Image --- */
-.jelovnik_mainpic {
+.dish-menu-mainpic {
   text-align: center;
   margin: 0 auto;
 }
 
-/* --- Dish Table (jelovnik) --- */
-.jelovnik {
+/* --- Dish Table (menu) --- */
+.dish-menu {
   width: 400px;
   margin: 20px auto 0;
 }
 
-.jelovnik-top {
+.dish-menu-top {
   height: 23px;
   background: url("../img/meni_top.gif") no-repeat;
 }
 
-.jelovnik-content {
+.dish-menu-content {
   background: url("../img/meni_mid.gif") repeat-y;
   padding: 10px;
 }
 
-.jelovnik-bottom {
+.dish-menu-bottom {
   height: 26px;
   background: url("../img/meni_bottom.gif") no-repeat;
 }
 
-.meni-table {
+.menu-table {
   margin: 0 auto;
   width: 360px;
   border-collapse: collapse;
 }
 
-.table_naslov {
+.table-title {
   font-family: "Rufina", Arial, serif;
   font-size: 16px;
   color: #611919;
@@ -526,27 +526,27 @@ p {
   padding-bottom: 8px;
 }
 
-.meni-table td {
+.menu-table td {
   padding: 6px 5px;
   line-height: 22px;
   vertical-align: top;
 }
 
-.td-broj {
+.td-number {
   font-family: "Rufina", Arial, serif;
   font-size: 12px;
   color: #555;
   width: 8%;
 }
 
-.td-jelo {
+.td-dish {
   font-family: "Rufina", Arial, serif;
   font-size: 13px;
   color: #333;
   width: 70%;
 }
 
-.td-cijena {
+.td-price {
   font-family: "Rufina", Arial, serif;
   font-size: 13px;
   color: #611919;
@@ -569,13 +569,13 @@ p {
   font-size: 1.05em;
 }
 
-.t_bottom {
+.table-bottom {
   background: #fffdd0 url("../img/meni_ukras.gif") no-repeat center;
   text-align: center;
   height: 30px;
 }
 
-.meni-table tr:nth-child(even) {
+.menu-table tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.015);
 }
 
@@ -681,14 +681,14 @@ p {
     flex-direction: column;
   }
 
-  .meni-list {
+  .menu-list {
     display: none;
   }
   .menu-mobile-nav {
     display: block;
   }
 
-  .jelovnik {
+  .dish-menu {
     width: 100%;
     max-width: 400px;
   }
@@ -712,22 +712,22 @@ p {
     margin-top: 10px;
   }
 
-  .jelovnik {
+  .dish-menu {
     width: 100%;
     max-width: 350px;
   }
 
-  .meni-table {
+  .menu-table {
     width: 100%;
   }
 
-  .jelovnik-top {
+  .dish-menu-top {
     background-image: url("../img/meni_top_small.gif");
   }
-  .jelovnik-content {
+  .dish-menu-content {
     background-image: url("../img/meni_mid_small.gif");
   }
-  .jelovnik-bottom {
+  .dish-menu-bottom {
     background-image: url("../img/meni_bottom_small.gif");
   }
 }

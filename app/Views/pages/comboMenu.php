@@ -12,38 +12,38 @@
             <?php include APP_ROOT . '/Views/partials/menuSidebar.php'; ?>
 
             <!-- Combo Menus -->
-            <div class="jelovnik">
+            <div class="dish-menu">
                 <?php foreach ($menus as $menu): ?>
-                    <div class="jelovnik-top"></div>
-                    <div class="jelovnik-content">
-                        <table class="meni-table">
+                    <div class="dish-menu-top"></div>
+                    <div class="dish-menu-content">
+                        <table class="menu-table">
                             <tr>
-                                <td colspan="3" class="table_naslov">
+                                <td colspan="3" class="table-title">
                                     <?= htmlspecialchars($menu['name']) ?>
                                     <span class="combo-price"><?= number_format((float) $menu['price'], 2, ',', '') ?> &euro;</span>
                                 </td>
                             </tr>
                             <?php foreach ($menu['items'] as $item): ?>
                                 <tr>
-                                    <td class="td-broj"><?= (int) $item['itemNumber'] ?></td>
-                                    <td class="td-jelo">
+                                    <td class="td-number"><?= (int) $item['itemNumber'] ?></td>
+                                    <td class="td-dish">
                                         <strong><?= htmlspecialchars($item['nameCro']) ?></strong><br>
                                         <span class="dish-en"><?= htmlspecialchars($item['nameEn']) ?></span>
                                     </td>
-                                    <td class="td-cijena"></td>
+                                    <td class="td-price"></td>
                                 </tr>
                             <?php endforeach; ?>
                             <tr>
-                                <td colspan="3" class="t_bottom">&nbsp;</td>
+                                <td colspan="3" class="table-bottom">&nbsp;</td>
                             </tr>
                         </table>
                     </div>
-                    <div class="jelovnik-bottom"></div>
+                    <div class="dish-menu-bottom"></div>
                     <br>
                 <?php endforeach; ?>
 
                 <?php if (empty($menus)): ?>
-                    <p class="txt3" style="text-align: center; padding: 20px;">
+                    <p class="text-body" style="text-align: center; padding: 20px;">
                         Nema dostupnih menija za <?= (int) $personCount ?> osobe.
                     </p>
                 <?php endif; ?>

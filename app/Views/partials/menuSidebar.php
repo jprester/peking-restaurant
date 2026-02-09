@@ -1,5 +1,5 @@
             <!-- Category Sidebar -->
-            <div class="meni-list">
+            <div class="menu-list">
                 <ul>
                     <?php foreach ($categories as $cat): ?>
                         <li class="<?= isset($category) && $cat['id'] == $category['id'] ? 'active' : '' ?>">

@@ -9,7 +9,7 @@
     <div class="page-down">
         <div class="container content-grid">
             <div class="content-col">
-                <p class="txt3">Dragi na&scaron;i gosti,<br><br>
+                <p class="text-body">Dragi na&scaron;i gosti,<br><br>
 
                 Kineski restoran &quot;Peking&quot; u Zagrebu koji se nalazi u blizini Britanskog trga, otvoren je 1996. godine kada je jedan od prvih kuhara kineske hrane u na&scaron;im krajevima odlu&ccaron;io pokrenuti obiteljski posao.<br><br>
 
@@ -23,7 +23,7 @@
             </div>
 
             <div class="content-full">
-                <p class="txt3">Zahvaljujemo vam &scaron;to ste nam pomogli da obogatimo iskustvo u pru&zcaron;anju kvalitete i usluge te da na taj na&ccaron;in napredujemo kako bi smo vam i dalje omogu&ccaron;ili ugodno okru&zcaron;enje sa ljubaznim osobljem i vrhunskom kuhinjom.<br><br>
+                <p class="text-body">Zahvaljujemo vam &scaron;to ste nam pomogli da obogatimo iskustvo u pru&zcaron;anju kvalitete i usluge te da na taj na&ccaron;in napredujemo kako bi smo vam i dalje omogu&ccaron;ili ugodno okru&zcaron;enje sa ljubaznim osobljem i vrhunskom kuhinjom.<br><br>
 
                 Va&scaron; restoran &quot;Peking&quot;</p>
             </div>
