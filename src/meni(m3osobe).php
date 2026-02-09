@@ -75,7 +75,7 @@ $page_id= "";
             <div id="jelovnik_content">
            
           <table width="360" border="0" align="center" class="meni-table"><tr>
-           <th colspan="3" class="table_naslov">Menu za 3 osobe P3 69,00</th></tr>
+           <th colspan="3" class="table_naslov">Menu za 3 osobe P3 73,00</th></tr>
            <tr>
              <td width="27" class="td-broj">1.</td>
              <td width="270" class="td-jelo"><strong>Kiselo - ljuta juha</strong><br />
@@ -119,7 +119,7 @@ $page_id= "";
              </tr>
 
             <td class="td-broj"></td></tr>
-             <th colspan="3" class="table_naslov">Menu za 3 osobe P4 66,00</th></tr>
+             <th colspan="3" class="table_naslov">Menu za 3 osobe P4 70,00</th></tr>
              <tr>
                <td valign="top" class="td-broj">1.</td>
                <td class="td-jelo"><strong>Kiselo - ljuta juha</strong><br />
