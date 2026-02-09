@@ -17,7 +17,7 @@ related front-end changes in /public.
   - Router.php: lightweight route matcher.
   - Controllers
     - PageController.php: public pages.
-    - Api/*: JSON endpoints for auth, categories, dishes, combo menus.
+    - Api/\*: JSON endpoints for auth, categories, dishes, combo menus.
   - Models: PDO-backed data access for categories, dishes, combo menus, users.
   - Views: layout (header/footer) + page templates.
   - Middleware: Auth and CSRF helpers.
@@ -42,12 +42,14 @@ related front-end changes in /public.
 ## API Routes
 
 Auth
+
 - GET /api/auth/me
 - POST /api/auth/login
 - POST /api/auth/logout
 - POST /api/auth/change-password
 
 Categories
+
 - GET /api/categories
 - GET /api/categories/{id}
 - POST /api/categories
@@ -56,6 +58,7 @@ Categories
 - POST /api/categories/reorder
 
 Dishes
+
 - GET /api/dishes
 - GET /api/dishes/{id}
 - POST /api/dishes
@@ -64,6 +67,7 @@ Dishes
 - POST /api/dishes/reorder
 
 Combo Menus
+
 - GET /api/comboMenus
 - GET /api/comboMenus/{id}
 - POST /api/comboMenus
