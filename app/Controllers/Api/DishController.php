@@ -18,7 +18,7 @@ class DishController
 
     public function index()
     {
-        $categoryId = $_GET['categoryId'] ?? $_REQUEST['categoryId'] ?? null;
+        $categoryId = $_GET['categoryId'] ?? null;
         if ($categoryId === '') $categoryId = null;
         if ($categoryId !== null) $categoryId = (int) $categoryId;
 
@@ -120,6 +120,8 @@ class DishController
         }
         if (!isset($input['price']) || !is_numeric($input['price'])) {
             $errors[] = 'price must be a number';
+        } elseif ((float) $input['price'] < 0) {
+            $errors[] = 'price cannot be negative';
         }
         return $errors;
     }

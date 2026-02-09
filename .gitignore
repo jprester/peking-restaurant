@@ -1,11 +1,28 @@
-*.zip
+# OS files
 .DS_Store
-_DS_Store
-*.css.map
-*.sublime-*
-.DS_Store
+Thumbs.db
+
+# IDE / Editor
 .vscode/
+.idea/
+*.sublime-*
+
+# Config with credentials
+app/config.php
+
+# Old source (kept locally for reference)
+old_src/
+
+# Build artifacts
+*.css.map
 .sass-cache/
-src/error_log
-src/css
-src/peking.hr
+
+# Archives
+*.zip
+
+# Logs
+error_log
+*.log
+
+# Claude Code
+.claude/

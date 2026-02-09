@@ -150,6 +150,8 @@ class ComboMenuController
         }
         if (!isset($input['price']) || !is_numeric($input['price'])) {
             $errors[] = 'price must be a number';
+        } elseif ((float) $input['price'] < 0) {
+            $errors[] = 'price cannot be negative';
         }
         return $errors;
     }

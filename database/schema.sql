@@ -22,6 +22,8 @@ CREATE TABLE dishes (
     nameEn TEXT NOT NULL,
     price DECIMAL(8,2) NOT NULL DEFAULT 0.00,
     sortOrder INT DEFAULT 0,
+    INDEX idx_dishes_categoryId (categoryId),
+    INDEX idx_dishes_sortOrder (sortOrder),
     FOREIGN KEY (categoryId) REFERENCES categories(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -32,7 +34,9 @@ CREATE TABLE comboMenus (
     nameEn VARCHAR(200) NOT NULL,
     personCount INT NOT NULL,
     price DECIMAL(8,2) NOT NULL,
-    sortOrder INT DEFAULT 0
+    sortOrder INT DEFAULT 0,
+    INDEX idx_comboMenus_personCount (personCount),
+    INDEX idx_comboMenus_sortOrder (sortOrder)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE comboMenuItems (
@@ -42,6 +46,7 @@ CREATE TABLE comboMenuItems (
     nameCro TEXT NOT NULL,
     nameEn TEXT NOT NULL,
     sortOrder INT DEFAULT 0,
+    INDEX idx_comboMenuItems_comboMenuId (comboMenuId),
     FOREIGN KEY (comboMenuId) REFERENCES comboMenus(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

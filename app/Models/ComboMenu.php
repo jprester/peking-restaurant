@@ -19,8 +19,22 @@ class ComboMenu
             "SELECT * FROM comboMenus ORDER BY sortOrder"
         )->fetchAll();
 
+        if (empty($menus)) {
+            return $menus;
+        }
+
+        // Fetch all items in one query to avoid N+1
+        $allItems = $this->pdo->query(
+            "SELECT * FROM comboMenuItems ORDER BY sortOrder"
+        )->fetchAll();
+
+        $itemsByMenu = [];
+        foreach ($allItems as $item) {
+            $itemsByMenu[$item['comboMenuId']][] = $item;
+        }
+
         foreach ($menus as &$menu) {
-            $menu['items'] = $this->getItems((int) $menu['id']);
+            $menu['items'] = $itemsByMenu[$menu['id']] ?? [];
         }
 
         return $menus;
@@ -46,8 +60,26 @@ class ComboMenu
         $stmt->execute([':personCount' => $personCount]);
         $menus = $stmt->fetchAll();
 
+        if (empty($menus)) {
+            return $menus;
+        }
+
+        // Fetch items for these menus in one query
+        $menuIds = array_column($menus, 'id');
+        $placeholders = implode(',', array_fill(0, count($menuIds), '?'));
+        $itemStmt = $this->pdo->prepare(
+            "SELECT * FROM comboMenuItems WHERE comboMenuId IN ($placeholders) ORDER BY sortOrder"
+        );
+        $itemStmt->execute($menuIds);
+        $allItems = $itemStmt->fetchAll();
+
+        $itemsByMenu = [];
+        foreach ($allItems as $item) {
+            $itemsByMenu[$item['comboMenuId']][] = $item;
+        }
+
         foreach ($menus as &$menu) {
-            $menu['items'] = $this->getItems((int) $menu['id']);
+            $menu['items'] = $itemsByMenu[$menu['id']] ?? [];
         }
 
         return $menus;

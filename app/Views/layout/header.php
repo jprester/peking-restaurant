@@ -16,8 +16,21 @@
 
     <!-- Mobile Header -->
     <div class="mob-head">
-        <a href="<?= BASE_URL ?>/"><img src="<?= BASE_URL ?>/img/logo.png" width="134" height="130" alt="Peking logo"></a>
+        <a href="<?= BASE_URL ?>/" class="mob-logo"><img src="<?= BASE_URL ?>/img/logo.png" width="80" height="78" alt="Peking logo"></a>
+        <button class="mob-toggle" id="mobileMenuToggle" aria-label="Otvori navigaciju">
+            <span class="mob-toggle-bar"></span>
+            <span class="mob-toggle-bar"></span>
+            <span class="mob-toggle-bar"></span>
+        </button>
     </div>
+    <nav class="mob-nav" id="mobileMenu">
+        <ul>
+            <li><a href="<?= BASE_URL ?>/" class="<?= ($activePage ?? '') === 'home' ? 'active' : '' ?>">Početna</a></li>
+            <li><a href="<?= BASE_URL ?>/about" class="<?= ($activePage ?? '') === 'about' ? 'active' : '' ?>">O nama</a></li>
+            <li><a href="<?= BASE_URL ?>/menu" class="<?= ($activePage ?? '') === 'menu' ? 'active' : '' ?>">Meni</a></li>
+            <li><a href="<?= BASE_URL ?>/contact" class="<?= ($activePage ?? '') === 'contact' ? 'active' : '' ?>">Kontakt</a></li>
+        </ul>
+    </nav>
 
     <!-- Header -->
     <div id="head_bg">
@@ -35,15 +48,3 @@
                         <li><a href="<?= BASE_URL ?>/contact" class="<?= ($activePage ?? '') === 'contact' ? 'pressed' : '' ?>">Kontakt</a></li>
                     </ul>
                 </nav>
-
-                <div class="mobile-meninav">
-                    <a href="#" id="mobileMenuToggle">NAVIGACIJA</a>
-                </div>
-                <div class="mobile-menilist" id="mobileMenu">
-                    <ul>
-                        <li><a href="<?= BASE_URL ?>/">Početna</a></li>
-                        <li><a href="<?= BASE_URL ?>/about">O nama</a></li>
-                        <li><a href="<?= BASE_URL ?>/menu">Meni</a></li>
-                        <li><a href="<?= BASE_URL ?>/contact">Kontakt</a></li>
-                    </ul>
-                </div>

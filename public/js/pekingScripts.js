@@ -1,42 +1,60 @@
 /**
  * Peking Restaurant - Vanilla JS
- * Replaces jQuery for simple interactions
  */
-
-document.addEventListener("DOMContentLoaded", function () {
-  // --- Mobile main menu toggle ---
-  var mobileToggle = document.getElementById("mobileMenuToggle");
-  var mobileMenu = document.getElementById("mobileMenu");
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Mobile main menu toggle (hamburger) ---
+  const mobileToggle = document.getElementById("mobileMenuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
 
   if (mobileToggle && mobileMenu) {
-    mobileToggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      mobileMenu.style.display =
-        mobileMenu.style.display === "block" ? "none" : "block";
+    mobileToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.style.display === "block";
+      mobileMenu.style.display = isOpen ? "none" : "block";
+      mobileToggle.classList.toggle("open", !isOpen);
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.style.display = "none";
+        mobileToggle.classList.remove("open");
+      });
     });
   }
 
   // --- Mobile menu category toggle ---
-  var catToggle = document.getElementById("menuCategoryToggle");
-  var catList = document.getElementById("menuCategoryList");
+  const catToggle = document.getElementById("menuCategoryToggle");
+  const catList = document.getElementById("menuCategoryList");
 
   if (catToggle && catList) {
-    catToggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      catList.style.display =
-        catList.style.display === "block" ? "none" : "block";
+    const catToggleWrap = catToggle.closest(".mob-cat-wrap");
+
+    catToggle.addEventListener("click", () => {
+      const isOpen = catList.style.display === "block";
+      catList.style.display = isOpen ? "none" : "block";
+      if (catToggleWrap) {
+        catToggleWrap.classList.toggle("open", !isOpen);
+      }
+    });
+
+    catList.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        catList.style.display = "none";
+        if (catToggleWrap) {
+          catToggleWrap.classList.remove("open");
+        }
+      });
     });
   }
 
-  // --- Simple image slider with crossfade ---
-  var slides = document.querySelectorAll(".slider-images .slide");
+  // --- Image slider with crossfade ---
+  const slides = document.querySelectorAll(".slider-images .slide");
   if (slides.length > 1) {
-    var currentSlide = 0;
+    let current = 0;
 
-    setInterval(function () {
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
     }, 4000);
   }
 });

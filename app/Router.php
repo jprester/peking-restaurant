@@ -5,6 +5,12 @@ namespace App;
 class Router
 {
     private $routes = [];
+    private $debug = false;
+
+    public function setDebug($debug)
+    {
+        $this->debug = (bool) $debug;
+    }
 
     public function get($pattern, $handler)
     {
@@ -80,18 +86,21 @@ class Router
         http_response_code(404);
         if (strpos($uri, '/api/') === 0) {
             header('Content-Type: application/json');
-            echo json_encode([
-                'error' => 'Not found',
-                'debug' => [
+            $response = ['error' => 'Not found'];
+            if ($this->debug) {
+                $response['debug'] = [
                     'method' => $method,
                     'uri' => $uri,
                     'script' => $_SERVER['SCRIPT_NAME']
-                ]
-            ]);
+                ];
+            }
+            echo json_encode($response);
         } else {
             echo "<h1>404 - Page Not Found</h1>";
-            echo "<p>The requested path <strong>" . htmlspecialchars($uri) . "</strong> could not be found.</p>";
-            echo "<p>If you are in a subfolder, please ensure your BASE_URL is correct.</p>";
+            if ($this->debug) {
+                echo "<p>The requested path <strong>" . htmlspecialchars($uri) . "</strong> could not be found.</p>";
+                echo "<p>If you are in a subfolder, please ensure your BASE_URL is correct.</p>";
+            }
         }
     }
 }

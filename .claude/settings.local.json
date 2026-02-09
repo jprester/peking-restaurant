@@ -5,7 +5,8 @@
       "Bash(/Applications/MAMP/bin/php/php7.0.0/bin/php:*)",
       "Bash(brew list:*)",
       "Bash(/usr/local/bin/php:*)",
-      "Bash(/opt/homebrew/bin/php:*)"
+      "Bash(/opt/homebrew/bin/php:*)",
+      "Bash(sips -g pixelWidth -g pixelHeight:*)"
     ]
   }
 }

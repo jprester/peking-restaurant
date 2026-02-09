@@ -19,6 +19,10 @@ class AuthController
     public function login()
     {
         $input = json_decode(file_get_contents('php://input'), true);
+        if (!is_array($input)) {
+            $this->json(['error' => 'Invalid JSON input'], 400);
+            return;
+        }
         $username = trim($input['username'] ?? '');
         $password = $input['password'] ?? '';
 
@@ -47,6 +51,7 @@ class AuthController
 
     public function logout()
     {
+        Csrf::validate();
         Auth::logout();
         $this->json(['success' => true]);
     }
@@ -57,6 +62,10 @@ class AuthController
         Csrf::validate();
 
         $input = json_decode(file_get_contents('php://input'), true);
+        if (!is_array($input)) {
+            $this->json(['error' => 'Invalid JSON input'], 400);
+            return;
+        }
         $newPassword = $input['newPassword'] ?? '';
 
         if (strlen($newPassword) < 6) {

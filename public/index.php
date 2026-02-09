@@ -10,6 +10,7 @@ use App\Controllers\Api\ComboMenuController;
 use App\Controllers\PageController;
 
 $router = new Router();
+$router->setDebug($config['app']['debug']);
 $pdo = $db->getPdo();
 
 // --- API Routes ---
