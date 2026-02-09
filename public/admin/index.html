@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peking Admin</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen" x-data="adminApp()" x-cloak>
+
+    <!-- Login Screen -->
+    <div x-show="!loggedIn" class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+            <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">Peking Admin</h1>
+            <div x-show="loginError" class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm" x-text="loginError"></div>
+            <form @submit.prevent="login()">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <input type="text" x-model="loginForm.username" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" x-model="loginForm.password" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <button type="submit" class="w-full bg-amber-700 text-white py-2 px-4 rounded-md hover:bg-amber-800 transition">
+                    Log In
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div x-show="loggedIn" class="flex min-h-screen">
+
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white flex-shrink-0">
+            <div class="p-4 border-b border-gray-700">
+                <h2 class="text-lg font-bold">Peking CMS</h2>
+                <p class="text-sm text-gray-400" x-text="'Logged in as ' + username"></p>
+            </div>
+            <nav class="p-4">
+                <button @click="currentView = 'categories'" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition mb-1"
+                    :class="currentView === 'categories' || currentView === 'dishes' ? 'bg-gray-700' : ''">
+                    Menu Categories
+                </button>
+                <button @click="currentView = 'comboMenus'; loadComboMenus()" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition mb-1"
+                    :class="currentView === 'comboMenus' || currentView === 'comboMenuEdit' ? 'bg-gray-700' : ''">
+                    Combo Menus
+                </button>
+                <div class="border-t border-gray-700 mt-4 pt-4">
+                    <button @click="showPasswordModal = true" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition mb-1 text-gray-400">
+                        Change Password
+                    </button>
+                    <button @click="logout()" class="block w-full text-left px-3 py-2 rounded hover:bg-gray-700 transition text-red-400">
+                        Logout
+                    </button>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+
+            <!-- Categories List -->
+            <div x-show="currentView === 'categories'">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800">Menu Categories</h1>
+                    <button @click="openCategoryModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">
+                        + Add Category
+                    </button>
+                </div>
+                <div class="bg-white rounded-lg shadow">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Order</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (CRO)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (EN)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Dishes</th>
+                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <template x-for="(cat, index) in categories" :key="cat.id">
+                                <tr class="hover:bg-gray-50 cursor-pointer" @click="selectCategory(cat)">
+                                    <td class="px-6 py-4 text-sm text-gray-500">
+                                        <div class="flex items-center gap-1">
+                                            <span x-text="cat.sortOrder"></span>
+                                            <div class="flex flex-col">
+                                                <button @click.stop="moveCategory(index, -1)" class="text-gray-400 hover:text-gray-600">▲</button>
+                                                <button @click.stop="moveCategory(index, 1)" class="text-gray-400 hover:text-gray-600">▼</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900" x-text="cat.nameCro"></td>
+                                    <td class="px-6 py-4 text-sm text-gray-500" x-text="cat.nameEn"></td>
+                                    <td class="px-6 py-4 text-sm text-gray-500" x-text="cat.dishCount"></td>
+                                    <td class="px-6 py-4 text-sm text-right" @click.stop>
+                                        <button @click="openCategoryModal(cat)" class="text-blue-600 hover:text-blue-800 mr-3">Edit</button>
+                                        <button @click="deleteCategory(cat.id)" class="text-red-600 hover:text-red-800">Delete</button>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Dishes List (for selected category) -->
+            <div x-show="currentView === 'dishes'">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <button @click="currentView = 'categories'" class="text-amber-700 hover:text-amber-800 text-sm mb-1">&larr; Back to Categories</button>
+                        <h1 class="text-2xl font-bold text-gray-800" x-text="selectedCategory?.nameCro + ' / ' + selectedCategory?.nameEn"></h1>
+                    </div>
+                    <button @click="openDishModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">
+                        + Add Dish
+                    </button>
+                </div>
+                <div class="bg-white rounded-lg shadow">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Order</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">No.</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (CRO)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name (EN)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Price (EUR)</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <template x-for="(dish, index) in dishes" :key="dish.id">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-4 py-3 text-sm text-gray-500 font-mono">
+                                        <div class="flex items-center gap-2">
+                                            <span x-text="dish.sortOrder"></span>
+                                            <div class="flex flex-col text-[10px] leading-none">
+                                                <button @click="moveDish(index, -1)" class="text-gray-400 hover:text-amber-700">▲</button>
+                                                <button @click="moveDish(index, 1)" class="text-gray-400 hover:text-amber-700">▼</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm text-gray-500" x-text="dish.dishNumber"></td>
+                                    <td class="px-4 py-3 text-sm font-medium text-gray-900" x-text="dish.nameCro"></td>
+                                    <td class="px-4 py-3 text-sm text-gray-500" x-text="dish.nameEn"></td>
+                                    <td class="px-4 py-3 text-sm text-gray-900" x-text="parseFloat(dish.price).toFixed(2)"></td>
+                                    <td class="px-4 py-3 text-sm">
+                                        <button @click="openDishModal(dish)" class="text-blue-600 hover:text-blue-800 mr-3">Edit</button>
+                                        <button @click="deleteDish(dish.id)" class="text-red-600 hover:text-red-800">Delete</button>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <div x-show="dishes.length === 0" class="p-8 text-center text-gray-500">
+                        No dishes in this category yet.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Combo Menus List -->
+            <div x-show="currentView === 'comboMenus'">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800">Combo Menus</h1>
+                    <button @click="openComboModal()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">
+                        + Add Combo Menu
+                    </button>
+                </div>
+                <template x-for="pc in [2, 3, 4]" :key="pc">
+                    <div class="mb-8">
+                        <h2 class="text-lg font-semibold text-gray-700 mb-3" x-text="'Menu for ' + pc + ' People'"></h2>
+                        <div class="grid gap-4" :class="comboMenusByPersonCount(pc).length > 1 ? 'md:grid-cols-2' : ''">
+                            <template x-for="combo in comboMenusByPersonCount(pc)" :key="combo.id">
+                                <div class="bg-white rounded-lg shadow p-5">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <div>
+                                            <h3 class="text-lg font-bold text-gray-800" x-text="combo.name"></h3>
+                                            <p class="text-amber-700 font-semibold text-xl" x-text="parseFloat(combo.price).toFixed(2) + ' EUR'"></p>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <button @click="editComboMenu(combo)" class="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
+                                            <button @click="deleteComboMenu(combo.id)" class="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                                        </div>
+                                    </div>
+                                    <ol class="list-decimal list-inside space-y-1">
+                                        <template x-for="item in combo.items" :key="item.id">
+                                            <li class="text-sm">
+                                                <span class="font-medium" x-text="item.nameCro"></span>
+                                                <span class="text-gray-400 ml-1" x-text="'/ ' + item.nameEn"></span>
+                                            </li>
+                                        </template>
+                                    </ol>
+                                </div>
+                            </template>
+                        </div>
+                        <div x-show="comboMenusByPersonCount(pc).length === 0" class="bg-white rounded-lg shadow p-8 text-center text-gray-500">
+                            No combo menus for <span x-text="pc"></span> people.
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Combo Menu Edit -->
+            <div x-show="currentView === 'comboMenuEdit'">
+                <button @click="currentView = 'comboMenus'; loadComboMenus()" class="text-amber-700 hover:text-amber-800 text-sm mb-4">&larr; Back to Combo Menus</button>
+                <div class="bg-white rounded-lg shadow p-6 max-w-2xl">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4" x-text="editingCombo.id ? 'Edit Combo Menu' : 'New Combo Menu'"></h2>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Name (e.g. Menu P1)</label>
+                            <input type="text" x-model="editingCombo.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Person Count</label>
+                            <select x-model="editingCombo.personCount" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Name (CRO)</label>
+                            <input type="text" x-model="editingCombo.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Name (EN)</label>
+                            <input type="text" x-model="editingCombo.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Price (EUR)</label>
+                            <input type="number" step="0.01" x-model="editingCombo.price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                            <input type="number" x-model="editingCombo.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <button @click="saveComboMenu()" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition mb-6">
+                        Save Menu Details
+                    </button>
+
+                    <!-- Items -->
+                    <template x-if="editingCombo.id">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-3 border-t pt-4">Menu Items</h3>
+                            <div class="space-y-2 mb-4">
+                                <template x-for="(item, idx) in editingCombo.items || []" :key="item.id || idx">
+                                    <div class="flex items-center gap-2 bg-gray-50 p-3 rounded">
+                                        <span class="text-sm text-gray-500 w-8" x-text="item.itemNumber + '.'"></span>
+                                        <input type="text" x-model="item.nameCro" placeholder="Name (CRO)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                        <input type="text" x-model="item.nameEn" placeholder="Name (EN)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                        <button @click="saveComboItem(item)" class="text-green-600 hover:text-green-800 text-sm">Save</button>
+                                        <button @click="deleteComboItem(item.id)" class="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="flex items-center gap-2 bg-blue-50 p-3 rounded">
+                                <span class="text-sm text-gray-500 w-8" x-text="((editingCombo.items || []).length + 1) + '.'"></span>
+                                <input type="text" x-model="newItem.nameCro" placeholder="New item (CRO)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                <input type="text" x-model="newItem.nameEn" placeholder="New item (EN)" class="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                <button @click="addComboItem()" class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">Add</button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Category Modal -->
+    <div x-show="showCategoryModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click.self="showCategoryModal = false">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+            <h2 class="text-xl font-bold mb-4" x-text="editingCategory.id ? 'Edit Category' : 'New Category'"></h2>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Name (Croatian)</label>
+                <input type="text" x-model="editingCategory.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Name (English)</label>
+                <input type="text" x-model="editingCategory.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                <input type="number" x-model="editingCategory.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div class="flex justify-end gap-3">
+                <button @click="showCategoryModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Cancel</button>
+                <button @click="saveCategory()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dish Modal -->
+    <div x-show="showDishModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click.self="showDishModal = false">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+            <h2 class="text-xl font-bold mb-4" x-text="editingDish.id ? 'Edit Dish' : 'New Dish'"></h2>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Dish Number</label>
+                    <input type="text" x-model="editingDish.dishNumber" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                    <input type="number" x-model="editingDish.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Name (Croatian)</label>
+                <input type="text" x-model="editingDish.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Name (English)</label>
+                <input type="text" x-model="editingDish.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Price (EUR)</label>
+                <input type="number" step="0.01" x-model="editingDish.price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div class="flex justify-end gap-3">
+                <button @click="showDishModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Cancel</button>
+                <button @click="saveDish()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Combo Menu Modal (for creating new) -->
+    <div x-show="showComboModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click.self="showComboModal = false">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+            <h2 class="text-xl font-bold mb-4">New Combo Menu</h2>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Name (e.g. Menu P7)</label>
+                <input type="text" x-model="newCombo.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            </div>
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Person Count</label>
+                <select x-model="newCombo.personCount" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                    <option value="2">2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4 people</option>
+                </select>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Name (CRO)</label>
+                    <input type="text" x-model="newCombo.nameCro" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Name (EN)</label>
+                    <input type="text" x-model="newCombo.nameEn" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Price (EUR)</label>
+                    <input type="number" step="0.01" x-model="newCombo.price" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
+                    <input type="number" x-model="newCombo.sortOrder" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+            </div>
+            <div class="flex justify-end gap-3">
+                <button @click="showComboModal = false" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">Cancel</button>
+                <button @click="createComboMenu()" class="px-4 py-2 bg-amber-700 text-white rounded-md hover:bg-amber-800">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 px-4 py-3 rounded-lg shadow-lg text-white text-sm z-50"
+        :class="toast.type === 'error' ? 'bg-red-600' : 'bg-green-600'" x-text="toast.message">
+    </div>
+
+    <!-- Password Modal -->
+    <div x-show="showPasswordModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" x-cloak>
+        <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-sm">
+            <h2 class="text-xl font-bold mb-4">Change Password</h2>
+            <form @submit.prevent="changePassword()">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                    <input type="password" x-model="newPassword" required minlength="6"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+                <div class="flex justify-end gap-3">
+                    <button type="button" @click="showPasswordModal = false" class="px-4 py-2 text-gray-600 hover:text-gray-800">Cancel</button>
+                    <button type="submit" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+function adminApp() {
+    // Determine API base path based on current location
+    // If we are at /admin/index.html, API is at /api/
+    // If we are at /some/path/admin/index.html, API is at /some/path/api/
+    const pathParts = window.location.pathname.split('/');
+    pathParts.pop(); // remove index.html or empty string
+    pathParts.pop(); // remove 'admin'
+    const apiBase = pathParts.join('/') || '';
+
+    return {
+        // Auth state
+        loggedIn: false,
+        username: '',
+        csrfToken: '',
+        loginForm: { username: '', password: '' },
+        loginError: '',
+
+        // Navigation
+        currentView: 'categories',
+
+        // Data
+        categories: [],
+        selectedCategory: null,
+        dishes: [],
+        comboMenus: [],
+        useIndexPhpFallback: false,
+
+        // Modals
+        showCategoryModal: false,
+        showDishModal: false,
+        showComboModal: false,
+        showPasswordModal: false,
+        editingCategory: {},
+        editingDish: {},
+        editingCombo: {},
+        newCombo: { name: '', nameCro: '', nameEn: '', personCount: 2, price: 0, sortOrder: 0 },
+        newItem: { nameCro: '', nameEn: '' },
+        newPassword: '',
+
+        // Toast
+        toast: { show: false, message: '', type: 'success' },
+
+        async init() {
+            try {
+                const res = await this.api('GET', '/api/auth/me');
+                this.csrfToken = res.csrfToken;
+                if (res.authenticated) {
+                    this.loggedIn = true;
+                    this.username = res.user.username;
+                    await this.loadCategories();
+                }
+            } catch (e) {
+                console.error('Init failed:', e);
+            }
+        },
+
+        // --- API Helper ---
+        async api(method, url, body = null) {
+            // Ensure URL uses correct base if it doesn't already start with apiBase
+            let fullUrl = url;
+            if (!url.startsWith('http')) {
+                // If the url already starts with apiBase, don't prepend it again
+                if (apiBase && url.startsWith(apiBase)) {
+                    fullUrl = url;
+                } else {
+                    fullUrl = apiBase + url;
+                }
+            }
+            
+            // Auto-fallback: if mod_rewrite is disabled, we might need to prefix with index.php
+            if (this.useIndexPhpFallback && !fullUrl.includes('index.php')) {
+                fullUrl = fullUrl.replace('/api/', '/index.php/api/');
+            }
+
+            const opts = {
+                method,
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+            };
+            if (this.csrfToken) {
+                opts.headers['X-CSRF-Token'] = this.csrfToken;
+            }
+            if (body) {
+                opts.body = JSON.stringify(body);
+            }
+
+            try {
+                const res = await fetch(fullUrl, opts);
+                const contentType = res.headers.get('content-type');
+
+                if (contentType && contentType.includes('application/json')) {
+                    const data = await res.json();
+                    if (!res.ok) {
+                        throw new Error(data.error || data.errors?.join(', ') || `Error ${res.status}`);
+                    }
+                    return data;
+                } else {
+                    const text = await res.text();
+                    console.error('Non-JSON response:', text);
+                    
+                    if (res.status === 404 && !this.useIndexPhpFallback) {
+                        console.warn('404 detected. Trying index.php fallback...');
+                        this.useIndexPhpFallback = true;
+                        return this.api(method, url, body);
+                    }
+                    
+                    throw new Error(`Server returned non-JSON response (${res.status}). Check browser console.`);
+                }
+            } catch (e) {
+                if (e.message.includes('Unexpected token') || e.message.includes('NOT valid JSON')) {
+                     throw new Error('Server returned invalid JSON. This usually means a PHP error occurred. Check browser console Network tab.');
+                }
+                throw e;
+            }
+        },
+
+        showToast(message, type = 'success') {
+            this.toast = { show: true, message, type };
+            setTimeout(() => { this.toast.show = false; }, 3000);
+        },
+
+        // --- Auth ---
+        async login() {
+            this.loginError = '';
+            try {
+                const res = await this.api('POST', '/api/auth/login', this.loginForm);
+                this.loggedIn = true;
+                this.username = res.user.username;
+                this.csrfToken = res.csrfToken;
+                this.loginForm = { username: '', password: '' };
+                await this.loadCategories();
+            } catch (e) {
+                this.loginError = e.message;
+            }
+        },
+
+        async logout() {
+            await this.api('POST', '/api/auth/logout');
+            this.loggedIn = false;
+            this.username = '';
+            this.csrfToken = '';
+        },
+
+        // --- Categories ---
+        async loadCategories() {
+            this.categories = await this.api('GET', '/api/categories');
+        },
+
+        openCategoryModal(cat = null) {
+            this.editingCategory = cat
+                ? { ...cat }
+                : { nameCro: '', nameEn: '', sortOrder: this.categories.length + 1 };
+            this.showCategoryModal = true;
+        },
+
+        async saveCategory() {
+            try {
+                if (this.editingCategory.id) {
+                    await this.api('PUT', `/api/categories/${this.editingCategory.id}`, this.editingCategory);
+                    this.showToast('Category updated');
+                } else {
+                    await this.api('POST', '/api/categories', this.editingCategory);
+                    this.showToast('Category created');
+                }
+                this.showCategoryModal = false;
+                await this.loadCategories();
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        async moveCategory(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= this.categories.length) return;
+
+            // Swap in local array
+            const temp = this.categories[index];
+            this.categories[index] = this.categories[newIndex];
+            this.categories[newIndex] = temp;
+
+            // Send new order to API
+            try {
+                const ids = this.categories.map(c => c.id);
+                await this.api('POST', '/api/categories/reorder', { ids });
+                this.showToast('Categories reordered');
+                await this.loadCategories(); // Refresh to get correct sortOrder numbers
+            } catch (e) {
+                this.showToast(e.message, 'error');
+                await this.loadCategories(); // Reload if failed
+            }
+        },
+
+        async deleteCategory(id) {
+            if (!confirm('Delete this category and ALL its dishes?')) return;
+            try {
+                await this.api('DELETE', `/api/categories/${id}`);
+                this.showToast('Category deleted');
+                await this.loadCategories();
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        // --- Dishes ---
+        async selectCategory(cat) {
+            this.selectedCategory = cat;
+            this.currentView = 'dishes';
+            this.dishes = await this.api('GET', `/api/dishes?categoryId=${cat.id}`);
+        },
+
+        openDishModal(dish = null) {
+            this.editingDish = dish
+                ? { ...dish }
+                : { categoryId: this.selectedCategory.id, dishNumber: '', nameCro: '', nameEn: '', price: 0, sortOrder: this.dishes.length + 1 };
+            this.showDishModal = true;
+        },
+
+        async saveDish() {
+            try {
+                if (this.editingDish.id) {
+                    await this.api('PUT', `/api/dishes/${this.editingDish.id}`, this.editingDish);
+                    this.showToast('Dish updated');
+                } else {
+                    await this.api('POST', '/api/dishes', this.editingDish);
+                    this.showToast('Dish created');
+                }
+                this.showDishModal = false;
+                this.dishes = await this.api('GET', `/api/dishes?categoryId=${this.selectedCategory.id}`);
+                await this.loadCategories();
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        async moveDish(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= this.dishes.length) return;
+
+            // Swap in local array
+            const temp = this.dishes[index];
+            this.dishes[index] = this.dishes[newIndex];
+            this.dishes[newIndex] = temp;
+
+            // Send new order to API
+            try {
+                const ids = this.dishes.map(d => d.id);
+                await this.api('POST', '/api/dishes/reorder', { ids });
+                this.showToast('Dishes reordered');
+                // Refresh to get correct sortOrder numbers
+                this.dishes = await this.api('GET', `/api/dishes?categoryId=${this.selectedCategory.id}`);
+            } catch (e) {
+                this.showToast(e.message, 'error');
+                // Reload if failed
+                this.dishes = await this.api('GET', `/api/dishes?categoryId=${this.selectedCategory.id}`);
+            }
+        },
+
+        async deleteDish(id) {
+            if (!confirm('Delete this dish?')) return;
+            try {
+                await this.api('DELETE', `/api/dishes/${id}`);
+                this.showToast('Dish deleted');
+                this.dishes = await this.api('GET', `/api/dishes?categoryId=${this.selectedCategory.id}`);
+                await this.loadCategories();
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        // --- Combo Menus ---
+        async loadComboMenus() {
+            this.comboMenus = await this.api('GET', '/api/comboMenus');
+        },
+
+        comboMenusByPersonCount(pc) {
+            return this.comboMenus.filter(m => parseInt(m.personCount) === pc);
+        },
+
+        openComboModal() {
+            this.newCombo = { name: '', nameCro: '', nameEn: '', personCount: 2, price: 0, sortOrder: this.comboMenus.length + 1 };
+            this.showComboModal = true;
+        },
+
+        async createComboMenu() {
+            try {
+                const created = await this.api('POST', '/api/comboMenus', this.newCombo);
+                this.showComboModal = false;
+                this.showToast('Combo menu created');
+                this.editingCombo = created;
+                this.currentView = 'comboMenuEdit';
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        editComboMenu(combo) {
+            this.editingCombo = JSON.parse(JSON.stringify(combo));
+            this.newItem = { nameCro: '', nameEn: '' };
+            this.currentView = 'comboMenuEdit';
+        },
+
+        async saveComboMenu() {
+            try {
+                await this.api('PUT', `/api/comboMenus/${this.editingCombo.id}`, this.editingCombo);
+                this.showToast('Combo menu saved');
+                await this.loadComboMenus();
+                // Refresh editingCombo with latest data
+                this.editingCombo = await this.api('GET', `/api/comboMenus/${this.editingCombo.id}`);
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        async deleteComboMenu(id) {
+            if (!confirm('Delete this combo menu and all its items?')) return;
+            try {
+                await this.api('DELETE', `/api/comboMenus/${id}`);
+                this.showToast('Combo menu deleted');
+                await this.loadComboMenus();
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        async addComboItem() {
+            if (!this.newItem.nameCro || !this.newItem.nameEn) return;
+            try {
+                const items = this.editingCombo.items || [];
+                await this.api('POST', `/api/comboMenus/${this.editingCombo.id}/items`, {
+                    itemNumber: items.length + 1,
+                    nameCro: this.newItem.nameCro,
+                    nameEn: this.newItem.nameEn,
+                    sortOrder: items.length + 1,
+                });
+                this.newItem = { nameCro: '', nameEn: '' };
+                this.editingCombo = await this.api('GET', `/api/comboMenus/${this.editingCombo.id}`);
+                this.showToast('Item added');
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        async saveComboItem(item) {
+            try {
+                await this.api('PUT', `/api/comboMenus/${this.editingCombo.id}/items/${item.id}`, item);
+                this.showToast('Item updated');
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        async deleteComboItem(itemId) {
+            if (!confirm('Delete this item?')) return;
+            try {
+                await this.api('DELETE', `/api/comboMenus/${this.editingCombo.id}/items/${itemId}`);
+                this.editingCombo = await this.api('GET', `/api/comboMenus/${this.editingCombo.id}`);
+                this.showToast('Item deleted');
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+
+        async changePassword() {
+            try {
+                await this.api('POST', '/api/auth/change-password', { newPassword: this.newPassword });
+                this.showToast('Password updated successfully');
+                this.showPasswordModal = false;
+                this.newPassword = '';
+            } catch (e) {
+                this.showToast(e.message, 'error');
+            }
+        },
+    };
+}
+</script>
+
+</body>
+</html>
