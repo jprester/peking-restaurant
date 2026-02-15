@@ -14,7 +14,10 @@ class Database
     {
         $host = $config['host'];
         $port = isset($config['port']) ? ";port={$config['port']}" : '';
-        $dsn = "mysql:host={$host}{$port};dbname={$config['name']};charset={$config['charset']}";
+        $socket = ($host === 'localhost' || $host === 'localhost:/var/run/mysqld/mysqld.sock')
+         ? ';unix_socket=/var/run/mysqld/mysqld.sock'
+        : '';
+            $dsn = "mysql:host={$host}{$socket}{$port};dbname={$config['name']};charset={$config['charset']}";
 
         try {
             $this->pdo = new PDO($dsn, $config['user'], $config['pass'], [

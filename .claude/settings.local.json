@@ -9,7 +9,8 @@
       "Bash(sips -g pixelWidth -g pixelHeight:*)",
       "Bash(php:*)",
       "Bash(grep:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git rm:*)"
     ]
   }
 }

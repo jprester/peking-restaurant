@@ -8,7 +8,7 @@ Thumbs.db
 *.sublime-*
 
 # Config with credentials
-app/config.php
+app/config*.php
 
 # Old source (kept locally for reference)
 old_src/
