@@ -10,12 +10,12 @@
     <div class="container">
         <div class="slider-wrapper">
             <div class="slider-images">
-                <img src="<?= BASE_URL ?>/img/slide2.jpg" alt="Kineski restoran Peking" class="slide active">
-                <img src="<?= BASE_URL ?>/img/slide1.jpg" alt="Kineska hrana" class="slide">
-                <img src="<?= BASE_URL ?>/img/slide3.jpg" alt="Kineski restoran" class="slide">
-                <img src="<?= BASE_URL ?>/img/slide4.jpg" alt="Peking restoran" class="slide">
-                <img src="<?= BASE_URL ?>/img/slide5.jpg" alt="Restoran" class="slide">
+                <img src="<?= BASE_URL ?>/img/slide2.jpg" alt="Kineski restoran Peking" class="slide active" data-caption="Dobrodo&scaron;li na stranice kineskog restorana &quot;Peking&quot;. Rije&ccaron; je o jednom od prvih zagreba&ccaron;kih azijskih restorana koji nudi vrhunska jela iz bogate kineske gastronomske tradicije.">
+                <img src="<?= BASE_URL ?>/img/slide1.jpg" alt="Kineska hrana" class="slide" data-caption="Idealna lokacija u centru grada.">
+                <img src="<?= BASE_URL ?>/img/slide3.jpg" alt="Kineski restoran" class="slide" data-caption="Bogata tradicija kineske kuhinje u srcu Zagreba.">
+                <img src="<?= BASE_URL ?>/img/slide5.jpg" alt="Restoran" class="slide" data-caption="Nadamo se da &cacute;ete nas posjetiti i u&zcaron;ivati u gurmanskim &ccaron;arima dalekog istoka.">
             </div>
+            <div class="slider-caption"></div>
         </div>
     </div>
 

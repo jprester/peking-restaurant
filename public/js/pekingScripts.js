@@ -48,13 +48,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- Image slider with crossfade ---
   const slides = document.querySelectorAll(".slider-images .slide");
+  const captionEl = document.querySelector(".slider-caption");
   if (slides.length > 1) {
     let current = 0;
+
+    // Show initial caption
+    if (captionEl && slides[current].dataset.caption) {
+      captionEl.textContent = slides[current].dataset.caption;
+    }
 
     setInterval(() => {
       slides[current].classList.remove("active");
       current = (current + 1) % slides.length;
       slides[current].classList.add("active");
-    }, 4000);
+
+      if (captionEl) {
+        captionEl.style.opacity = "0";
+        setTimeout(() => {
+          captionEl.textContent = slides[current].dataset.caption || "";
+          captionEl.style.opacity = "1";
+        }, 300);
+      }
+    }, 5000);
   }
 });
