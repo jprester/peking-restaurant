@@ -348,10 +348,10 @@ p {
   width: 100%;
   background: rgba(99, 37, 37, 0.8);
   color: #eee;
-  padding: 10px 16px;
+  padding: 12px 22px;
   font-family: "Cormorant Garamond", serif;
-  font-size: 1.1em;
-  line-height: 1.3em;
+  font-size: 1.2em;
+  line-height: 1.5em;
   box-sizing: border-box;
   z-index: 8;
   transition: opacity 0.5s ease-in-out;
@@ -714,6 +714,12 @@ p {
   }
   .slider-wrapper {
     margin-top: 20px;
+  }
+
+  .slider-caption {
+    font-size: 1.1em;
+    padding: 8px 12px;
+    line-height: 1.2em;
   }
   .content-flex {
     flex-direction: column;
