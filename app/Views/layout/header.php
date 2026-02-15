@@ -7,7 +7,7 @@
     <meta name="description" content="Kineski restoran Peking - Zagreb. Kineska hrana, dostava.">
     <meta name="keywords" content="Kineski restoran, Peking, Kineska hrana, restaurant, chinese, Zagreb">
     <link rel="icon" href="<?= BASE_URL ?>/img/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&family=Marcellus+SC&family=Linden+Hill&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/style.css">
 </head>
 <body>
